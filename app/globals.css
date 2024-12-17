@@ -1,21 +1,178 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #f15b40;
+  --color-secondary: #e7d9bf;
+  --color-accent: #0d6a3d;
+  --color-white: #ffffff;
+  --color-black: #000000;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: #fef7e6;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2rem;
+}
+
+p#little {
+  font-size: 5vw;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 0.8;
+  color: #f15b40;
+}
+
+@font-face {
+  font-family: "Tanker";
+  src: url("../public/static/fonts/Tanker-Regular.woff2") format("woff2"),
+    url("../public/static/fonts/Tanker-Regular.woff") format("woff"),
+    url("../public/static/fonts/Tanker-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Use the custom font */
+body {
+  font-family: "Tanker", sans-serif; /* 'sans-serif' as a fallback */
+}
+
+h1 {
+  font-family: "Tanker", sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 3.3rem;
+  line-height: 5rem;
+}
+
+h2 {
+  font-family: "Tanker", sans-serif;
+  font-weight: 500;
+  font-size: 3.4rem;
+  line-height: 0.95;
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: -0.2px;
+  font-weight: 0.5;
+  line-height: normal;
+}
+
+li {
+  font-weight: 500;
+  font-size: 2vw;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#small {
+  font-size: 1vw;
+}
+
+/*  <div className='border border-black w-fit px-[1.5%] py-[0.5%] rounded-full bg-white'>
+*/
+
+/* className="whitespace-nowrap px-[3rem] py-[1rem] rounded-[999rem] bg-[#E7D9BF] border border-[#cbba9a] shadow-lg" */
+
+button {
+  border-radius: 0.5rem;
+  background-color: #e7d9bf;
+  white-space: nowrap;
+  width: 100%;
+  padding: 1.5% 1.5%;
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  transition: ease-in-out 300ms;
+}
+
+button:hover,
+button:focus {
+  background-color: #0d6a3d;
+  color: white;
+  cursor: pointer;
+  transition: ease-in-out 300ms;
+}
+
+button p {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: fit-content;
+}
+
+/* intent
+ tell them that you are interested in a role at their company
+ ask them for their methadologies
+ what do yo ufind the most fufilling
+ whats your most fufilling project
+ cross functional collaboration -- what does it look like
+ stalk face book to ask personal question
+
+ stalk their interests and mention "in my free time i saw you like this and i like this too"
+ */
+
+.button-container {
+  height: 100%;
+  background-color: white;
+  color: black;
+  border-radius: 9999px;
+  width: fit-content;
+  border: 1px solid black;
+  padding: 0.5% 1.5%;
+  transition: ease-in-out 300ms;
+}
+
+.button-container:hover {
+  background-color: black;
+  color: white;
+  border-radius: 9999px;
+  width: fit-content;
+  border: 1px solid black;
+  padding: 0.5% 1.5%;
+  transition: ease-in-out 300ms;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 60rem) {
+  h1 {
+    font-size: 30pt;
+    line-height: 30pt;
+  }
+
+  h2 {
+    font-size: 30pt;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: normal;
+  }
+
+  button {
+    padding: 0.75rem 1rem;
+  }
 }

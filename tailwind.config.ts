@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "my-white": "#f9f9f9", // Replace '#f9f9f9' with your desired white color code.
+        "my-beige": "#e7d9bf", // Replace '#f9f9f9' with your desired white color code.
       },
     },
   },
