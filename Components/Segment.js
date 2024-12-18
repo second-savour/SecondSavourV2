@@ -1,5 +1,4 @@
 import React from "react";
-import Boxes from "../assets/images/boxes.png";
 import Button from "../Components/Button.js";
 
 function Segment({ header, Title, Text, Image, ButtonText, clickTo }) {

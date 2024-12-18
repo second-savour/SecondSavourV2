@@ -60,7 +60,7 @@ function Navbar() {
           >
             <Hyperlink
               Text={"About"}
-              Link={"/About"}
+              Link={"/about"}
               Color={"--color-black"}
               HoverColor={"--purple"}
               Display={"none"}
@@ -74,7 +74,7 @@ function Navbar() {
             />
             <Hyperlink
               Text={"Shop"}
-              Link={"/Shop"}
+              Link={"/shop"}
               Color={"--color-black"}
               HoverColor={"--purple"}
               Display={"none"}

@@ -1,4 +1,5 @@
 import React from "react";
+import Hyperlink from "./Hyperlink";
 
 function Footer() {
   return (
@@ -10,45 +11,54 @@ function Footer() {
           <div className="flex flex-col gap-[0.5rem]">
             <h3 className="text-gray-600">Company</h3>
             <div className="flex flex-col gap-[0.2rem]">
-              <a href="/about">
-                <h3> About Us</h3>
-              </a>
-              {/* <a href='/blog'><h3> Our Blog</h3> </a> */}
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform?usp=sharing"
-                target="_blank"
-              >
-                <h3> Contact Us</h3>
-              </a>
+              <Hyperlink
+                Text={"About Us"}
+                Link={"/about"}
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
+
+              <Hyperlink
+                Text={"Contact Us"}
+                Link={
+                  "https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform?usp=sharing"
+                }
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
             </div>
           </div>
 
           <div className="flex flex-col gap-[0.5rem]">
             <h3 className="text-gray-600">Socials</h3>
             <div className="flex flex-col gap-[0.2rem]">
-              <a href="https://www.instagram.com/second.savour/">
-                <h3> Instagram</h3>{" "}
-              </a>
-              <a href="https://www.tiktok.com/@second.savour">
-                <h3> TikTok</h3>
-              </a>
-              <a href="https://www.linkedin.com/company/second-savour">
-                <h3> Linkedin</h3>{" "}
-              </a>
+              <Hyperlink
+                Text={"Instagram"}
+                Link={"https://www.instagram.com/second.savour/"}
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
+
+              <Hyperlink
+                Text={"Tiktok"}
+                Link={"https://www.tiktok.com/@second.savour"}
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
+
+              <Hyperlink
+                Text={"Linkedin"}
+                Link={"https://www.linkedin.com/company/second-savour"}
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
             </div>
           </div>
-
-          {/* <div className="flex flex-col gap-[0.5rem]">
-            <h3 className="text-gray-600">Other</h3>
-            <div className="flex flex-col gap-[0.2rem]">
-              <a href="/about">
-                <h3> Privacy Policy</h3>
-              </a>
-              <a href="/blog">
-                <h3> Terms of Service</h3>{" "}
-              </a>
-            </div>
-          </div> */}
 
           <div className="text-gray-600 lg:text-right text-center hidden lg:block lg:absolute lg:right-[5%]">
             <h3> Website Built and Designed</h3>
