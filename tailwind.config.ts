@@ -9,8 +9,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        "my-white": "#f9f9f9", // Replace '#f9f9f9' with your desired white color code.
-        "my-beige": "#e7d9bf", // Replace '#f9f9f9' with your desired white color code.
+        "my-white": "#f9f9f9",
+        "my-beige": "#e7d9bf",
+        "my-green": "#015A2E",
+        "my-orange": "#FF780D",
+        "my-brown": "#3B1D1D",
       },
     },
   },
