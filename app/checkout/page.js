@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Button from "../../Components/Button.js";
 import SmallSegment from "../../Components/SmallSegment.js";
 
-function page() {
+function Page() {
   const [displayText, setDisplayText] = useState(
     <div>
       <h3 className="text-gray-600 mb-[2%]"> Nutrition </h3>
@@ -18,7 +18,6 @@ function page() {
       </p>
     </div>
   );
-  2;
   const [selectedButton, setSelectedButton] = useState("Nutrition");
 
   // Function to update the text
@@ -139,4 +138,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

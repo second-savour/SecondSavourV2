@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 // /Components
 import SmallSegment from "../Components/SmallSegment.js";
@@ -153,8 +152,8 @@ function page() {
               See what people are saying about our products
             </p>
             <p className="text-center text-gray-800 mt-[5%] font-medium italic">
-              "Second Savour's candies are the perfect blend of flavor and
-              sustainability. I can't get enough of them!"
+              &ldquo;Second Savour&apos;s candies are the perfect blend of
+              flavor and sustainability. I can&apos;t get enough of them!&ldquo;
             </p>
             <p className="text-gray-800 text-center mt-[2%]">- Angelina Chen</p>
           </div>
