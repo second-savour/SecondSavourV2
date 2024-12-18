@@ -36,7 +36,7 @@ function page() {
             <div className="justify-center lg:w-[60%]">
               <div className="flex justify-left">
                 <img
-                  src="static/images/newSticker.png"
+                  src="static/images/NewSticker.png"
                   className="hidden lg:block"
                 />
               </div>
