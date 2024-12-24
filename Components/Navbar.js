@@ -10,6 +10,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
+    console.log("Navbar toggled");
     setIsOpen(!isOpen);
   };
 

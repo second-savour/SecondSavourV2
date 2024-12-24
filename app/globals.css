@@ -44,7 +44,8 @@ p#little {
 
 @font-face {
   font-family: "Tanker";
-  src: url("../public/static/fonts/Tanker-Regular.woff2") format("woff2"),
+  src:
+    url("../public/static/fonts/Tanker-Regular.woff2") format("woff2"),
     url("../public/static/fonts/Tanker-Regular.woff") format("woff"),
     url("../public/static/fonts/Tanker-Regular.ttf") format("truetype");
   font-weight: 400;
