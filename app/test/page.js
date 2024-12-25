@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../Components/Button.js";
+import ContainerText from "../../Components/ContainerText.js";
 
 function page() {
   return (
@@ -25,53 +26,41 @@ function page() {
         </div>
       </section> */}
 
-      <section className=" mx-[12.5rem]">
-        <div className=" rounded-[1rem] w-[75vw] min-h-[70vh] max-h-[70vh] bg-my-green p-[3rem] flex flex-row justify-between">
-          <div className="flex flex-col min-h-[60vh] justify-around w-[50%] ">
-            <div className="flex flex-col h-fit gap-[1.5rem] text-white">
-              <h1>Citrus Treats</h1>
-              <h2>$6.99 Per Package</h2>
-              <p>
-                Snack with a Purpose – Indulge in sweet and tangy goodness while
-                making an eco-friendly choice. Our nutritious hand-crafted
-                citrus delicacies are made from rescued oranges, offering you a
-                sustainable and delicious option.
-              </p>
-              <button className="w-fit text-my-green">
-                <p>Check it out!</p>
-              </button>
-            </div>
-          </div>
-          <img
-            src="static/images/Citrus Treats Image.png"
-            alt="Citrus Treats"
-            className="h-fit w-[42%]"
-          ></img>
-        </div>
-      </section>
+      <ContainerText
+        Header="Citrus Treats"
+        Subheader="$6.99 Per Package"
+        Text="     Snack with a Purpose – Indulge in sweet and tangy goodness while
+              making an eco-friendly choice. Our nutritious hand-crafted citrus
+              delicacies are made from rescued oranges, offering you a
+              sustainable and delicious option."
+        ButtonText="Check it out!"
+        altText="A bag of citus treats"
+        Image="static/images/Citrus Treats Image.png"
+        clickTo="/shop"
+      ></ContainerText>
 
-      <section className="mx-[12.5rem] flex flex-col gap-[2rem] ">
+      <section className="lg:mx-[10rem] mx-[2rem] flex flex-col gap-[0.5rem] lg:gap-[2rem] ">
         <h1> Our Milestones </h1>
-        <div className="flex flex-row justify-between w-[75vw] border-2 border-black">
-          <div className="bg-my-green text-white flex flex-col justify-around gap-[2rem] px-[2rem] py-[3rem] rounded-[1rem] w-[31%] text-center min-h-[23rem]">
-            <h1> 50 G </h1>
+        <div className="flex lg:flex-row flex-col justify-between w-[full] gap-[1rem]">
+          <div className="bg-my-green text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-[23rem]">
+            <h1 className="whitespace-nowrap"> 50 G </h1>
             <p> Of GHG reduced with every bag purchased</p>
           </div>
 
-          <div className="bg-my-orange text-white flex flex-col justify-around gap-[2rem] px-[2rem] py-[3rem] rounded-[1rem] w-[31%] text-center min-h-[23rem]">
-            <h1> 1.5 KG </h1>
+          <div className="bg-my-orange text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-[23rem]">
+            <h1 className="whitespace-nowrap"> 1.5 KG </h1>
             <p> of food waste diverted from landfills by 2026</p>
           </div>
 
-          <div className="bg-my-brown text-white flex flex-col justify-around gap-[2rem] px-[2rem] py-[3rem] rounded-[1rem] w-[31%] text-center min-h-[23rem]">
-            <h1> 4.3 K</h1>
+          <div className="bg-my-brown text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-[23rem]">
+            <h1 className="whitespace-nowrap"> 4.3 K</h1>
             <p> oranges saved from the trash by 2025</p>
           </div>
         </div>
       </section>
 
-      <section className=" mx-[12.5rem]">
-        <div className=" rounded-[1rem] w-[75vw] min-h-[70vh] max-h-[70vh] bg-my-beige p-[3rem] flex flex-row justify-between">
+      <section className=" lg:mx-[10rem] mx-[2rem]">
+        <div className=" rounded-[1rem] w-[full] min-h-[70vh] max-h-[70vh] bg-my-beige p-[3rem] flex flex-row justify-between">
           <div className="flex flex-col min-h-[60vh] justify-around w-[50%] ">
             <div className="flex flex-col h-fit gap-[1.5rem] text-black">
               <h1>visit our in person sales</h1>
@@ -113,35 +102,31 @@ function page() {
         </div>
       </section>
 
-      <section className="mx-[12.5rem] relative">
-        <h1 className="absolute left-[50px] top-[-100px] text-xxl font-bold text-my-black">
-          ORDER ONLINE
-        </h1>
-
-        <img
-          src="static/images/mascot.png"
-          alt="Second Savour Mascot"
-          className="w-[50%] h-fit"
-        />
-        <div className="bg-yellow-400 rounded-[1rem] p-[2rem] max-w-[500px] relative left-[450px]">
-          <p className="text-black">
-            At Second Savour, we're expanding our sustainability initiatives to
-            engage people outside of our communities. Join us in making a
-            positive impact on our planet!
-          </p>
-          <button className="w-fit bg-my-green text-[#e7d9bf] px-6 py-2 rounded-[0.5rem] mt-4">
-            <p>Shop Now</p>
-          </button>
-          <img
-            src="static/images/SS Sticker.png"
-            alt="Sticker"
-            className="absolute top-[-50px] right-[-50px] w-[120px] rotate-[15deg]"
-          />
+      <section className="lg:mx-[10rem] mx-[2rem] relative ">
+        <h1>ORDER ONLINE</h1>
+        <div className="flex flex-row gap-[5vw]">
+          <div>
+            <img
+              src="static/images/mascot.png"
+              alt="Second Savour Mascot"
+              className=""
+            />
+          </div>
+          <div className="bg-yellow-400 rounded-[1rem] p-[2rem] max-w-[70%]">
+            <p className="">
+              At Second Savour, we're expanding our sustainability initiatives
+              to engage people outside of our communities. Join us in making a
+              positive impact on our planet!
+            </p>
+            <button className="w-fit bg-my-green text-[#e7d9bf] px-6 py-2 rounded-[0.5rem] mt-4">
+              <p>Shop Now</p>
+            </button>
+          </div>
         </div>
       </section>
 
-      <section className=" mx-[12.5rem]">
-        <div className=" rounded-[1rem] w-[75vw] min-h-[70vh] max-h-[70vh] bg-my-#e7d9bf p-[3rem] flex flex-row justify-between items-start">
+      <section className=" lg:mx-[10rem] mx-[2rem]">
+        <div className=" rounded-[1rem] w-[full] min-h-[70vh] max-h-[70vh] bg-my-#e7d9bf p-[3rem] flex flex-row justify-between items-start">
           <div className="flex flex-col min-h-[60vh] justify-between w-[50%] ">
             <div className="flex flex-col h-fit gap-[1.5rem] text-black">
               <h2>
@@ -165,9 +150,9 @@ function page() {
         </div>
       </section>
 
-      <section className=" mx-[12.5rem]">
+      <section className=" lg:mx-[10rem] mx-[2rem]">
         <div
-          className="relative rounded-[1rem] w-[75vw] min-h-[70vh] max-h-[70vh] p-[3rem] flex flex-row justify-between bg-cover bg-center"
+          className="relative rounded-[1rem] w-[full] min-h-[70vh] max-h-[70vh] p-[3rem] flex flex-row justify-between bg-cover bg-center"
           style={{ backgroundImage: "url(/static/images/OurStory.png)" }}
         >
           <div className="flex flex-col h-fit gap-[1.5rem] text-black">
@@ -204,19 +189,19 @@ function page() {
 
       {/* <section className="mt-[-1.5rem]">
         <h1> JOIN THE MOVEMENT </h1>
-        <div className="flex flex-row justify-between w-[75vw] border-2 border-black">
+        <div className="flex flex-row justify-between w-[full] border-2 border-black">
 
-          <div className="bg-my-green text-white flex flex-col justify-around gap-[2rem] px-[2rem] py-[3rem] rounded-[1rem] w-[31%] text-center min-h-[23rem]">
+          <div className="bg-my-green text-white flex flex-col justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-[23rem]">
             <h1> 50 G </h1>
             <p> Of GHG reduced with every bag purchased</p>
           </div>
 
-          <div className="bg-my-green text-white flex flex-col justify-around gap-[2rem] px-[2rem] py-[3rem] rounded-[1rem] w-[31%] text-center min-h-[23rem]">
+          <div className="bg-my-green text-white flex flex-col justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-[23rem]">
             <h1> 1.5 KG </h1>
             <p> of food waste diverted from landfills by 2026</p>
           </div>
 
-          <div className="bg-my-green text-white flex flex-col justify-around gap-[2rem] px-[2rem] py-[3rem] rounded-[1rem] w-[31%] text-center min-h-[23rem]">
+          <div className="bg-my-green text-white flex flex-col justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-[23rem]">
             <h1> 4.3 K</h1>
             <p> oranges saved from the trash by 2025</p>
           </div>
