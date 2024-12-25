@@ -227,3 +227,7 @@ function page() {
 }
 
 export default page;
+
+
+// Use percentage instead of px or rem
+// Change to lg: for mobile
