@@ -17,9 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Second Savour",
-  description:
-    "Second Savour was founded by a group of friends at Simon Fraser University (SFU) with a mission to create environmental change.",
+  title: "Second Savour QA Environment",
+  description: "This is for testing only.",
 };
 
 export default function RootLayout({ children }) {
