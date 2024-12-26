@@ -1,30 +1,35 @@
 import React from "react";
 import ContainerText from "../../Components/ContainerText.js";
 import ReviewCard from "../../Components/ReviewCard.js";
+import Button from "../../Components/Button.js";
 
 function page() {
   return (
     <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
-      {/* <section className=" w-[100vw] max-h-[100vh] mt-[-19vh] object-cover relative overflow-hidden">
+      <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
         <img
           src="static/images/heroImage.png"
           alt="background image depicting crates of fruit at a market"
           loading="eager"
-          className="opacity-[0.8]"
+          className="opacity-[0.4] w-full h-full object-cover"
         ></img>
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
-          <div className="w-[40%] mx-auto flex flex-col gap-[5rem] mt-[15%] text-center">
-            <div>
+          <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
+            <div className="flex flex-col gap-[2rem]">
               <h1> Second Savour </h1>
               <p>
                 A student-lead company that aims to combat food waste
                 originating from excess produce
               </p>
             </div>
-            <Button text="Purchase Now" clickTo={"/shop"}></Button>
+            <a href="/checkout">
+              <button className="p-[1rem] bg-my-green text-white w-fit">
+                <p>Purchase Now</p>
+              </button>{" "}
+            </a>
           </div>
         </div>
-      </section> */}
+      </section>
 
       <ContainerText
         Header="Citrus Treats"
@@ -70,7 +75,7 @@ function page() {
                 out where we’ll be next!
               </p>
               <a href="/map">
-                <button className="lg:w-fit w-full bg-my-green text-my-white mx-auto">
+                <button className="lg:w-fit w-full bg-my-green text-my-white mx-auto p-[1rem]">
                   <p>View Locations</p>
                 </button>
               </a>
@@ -121,7 +126,7 @@ function page() {
               in making a positive impact on our planet!
             </p>
             <a href="/shop">
-              <button className="lg:w-fit lg:mx-none bg-my-green text-[#e7d9bf] px-6 py-2 rounded-[0.5rem] mt-4 mx-auto w-full">
+              <button className="lg:w-fit lg:mx-none bg-my-green text-[#e7d9bf] px-6 py-2 rounded-[0.5rem] mt-4 mx-auto w-full p-[1rem]">
                 <p>Shop Now</p>
               </button>
             </a>
@@ -138,7 +143,7 @@ function page() {
                 Reach out to us at{" "}
                 <span className="font-bold">sales@secondsavour.ca</span>
               </p>
-              <button className="w-fit bg-my-green text-[#e7d9bf]">
+              <button className="w-fit bg-my-green text-[#e7d9bf] p-[1rem]">
                 <p>Partner with us!</p>
               </button>
             </div>
@@ -166,9 +171,9 @@ function page() {
               create environmental change.
             </p>
             <a href="/about">
-              <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf]">
+              <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] p-[1rem]">
                 <p>Our Story</p>
-              </button>{" "}
+              </button>
             </a>
             <img
               src="static/images/SS Sticker.png"

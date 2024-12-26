@@ -21,7 +21,7 @@ function ContainerText({
             <h2 className="lg:text-4xl text-xl">{Subheader}</h2>
             <p>{Text}</p>
             <a href={clickTo}>
-              <button className="lg:w-fit text-my-green bg-my-beige w-full">
+              <button className="lg:w-fit text-my-green bg-my-beige w-full p-[1rem]">
                 <p>{ButtonText}</p>
               </button>
             </a>
