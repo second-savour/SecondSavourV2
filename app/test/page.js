@@ -1,7 +1,6 @@
 import React from "react";
 import ContainerText from "../../Components/ContainerText.js";
 import ReviewCard from "../../Components/ReviewCard.js";
-import Button from "../../Components/Button.js";
 
 function page() {
   return (
