@@ -13,7 +13,7 @@ function page() {
         <div className="flex flex-col gap-[10vh] min-h-fit w-[90%]">
           {/* Header Section */}
           <div className="p-[2%] flex flex-col lg:gap-0 gap-[1rem]">
-            <h1 className="text-center font-bold">SECOND SAVOUR!!!</h1>
+            <h1 className="text-center font-bold">This is our QA Branch</h1>
             <h3 className="text-center mt-[1%]">
               A student-led company that aims to combat food waste originating
               from excess produce
