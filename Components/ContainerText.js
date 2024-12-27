@@ -20,7 +20,7 @@ function ContainerText({
             <h1 className="">{Header}</h1>
             <h2 className="lg:text-4xl text-xl">{Subheader}</h2>
             <p>{Text}</p>
-            <a href={clickTo}>
+            <a className="w-fit" href={clickTo}>
               <button className="lg:w-fit text-my-green bg-my-beige w-full p-[1rem] px-[2rem]">
                 <p className="font-bold">{ButtonText}</p>
               </button>

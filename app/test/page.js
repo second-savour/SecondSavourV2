@@ -21,7 +21,7 @@ function page() {
                 originating from excess produce
               </p>
             </div>
-            <a href="/checkout">
+            <a className="w-fit" href="/checkout">
               <button className="p-[1rem] bg-my-green text-white w-fit px-[2rem] font-bold">
                 <p className="font-bold">Purchase Now</p>
               </button>{" "}
@@ -53,12 +53,12 @@ function page() {
 
           <div className="bg-my-brown text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
             <h2 className="whitespace-nowrap"> 1.5 KG </h2>
-            <p> of food waste diverted from landfills by 2026</p>
+            <p> Of food waste diverted from landfills by 2026</p>
           </div>
 
           <div className="bg-my-green text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
             <h2 className="whitespace-nowrap"> 4.3 K</h2>
-            <p> oranges saved from the trash by 2025</p>
+            <p> Oranges saved from the trash by 2025</p>
           </div>
         </div>
       </section>
@@ -73,7 +73,7 @@ function page() {
                 eco-friendly products and support a sustainable mission. Check
                 out where we’ll be next!
               </p>
-              <a href="/map">
+              <a className="w-fit" href="/map">
                 <button className="lg:w-fit w-full bg-my-green text-my-white mx-auto px-[2rem] font-bold p-[1rem]">
                   <p className="font-bold">View Locations</p>
                 </button>
@@ -108,7 +108,9 @@ function page() {
         </div>
       </section>
 
-      <section className="lg:mx-[10rem] mx-[2rem] relative ">
+      {/* Removed for now until we redesign */}
+
+      {/* <section className="lg:mx-[10rem] mx-[2rem] relative ">
         <h2>ORDER ONLINE</h2>
         <div className="flex flex-col lg:flex-row gap-[5vw]">
           <div>
@@ -124,17 +126,17 @@ function page() {
               initiatives to engage people outside of our communities. Join us
               in making a positive impact on our planet!
             </p>
-            <a href="/shop">
+            <a className='w-fit' href="/shop">
               <button className="lg:w-fit lg:mx-none bg-my-green text-[#e7d9bf] px-[2rem] font-bold rounded-[0.5rem]  mx-auto w-full p-[1rem]">
                 <p className="font-bold">Shop Now</p>
               </button>
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className=" lg:mx-[10rem] mx-[2rem]">
-        <div className=" rounded-[1rem] w-[full] lg:min-h-[55vh] lg:max-h-[55vh] bg-my-#e7d9bf lg:p-[3rem] flex flex-col lg:flex-row justify-between items-start lg:gap-0 gap-[2rem] overflow-hidden">
+        <div className="  w-[full] lg:min-h-[55vh] lg:max-h-[55vh] bg-my-#e7d9bf lg:p-[3rem] flex flex-col lg:flex-row justify-between items-start lg:gap-[1rem] gap-[2rem] overflow-hidden">
           <div className="flex flex-col lg:min-h-[60vh] justify-between lg:w-[50%] ">
             <div className="flex flex-col h-fit gap-[1.5rem] text-black">
               <h2>INTERESTED IN HAVING SECOND SAVOUR IN YOUR STORE?</h2>
@@ -167,7 +169,7 @@ function page() {
               University (SFU) in Burnaby, BC, with a mission to create
               environmental change.
             </p>
-            <a href="/about">
+            <a className="w-fit" href="/about">
               <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] px-[2rem] font-bold p-[1rem]">
                 <p className="font-bold">Our Story</p>
               </button>
@@ -175,7 +177,7 @@ function page() {
             <img
               src="static/images/SS Sticker.png"
               alt="Sticker"
-              className="absolute top-[-5px] right-[1px] w-[100px]"
+              className="absolute top-[-5px] right-[1px] w-[5rem] lg:w-[10rem]"
             />
           </div>
         </div>
