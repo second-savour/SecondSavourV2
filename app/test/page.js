@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContainerText from "../../Components/ContainerText.js";
 import ReviewCard from "../../Components/ReviewCard.js";
 
@@ -23,6 +23,21 @@ function Page() {
     }
   };
 
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // 1024px is the "lg" breakpoint in Tailwind.
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
       <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
@@ -36,10 +51,7 @@ function Page() {
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">
               <h1> Second Savour </h1>
-              <p>
-                A student-lead company that aims to combat food waste
-                originating from excess produce
-              </p>
+              <p>A student-led company that aims to combat food.</p>
             </div>
             <div className="w-full">
               <a className="w-fit" href="/checkout">
@@ -166,9 +178,14 @@ function Page() {
                 Reach out to us at{" "}
                 <span className="font-bold">sales@secondsavour.ca</span>
               </p>
-              <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] px-[2rem] font-bold p-[1rem]">
-                <p className="font-bold">Partner with us!</p>
-              </button>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform"
+                target="blank"
+              >
+                <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] px-[2rem] font-bold p-[1rem]">
+                  <p className="font-bold">Partner with us!</p>
+                </button>
+              </a>
             </div>
           </div>
           <img
@@ -214,16 +231,21 @@ function Page() {
 
           <div className="relative w-full flex flex-row h-full">
             <div className="flex flex-row w-full justify-between items-center">
-              <button className="w-fit h-fit" onClick={() => decreaseView(34)}>
+              <button
+                className="w-fit h-fit lg:block hidden "
+                onClick={() => decreaseView(34)}
+              >
                 &lt;
               </button>
 
-              <div className={` w-[90%] overflow-hidden`}>
+              <div
+                className={`lg:w-[90%] max-h-[33vh] lg:overflow-hidden lg:overscroll-none overflow-x-auto overscroll-x-auto w-full`}
+              >
                 <div
-                  className={`flex lg:flex-row flex-col justify-between gap-[1.4%] w-fit
-                   transition-[right] ease-in-out duration-300 relative
+                  className={`flex flex-row justify-between gap-[1.4%] w-fit
+                   transition-[right] ease-in-out duration-300 relative right-[0]
                   `}
-                  style={{ right: `${Inview}%` }}
+                  style={isLargeScreen ? { right: `${Inview}%` } : {}}
                 >
                   <ReviewCard
                     Name="- Brandon Lau"
@@ -254,12 +276,15 @@ function Page() {
                   ></ReviewCard>
                 </div>
               </div>
-              <button className="w-fit h-fit" onClick={() => increaseView(34)}>
+              <button
+                className="w-fit h-fit lg:block hidden"
+                onClick={() => increaseView(34)}
+              >
                 &gt;
               </button>
             </div>
           </div>
-          <div className=" gap-[1rem] flex flex-row mt-[1rem]">
+          <div className=" gap-[1rem] flex-row mt-[1rem] hidden lg:flex">
             <div
               className={`w-[1rem] h-[1rem] border-2 border-black rounded-full transition-all ease-in-out duration-300
                 ${Inview === 0 ? "bg-black" : "bg-none"}`}
