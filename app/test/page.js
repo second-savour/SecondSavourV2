@@ -1,8 +1,28 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import ContainerText from "../../Components/ContainerText.js";
 import ReviewCard from "../../Components/ReviewCard.js";
 
-function page() {
+function Page() {
+  const [Inview, setInview] = useState(34);
+
+  const increaseView = (amount) => {
+    if (Inview < 68) {
+      setInview(Inview + amount);
+    } else {
+      setInview(0);
+    }
+  };
+
+  const decreaseView = (amount) => {
+    if (Inview > 0) {
+      setInview(Inview - amount);
+    } else {
+      setInview(68);
+    }
+  };
+
   return (
     <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
       <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
@@ -21,11 +41,13 @@ function page() {
                 originating from excess produce
               </p>
             </div>
-            <a className="w-fit" href="/checkout">
-              <button className="p-[1rem] bg-my-green text-white w-fit px-[2rem] font-bold">
-                <p className="font-bold">Purchase Now</p>
-              </button>{" "}
-            </a>
+            <div className="w-full">
+              <a className="w-fit" href="/checkout">
+                <button className="p-[1rem] bg-my-green text-white w-fit px-[2rem] font-bold">
+                  <p className="font-bold">Purchase Now</p>
+                </button>{" "}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -183,29 +205,73 @@ function page() {
         </div>
       </section>
 
-      <section className="lg:mx-[10rem] mx-[2rem] ">
+      <section className="lg:mx-[10rem] mx-[2rem]">
         <div className="w-full mx-auto flex flex-col items-center text-center gap-[1rem]">
           <h2>JOIN THE MOVEMENT</h2>
           <p className="mb-[1rem]">
             See what people are saying about our product
           </p>
 
-          <div className="flex lg:flex-row flex-col w-full justify-between gap-[1rem]">
-            <ReviewCard
-              Name="- Brandon Lau"
-              Body=" “The orange flavor is so fresh and natural. Love that these candies
+          <div className="relative w-full flex flex-row h-full">
+            <div className="flex flex-row w-full justify-between items-center">
+              <button className="w-fit h-fit" onClick={() => decreaseView(34)}>
+                &lt;
+              </button>
+
+              <div className={` w-[90%] overflow-hidden`}>
+                <div
+                  className={`flex lg:flex-row flex-col justify-between gap-[1.4%] w-fit
+                   transition-[right] ease-in-out duration-300 relative
+                  `}
+                  style={{ right: `${Inview}%` }}
+                >
+                  <ReviewCard
+                    Name="- Brandon Lau"
+                    Body=" “The orange flavor is so fresh and natural. Love that these candies
         fight food waste—guilt-free snacking at its best!”"
-            ></ReviewCard>
+                  ></ReviewCard>
 
-            <ReviewCard
-              Name="- Angelina Chen"
-              Body=" “Second Savour's candies are the perfect blend of flavor and sustainability. I can't get enough of them!”"
-            ></ReviewCard>
+                  <ReviewCard
+                    Name="- Brandon Lau"
+                    Body=" “The orange flavor is so fresh and natural. Love that these candies
+        fight food waste—guilt-free snacking at its best!”"
+                  ></ReviewCard>
 
-            <ReviewCard
-              Name="- Jason Liu"
-              Body=" “Sweet, tangy, and bursting with citrusy goodness. It’s amazing that they’re made from rescued fruit!”"
-            ></ReviewCard>
+                  <ReviewCard
+                    Name="- Brandon Lau"
+                    Body=" “The orange flavor is so fresh and natural. Love that these candies
+        fight food waste—guilt-free snacking at its best!”"
+                  ></ReviewCard>
+
+                  <ReviewCard
+                    Name="- Angelina Chen"
+                    Body=" “Second Savour's candies are the perfect blend of flavor and sustainability. I can't get enough of them!”"
+                  ></ReviewCard>
+
+                  <ReviewCard
+                    Name="- Jason Liu"
+                    Body=" “Sweet, tangy, and bursting with citrusy goodness. It’s amazing that they’re made from rescued fruit!”"
+                  ></ReviewCard>
+                </div>
+              </div>
+              <button className="w-fit h-fit" onClick={() => increaseView(34)}>
+                &gt;
+              </button>
+            </div>
+          </div>
+          <div className=" gap-[1rem] flex flex-row mt-[1rem]">
+            <div
+              className={`w-[1rem] h-[1rem] border-2 border-black rounded-full transition-all ease-in-out duration-300
+                ${Inview === 0 ? "bg-black" : "bg-none"}`}
+            ></div>
+            <div
+              className={`w-[1rem] h-[1rem] border-2 border-black rounded-full transition-all ease-in-out duration-300
+                ${Inview === 34 ? "bg-black" : "bg-transparent"}`}
+            ></div>
+            <div
+              className={`w-[1rem] h-[1rem] border-2 border-black rounded-full
+                ${Inview === 68 ? "bg-black" : "bg-transparent"}`}
+            ></div>
           </div>
         </div>
       </section>
@@ -213,4 +279,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
