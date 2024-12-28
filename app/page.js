@@ -51,7 +51,7 @@ function Page() {
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">
               <h1> Second Savour </h1>
-              <p>A student-led company that aims to combat food.</p>
+              <p>A student-led company that aims to combat food waste.</p>
             </div>
             <div className="w-full">
               <a className="w-fit" href="/checkout">
