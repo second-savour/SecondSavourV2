@@ -45,7 +45,7 @@ function Page() {
           src="static/images/heroImage.png"
           alt="background image depicting crates of fruit at a market"
           loading="eager"
-          className="opacity-[0.4] w-full h-full object-cover"
+          className="opacity-[0.4] w-[101vw] h-full object-cover "
         ></img>
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
@@ -275,7 +275,7 @@ function Page() {
                 </div>
               </div>
               <button
-                className="w-fit h-fit lg:block hidden"
+                className="w-fit h-fit lg:block hidden hover:bg-my-green ease-in-out duration-300 text-black"
                 onClick={() => increaseView(34)}
               >
                 &gt;

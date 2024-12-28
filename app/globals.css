@@ -110,8 +110,7 @@ button {
   transition: ease-in-out 300ms;
 }
 
-button:hover,
-button:focus {
+button:hover {
   background-color: #0d6a3d;
   color: white;
   cursor: pointer;
