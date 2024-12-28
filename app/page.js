@@ -1,166 +1,305 @@
-import React from "react";
+"use client";
 
-// /Components
-import SmallSegment from "../Components/SmallSegment.js";
-import Button from "../Components/Button.js";
-import { FaArrowRight } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import ContainerText from "../Components/ContainerText.js";
+import ReviewCard from "../Components/ReviewCard.js";
 
-function page() {
+function Page() {
+  const [Inview, setInview] = useState(34);
+
+  const increaseView = (amount) => {
+    if (Inview < 68) {
+      setInview(Inview + amount);
+    } else {
+      setInview(0);
+    }
+  };
+
+  const decreaseView = (amount) => {
+    if (Inview > 0) {
+      setInview(Inview - amount);
+    } else {
+      setInview(68);
+    }
+  };
+
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // 1024px is the "lg" breakpoint in Tailwind.
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
   return (
-    <div className="">
-      {/* <Link href="/map">Map</Link>; */}
-      <div className="w-100% bg-[#FEF7E6] flex justify-center">
-        <div className="flex flex-col gap-[10vh] min-h-fit w-[90%]">
-          {/* Header Section */}
-          <div className="p-[2%] flex flex-col lg:gap-0 gap-[1rem]">
-            <h1 className="text-center font-bold">This is our QA Branch</h1>
-            <h3 className="text-center mt-[1%]">
-              A student-led company that aims to combat food waste originating
-              from excess produce
-            </h3>
-            <div className="w-fit mt-[2%] mx-auto ">
-              <a href={"https://payments.secondsavour.ca/"}>
-                <button className="flex justify-between rounded-[0.25rem] py-[1rem] px-[2rem] bg-green-800 text-white w-fit hover:bg-black hover:text-white hover:left-2 hover:shadow-2xl left-0 relative ease-in-out duration-300">
-                  <h3 className="mr-[1rem] lg:flex w-full"> Purchase now! </h3>
-
-                  <div className="min-h-[100%] flex flex-col justify-around w-full">
-                    <FaArrowRight />
-                  </div>
-                </button>
-              </a>{" "}
+    <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
+      <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
+        <img
+          src="static/images/heroImage.png"
+          alt="background image depicting crates of fruit at a market"
+          loading="eager"
+          className="opacity-[0.4] w-[101vw] h-full object-cover "
+        ></img>
+        <div className="absolute top-0 left-0 w-[100%] h-[100%]">
+          <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
+            <div className="flex flex-col gap-[2rem]">
+              <h1> Second Savour </h1>
+              <p>A student-led company that aims to combat food.</p>
             </div>
-          </div>
-
-          {/* Citrus Candies Section */}
-          <div className="mt-[2%] p-[5%] bg-green-800 flex flex-col border-2 rounded-2xl lg:flex-row md:flex-row">
-            <div className="justify-center lg:w-[60%]">
-              <div className="flex justify-left">
-                <img
-                  src="static/images/NewSticker.png"
-                  className="hidden lg:block"
-                />
-              </div>
-
-              <h1 className="mt-[2%] font-bold text-white">Citrus Candies</h1>
-              <h3 className="mt-[2%] text-2xl font-bold text-white">
-                $6.99 Per Package
-              </h3>
-              <p className="mt-[2%] text-white">
-                Nutritious, vitamin-filled, citrus delicacies hand-made from
-                repurposed juiced oranges. Made to enjoy in class, on a drive,
-                during study sessions - basically anywhere!
-              </p>
-
-              <div className="mt-[10%] mb-[10%] flex justify-left lg:mb-[1%]">
-                <Button text={"Check it out!"} clickTo={"/Shop"} />
-              </div>
-            </div>
-
-            <div className="mt-[3%] flex justify-center lg:mt-0 lg:w-[40%]">
-              <img
-                src={"static/images/Citrus Treats Image.png"}
-                alt="Packages"
-                className="max-w-full"
-              />
-            </div>
-          </div>
-
-          {/* Stats Section */}
-          <div className="mt-[2%] flex flex-col justify-between lg:flex-row">
-            <div className="lg:w-[30%] p-[3%]">
-              <h1 className="font-bold">44 kg+</h1>
-              <p className="mt-[3%]">
-                Of surplus and imperfect produce saved from waste last month
-              </p>
-            </div>
-            <div className="lg:w-[30%] p-[3%]">
-              <h1 className="font-bold">100+</h1>
-              <p className="mt-[3%]">
-                Packages donated last year to raise awareness
-              </p>
-            </div>
-            <div className="lg:w-[30%] p-[3%]">
-              <h1 className="font-bold">200+</h1>
-              <p className="mt-[3%]">
-                Packages donated in the last year to raise awareness
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap mt-[2%] justify-between gap-[1%]">
-            <div className="w-full md:w-[48%] h-auto mb-8">
-              <SmallSegment
-                Title={"Order Online"}
-                Text={
-                  "At Second Savour, we're expanding our sustainability initiatives to engage people outside of our communities.  Join us in making a positive impact on our planet!"
-                }
-                ButtonText={"Browse Products"}
-                Image={"static/images/boxes.png"}
-                clickTo={"/Shop"}
-              />
-            </div>
-
-            <div className="lg:max-w-[50%] md:max-w-[50%] w-[100%] h-[50%]">
-              <SmallSegment
-                Title={"Visit our In Person Sales"}
-                Text={
-                  "We create our product using eco-friendly resources, offering sustainable food products."
-                }
-                ButtonText={"View Locations"}
-                Image={"static/images/boothing.png"}
-                clickTo={"/map"}
-              />
-            </div>
-          </div>
-          <div className="border-t border-gray-300"></div>
-
-          <div className="flex flex-col lg:flex-row">
-            <div className="lg:w-[60%]">
-              <h1>Our Story</h1>
-              <p className="mt-[5%]">
-                Second Savour was founded by a group of friends at Simon Fraser
-                University (SFU) in Burnaby, BC, with a mission to create
-                environmental change.
-              </p>
-
-              <a
-                href="https://secondsavour.ca/about"
-                className="flex lg:w-[50%] justify-between mt-[5%]"
-              >
-                <h3 className="h-[100%] flex flex-col justify-center text-gray-600">
-                  Learn More
-                </h3>
-                <div className="flex flex-col justify-center p-[0.755rem] bg-[#0D6A3D] rounded-[0.25rem] text-white">
-                  <FaArrowRight size="10px" />
-                </div>
+            <div className="w-full">
+              <a className="w-fit" href="/checkout">
+                <button className="p-[1rem] bg-my-green text-white w-fit px-[2rem] font-bold">
+                  <p className="font-bold">Purchase Now</p>
+                </button>{" "}
               </a>
             </div>
-
-            <div className="lg:w-[40%]">
-              <img
-                src={"static/images/team.png"}
-                alt="the Second Savour Team at our first social"
-              />
-            </div>
-          </div>
-
-          <div className="border-t border-gray-300"></div>
-
-          <div>
-            <h1 className="text-center">JOIN THE MOVEMENT</h1>
-            <p className="text-gray-600 text-center mt-[2%]">
-              See what people are saying about our products
-            </p>
-            <p className="text-center text-gray-800 mt-[5%] font-medium italic">
-              &ldquo;Second Savour&apos;s candies are the perfect blend of
-              flavor and sustainability. I can&apos;t get enough of them!&ldquo;
-            </p>
-            <p className="text-gray-800 text-center mt-[2%]">- Angelina Chen</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <ContainerText
+        Header="Citrus Treats"
+        Subheader="$6.99 Per Package"
+        Text="     Snack with a Purpose – Indulge in sweet and tangy goodness while
+              making an eco-friendly choice. Our nutritious hand-crafted citrus
+              delicacies are made from rescued oranges, offering you a
+              sustainable and delicious option."
+        ButtonText="Purchase Now!"
+        altText="A bag of citus treats"
+        Image="static/images/Citrus Treats Image.png"
+        clickTo="/shop"
+      ></ContainerText>
+
+      <section className="lg:mx-[10rem] mx-[2rem] flex flex-col gap-[0.5rem] lg:gap-[2rem]">
+        <h2> Our Impacts </h2>
+        <div className="flex lg:flex-row flex-col justify-between w-[full] gap-[1rem]">
+          <div className="bg-my-orange text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
+            <h2 className="whitespace-nowrap"> 50 G </h2>
+            <p> Of GHG reduced with every bag purchased</p>
+          </div>
+
+          <div className="bg-my-brown text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
+            <h2 className="whitespace-nowrap"> 1.5 KG </h2>
+            <p> Of food waste diverted from landfills by 2026</p>
+          </div>
+
+          <div className="bg-my-green text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
+            <h2 className="whitespace-nowrap"> 4.3 K</h2>
+            <p> Oranges saved from the trash by 2025</p>
+          </div>
+        </div>
+      </section>
+
+      <section className=" lg:mx-[10rem] mx-[2rem]">
+        <div className=" rounded-[1rem] w-[full] lg:min-h-[70vh] lg:max-h-[70vh] bg-my-beige px-[1rem] py-[2rem] lg:p-[3rem] flex flex-col lg:flex-row justify-between lg:gap-[0] gap-[2rem]">
+          <div className="flex flex-col lg:min-h-[60vh] justify-around w-full lg:w-[50%] ">
+            <div className="flex flex-col h-fit gap-[1.5rem] text-black">
+              <h2>visit our in person sales</h2>
+              <p>
+                Find us at boothing events or local retail stores to explore our
+                eco-friendly products and support a sustainable mission. Check
+                out where we’ll be next!
+              </p>
+              <a className="w-fit" href="/map">
+                <button className="lg:w-fit w-full bg-my-green text-my-white mx-auto px-[2rem] font-bold p-[1rem]">
+                  <p className="font-bold">View Locations</p>
+                </button>
+              </a>
+            </div>
+          </div>
+          <div className=" lg:max-w-[50%] overflow-hidden flex flex-row gap-[1rem] flex-wrap justify-center items-center">
+            <img
+              src="static/images/sales1.png"
+              alt="Citrus Treats"
+              className=" max-h-[40vh] lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+            ></img>
+
+            <img
+              src="static/images/sales2.png"
+              alt="Citrus Treats"
+              className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+            ></img>
+
+            <img
+              src="static/images/sales3.png"
+              alt="Citrus Treats"
+              className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+            ></img>
+
+            <img
+              src="static/images/sales4.png"
+              alt="Citrus Treats"
+              className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+            ></img>
+          </div>
+        </div>
+      </section>
+
+      {/* Removed for now until we redesign */}
+
+      {/* <section className="lg:mx-[10rem] mx-[2rem] relative ">
+        <h2>ORDER ONLINE</h2>
+        <div className="flex flex-col lg:flex-row gap-[5vw]">
+          <div>
+            <img
+              src="static/images/mascot.png"
+              alt="Second Savour Mascot"
+              className="hidden lg:block md:block sm:block;"
+            />
+          </div>
+          <div className="bg-yellow-400 rounded-[1rem] p-[2rem] flex flex-col gap-[1rem] lg:max-w-[70%]">
+            <p className="">
+              At Second Savour, we&apos;re expanding our sustainability
+              initiatives to engage people outside of our communities. Join us
+              in making a positive impact on our planet!
+            </p>
+            <a className='w-fit' href="/shop">
+              <button className="lg:w-fit lg:mx-none bg-my-green text-[#e7d9bf] px-[2rem] font-bold rounded-[0.5rem]  mx-auto w-full p-[1rem]">
+                <p className="font-bold">Shop Now</p>
+              </button>
+            </a>
+          </div>
+        </div>
+      </section> */}
+
+      <section className=" lg:mx-[10rem] mx-[2rem]">
+        <div className="  w-[full] lg:min-h-[55vh] lg:max-h-[55vh] bg-my-#e7d9bf lg:p-[3rem] flex flex-col lg:flex-row justify-between items-start lg:gap-[1rem] gap-[2rem] overflow-hidden">
+          <div className="flex flex-col lg:min-h-[60vh] justify-between lg:w-[50%] ">
+            <div className="flex flex-col h-fit gap-[1.5rem] text-black">
+              <h2>INTERESTED IN HAVING SECOND SAVOUR IN YOUR STORE?</h2>
+              <p>
+                Reach out to us at{" "}
+                <span className="font-bold">sales@secondsavour.ca</span>
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform"
+                target="blank"
+              >
+                <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] px-[2rem] font-bold p-[1rem]">
+                  <p className="font-bold">Partner with us!</p>
+                </button>
+              </a>
+            </div>
+          </div>
+          <img
+            src="static/images/SSonShelf.png"
+            alt="Citrus Treats In Store"
+            className="object-cover w-full max-h-[44vh] rounded-[1rem]"
+          ></img>
+        </div>
+      </section>
+
+      <section className=" lg:mx-[10rem] mx-[2rem]">
+        <div
+          className="relative rounded-[1rem] w-[full] lg:lg:min-h-[70vh] lg:max-h-[70vh] px-[1rem] py-[2rem] lg:p-[3rem] flex flex-row justify-between bg-cover bg-center"
+          style={{ backgroundImage: "url(/static/images/OurStory.png)" }}
+        >
+          <div className="flex flex-col h-fit  lg:max-w-[50%] gap-[1rem] text-black">
+            <h2> Turning Excess into Excellence</h2>
+            <p>
+              Second Savour was founded by a group of friends at Simon Fraser
+              University (SFU) in Burnaby, BC, with a mission to create
+              environmental change.
+            </p>
+            <a className="w-fit" href="/about">
+              <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] px-[2rem] font-bold p-[1rem]">
+                <p className="font-bold">Our Story</p>
+              </button>
+            </a>
+            <img
+              src="static/images/SS Sticker.png"
+              alt="Sticker"
+              className="absolute top-[-5px] right-[1px] w-[5rem] lg:w-[10rem]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="lg:mx-[10rem] mx-[2rem]">
+        <div className="w-full mx-auto flex flex-col items-center text-center gap-[1rem]">
+          <h2>JOIN THE MOVEMENT</h2>
+          <p className="mb-[1rem]">
+            See what people are saying about our product
+          </p>
+
+          <div className="relative w-full flex flex-row h-full">
+            <div className="flex flex-row w-full justify-between items-center">
+              <button
+                className="w-fit h-fit lg:block hidden "
+                onClick={() => decreaseView(34)}
+              >
+                &lt;
+              </button>
+
+              <div
+                className={`lg:w-[90%] max-h-[33vh] lg:overflow-hidden lg:overscroll-none overflow-x-auto overscroll-x-auto w-full`}
+              >
+                <div
+                  className={`flex flex-row justify-between gap-[1.4%] w-fit
+                   transition-[right] ease-in-out duration-300 relative right-[0]
+                  `}
+                  style={isLargeScreen ? { right: `${Inview}%` } : {}}
+                >
+                  <ReviewCard
+                    Name="- Ellery Wu"
+                    Body=" “Absolutely delicious! The citrus treats from Second Savour are the perfect balance of sour and sweet. Love the fresh flavor and sustainable mission. Highly recommend!”"
+                  ></ReviewCard>
+
+                  <ReviewCard
+                    Name="- Brandon Lau"
+                    Body=" “The orange flavor is so fresh and natural. Love that these candies
+        fight food waste—guilt-free snacking at its best!”"
+                  ></ReviewCard>
+
+                  <ReviewCard
+                    Name="- Zoe Wang"
+                    Body=" “The best orange gummy! Juicy, sweet, citrusy, and has a pleasant soft texture! It feels amazing to know these treats were produced with the environment in mind.”"
+                  ></ReviewCard>
+
+                  <ReviewCard
+                    Name="- Angelina Chen"
+                    Body=" “Second Savour's candies are the perfect blend of flavor and sustainability. I can't get enough of them!”"
+                  ></ReviewCard>
+
+                  <ReviewCard
+                    Name="- Jason Liu"
+                    Body=" “Sweet, tangy, and bursting with citrusy goodness. It’s amazing that they’re made from rescued fruit!”"
+                  ></ReviewCard>
+                </div>
+              </div>
+              <button
+                className="w-fit h-fit lg:block hidden hover:bg-my-green ease-in-out duration-300 text-black"
+                onClick={() => increaseView(34)}
+              >
+                &gt;
+              </button>
+            </div>
+          </div>
+          <div className=" gap-[1rem] flex-row mt-[1rem] hidden lg:flex">
+            <div
+              className={`w-[1rem] h-[1rem] border-2 border-black rounded-full transition-all ease-in-out duration-300
+                ${Inview === 0 ? "bg-black" : "bg-none"}`}
+            ></div>
+            <div
+              className={`w-[1rem] h-[1rem] border-2 border-black rounded-full transition-all ease-in-out duration-300
+                ${Inview === 34 ? "bg-black" : "bg-transparent"}`}
+            ></div>
+            <div
+              className={`w-[1rem] h-[1rem] border-2 border-black rounded-full
+                ${Inview === 68 ? "bg-black" : "bg-transparent"}`}
+            ></div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default page;
+export default Page;
