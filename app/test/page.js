@@ -248,9 +248,8 @@ function Page() {
                   style={isLargeScreen ? { right: `${Inview}%` } : {}}
                 >
                   <ReviewCard
-                    Name="- Brandon Lau"
-                    Body=" “The orange flavor is so fresh and natural. Love that these candies
-        fight food waste—guilt-free snacking at its best!”"
+                    Name="- Ellery Wu"
+                    Body=" “Absolutely delicious! The citrus treats from Second Savour are the perfect balance of sour and sweet. Love the fresh flavor and sustainable mission. Highly recommend!”"
                   ></ReviewCard>
 
                   <ReviewCard
@@ -260,9 +259,8 @@ function Page() {
                   ></ReviewCard>
 
                   <ReviewCard
-                    Name="- Brandon Lau"
-                    Body=" “The orange flavor is so fresh and natural. Love that these candies
-        fight food waste—guilt-free snacking at its best!”"
+                    Name="- Zoe Wang"
+                    Body=" “The best orange gummy! Juicy, sweet, citrusy, and has a pleasant soft texture! It feels amazing to know these treats were produced with the environment in mind.”"
                   ></ReviewCard>
 
                   <ReviewCard
