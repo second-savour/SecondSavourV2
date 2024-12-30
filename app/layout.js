@@ -20,6 +20,7 @@ export const metadata = {
   title: "Second Savour",
   description:
     "Second Savour was founded by a group of friends at Simon Fraser University (SFU) with a mission to create environmental change.",
+    // Second Savour was founded by a group of friends at Simon Fraser University (SFU) with a mission to create environmental change.
 };
 
 export default function RootLayout({ children }) {

@@ -266,18 +266,18 @@ function Page() {
           <div className="text-left flex flex-col lg:flex-row mt-[4%] gap-[2%]">
             <p className="mt-[1rem] lg:mt-0">
               {" "}
-              <h3 className="mb-[1%]">Our Mission</h3>We focus on reducing waste
-              and promoting sustainability by utilizing surplus produce. By
-              reducing the need for additional resources to create new food, we
-              contribute to conserving energy, water, and soil health.
-              Sustainability is more than a goal for us—it&apos;s the way we
-              operate.
+              <p className="mb-[1%] font-bold">Our Mission</p>We focus on
+              reducing waste and promoting sustainability by utilizing surplus
+              produce. By reducing the need for additional resources to create
+              new food, we contribute to conserving energy, water, and soil
+              health. Sustainability is more than a goal for us—it&apos;s the
+              way we operate.
             </p>
             <p className="mt-[1rem] lg:mt-0">
               {" "}
-              <h3 className="mb-[1%]">Team Bond</h3>At Second Savour, we believe
-              that a strong team is built on genuine connections and shared
-              experiences. Our team socials are more than just events;
+              <p className="mb-[1%] font-bold">Team Bond</p>At Second Savour, we
+              believe that a strong team is built on genuine connections and
+              shared experiences. Our team socials are more than just events;
               they&apos;re a chance to bond, unwind, and celebrate our
               collective efforts. Join us, and become part of a family that
               values camaraderie as much as our mission to be sustainable.

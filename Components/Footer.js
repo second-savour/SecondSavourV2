@@ -3,7 +3,7 @@ import Hyperlink from "./Hyperlink";
 
 function Footer() {
   return (
-    <div className="w-[90%] m-auto">
+    <div className="w-[90%] m-auto mt-[5rem] lg:mt-[10rem]">
       <nav className="min-h-[15rem]">
         <div className="border-t-2 border-gray-600 py-[1%] mt-[8%]"></div>
 
