@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h1>Simple Shopping Cart</h1>
+    <ul id="items">
+        <li>Item 1 - $10 <button onclick="addToCart('Item 1', 10)">Add to Cart</button></li>
+        <li>Item 2 - $20 <button onclick="addToCart('Item 2', 20)">Add to Cart</button></li>
+        <li>Item 3 - $15 <button onclick="addToCart('Item 3', 15)">Add to Cart</button></li>
+    </ul>
+    <h2>Cart</h2>
+    <div id="cart"></div>
+    <p>Total: $<span id="total">0</span></p>
+    <script src="/script.js"></script>
+</body>
+</html>
