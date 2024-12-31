@@ -50,7 +50,7 @@ function Page() {
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">
-              <h1> Second Savour </h1>
+              <h1> Second Savour! </h1>
               <p>A student-led company that aims to combat food waste.</p>
             </div>
             <div className="w-full">
