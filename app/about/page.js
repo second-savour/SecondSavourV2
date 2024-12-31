@@ -233,7 +233,7 @@ function Page() {
           </div>
 
           <div className="scale-[1] hover:scale-[1.1] ease-in-out duration-300">
-            <img
+            <image
               src={"static/images/team.png"}
               alt="the Second Savour Team at our first social"
             />
@@ -243,24 +243,24 @@ function Page() {
         <section className="p-0 overflow-hidden overflow-x-hidden">
           <div className="h-fit w-[100%] gap-[0.25rem] flex flex-row absolute m-0 left-0">
             <div className="">
-              <img src={"static/images/scroll1.png"} alt="scroll1" />
+              <image src={"static/images/scroll1.png"} alt="scroll1" />
             </div>
             <div className="">
-              <img src={"static/images/scroll2.png"} alt="scroll2" />
+              <image src={"static/images/scroll2.png"} alt="scroll2" />
             </div>
             <div className="">
-              <img src={"static/images/scroll3.png"} alt="scroll3" />
+              <image src={"static/images/scroll3.png"} alt="scroll3" />
             </div>
           </div>
           <div className="h-fit w-[100%] flex flex-row lg:flex-row opacity-0">
             <div className="">
-              <img src={"static/images/scroll1.png"} alt="scroll1" />
+              <image src={"static/images/scroll1.png"} alt="scroll1" />
             </div>
             <div className="">
-              <img src={"static/images/scroll2.png"} alt="scroll2" />
+              <image src={"static/images/scroll2.png"} alt="scroll2" />
             </div>
             <div className="">
-              <img src={"static/images/scroll3.png"} alt="scroll3" />
+              <image src={"static/images/scroll3.png"} alt="scroll3" />
             </div>
           </div>
           <div className="text-left flex flex-col lg:flex-row mt-[4%] gap-[2%]">

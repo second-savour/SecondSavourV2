@@ -19,7 +19,7 @@ function Segment({ Title, Text, Image, ButtonText, clickTo }) {
             className="relative lg:pt-[0] pt-[3rem] ease-in-out duration-300 sm:w-[100%] lg:max-w-[50%] h-[100%]
                     flex flex-col"
           >
-            <img className="width:100% mx-auto;" src={Image}></img>
+            <image className="width:100% mx-auto;" src={Image}></image>
           </div>
         </div>
       </div>

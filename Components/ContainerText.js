@@ -27,11 +27,11 @@ function ContainerText({
             </a>
           </div>
         </div>
-        <img
+        <image
           src={Image}
           alt={altText}
           className="h-fit w-full lg:w-[42%]"
-        ></img>
+        ></image>
       </div>
     </section>
   );
