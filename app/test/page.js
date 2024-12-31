@@ -1,17 +1,16 @@
 import React from "react";
-import Button from "../../Components/Button.js";
 import ContainerText from "../../Components/ContainerText.js";
 
 function page() {
   return (
     <div className="flex flex-col gap-[10rem] ">
       {/* <section className=" w-[100vw] max-h-[100vh] mt-[-19vh] object-cover relative overflow-hidden">
-        <img
+        <image
           src="static/images/heroImage.png"
           alt="background image depicting crates of fruit at a market"
           loading="eager"
           className="opacity-[0.8]"
-        ></img>
+        ></image>
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
           <div className="w-[40%] mx-auto flex flex-col gap-[5rem] mt-[15%] text-center">
             <div>
@@ -75,29 +74,29 @@ function page() {
             </div>
           </div>
           <div className=" max-w-[50%] overflow-hidden flex flex-row gap-[1rem] flex-wrap justify-center items-center">
-            <img
+            <image
               src="static/images/sales1.png"
               alt="Citrus Treats"
               className="h-[45%] w-[45%] object-cover rounded-[1rem]"
-            ></img>
+            ></image>
 
-            <img
+            <image
               src="static/images/sales2.png"
               alt="Citrus Treats"
               className="h-[45%] w-[45%] object-cover rounded-[1rem]"
-            ></img>
+            ></image>
 
-            <img
+            <image
               src="static/images/sales3.png"
               alt="Citrus Treats"
               className="h-[45%] w-[45%] object-cover rounded-[1rem]"
-            ></img>
+            ></image>
 
-            <img
+            <image
               src="static/images/sales4.png"
               alt="Citrus Treats"
               className="h-[45%] w-[45%] object-cover rounded-[1rem]"
-            ></img>
+            ></image>
           </div>
         </div>
       </section>
@@ -106,7 +105,7 @@ function page() {
         <h1>ORDER ONLINE</h1>
         <div className="flex flex-row gap-[5vw]">
           <div>
-            <img
+            <image
               src="static/images/mascot.png"
               alt="Second Savour Mascot"
               className=""
@@ -114,7 +113,7 @@ function page() {
           </div>
           <div className="bg-yellow-400 rounded-[1rem] p-[2rem] max-w-[70%]">
             <p className="">
-              At Second Savour, we're expanding our sustainability initiatives
+              At Second Savour, we&apos;re expanding our sustainability initiatives
               to engage people outside of our communities. Join us in making a
               positive impact on our planet!
             </p>
@@ -142,11 +141,11 @@ function page() {
               </button>
             </div>
           </div>
-          <img
+          <image
             src="static/images/SSonShelf.png"
             alt="Citrus Treats In Store"
             className="object-contain max-h-[60vh]"
-          ></img>
+          ></image>
         </div>
       </section>
 
@@ -167,7 +166,7 @@ function page() {
             <button className="w-fit bg-my-green text-[#e7d9bf]">
               <p>Our Story</p>
             </button>
-            <img
+            <image
               src="static/images/SS Sticker.png"
               alt="Sticker"
               className="absolute top-[-5px] right-[1px] w-[100px]"
@@ -212,7 +211,6 @@ function page() {
 }
 
 export default page;
-
 
 // Use percentage instead of px or rem
 // Change to lg: for mobile

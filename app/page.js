@@ -41,12 +41,12 @@ function Page() {
   return (
     <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
       <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
-        <img
+        <image
           src="static/images/heroImage.png"
-          alt="background image depicting crates of fruit at a market"
+          alt="Background image of crates filled with colorful, fresh fruit at a lively market, showcasing natural abundance."
           loading="eager"
           className="opacity-[0.4] w-[101vw] h-full object-cover "
-        ></img>
+        ></image>
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">
@@ -72,7 +72,7 @@ function Page() {
               delicacies are made from rescued oranges, offering you a
               sustainable and delicious option."
         ButtonText="Purchase Now!"
-        altText="A bag of citus treats"
+        altText="A bag of citrus treats, featuring vibrant, fresh fruit snacks with a zesty, tangy flavor"
         Image="static/images/Citrus Treats Image.png"
         clickTo="/shop"
       ></ContainerText>
@@ -115,29 +115,29 @@ function Page() {
             </div>
           </div>
           <div className=" lg:max-w-[50%] overflow-hidden flex flex-row gap-[1rem] flex-wrap justify-center items-center">
-            <img
+            <image
               src="static/images/sales1.png"
-              alt="Citrus Treats"
+              alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className=" max-h-[40vh] lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></img>
+            ></image>
 
-            <img
+            <image
               src="static/images/sales2.png"
-              alt="Citrus Treats"
+              alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></img>
+            ></image>
 
-            <img
+            <image
               src="static/images/sales3.png"
-              alt="Citrus Treats"
+              alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></img>
+            ></image>
 
-            <img
+            <image
               src="static/images/sales4.png"
-              alt="Citrus Treats"
+              alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></img>
+            ></image>
           </div>
         </div>
       </section>
@@ -148,7 +148,7 @@ function Page() {
         <h2>ORDER ONLINE</h2>
         <div className="flex flex-col lg:flex-row gap-[5vw]">
           <div>
-            <img
+            <image
               src="static/images/mascot.png"
               alt="Second Savour Mascot"
               className="hidden lg:block md:block sm:block;"
@@ -188,11 +188,11 @@ function Page() {
               </a>
             </div>
           </div>
-          <img
+          <image
             src="static/images/SSonShelf.png"
-            alt="Citrus Treats In Store"
+            alt="Citrus treats displayed in-store, offering a vibrant selection of tangy, refreshing fruit snacks"
             className="object-cover w-full max-h-[44vh] rounded-[1rem]"
-          ></img>
+          ></image>
         </div>
       </section>
 
@@ -213,9 +213,9 @@ function Page() {
                 <p className="font-bold">Our Story</p>
               </button>
             </a>
-            <img
+            <image
               src="static/images/SS Sticker.png"
-              alt="Sticker"
+              alt="Green sticker with yellow text reading 'Second Savour,' featuring a clean and bold design"
               className="absolute top-[-5px] right-[1px] w-[5rem] lg:w-[10rem]"
             />
           </div>
