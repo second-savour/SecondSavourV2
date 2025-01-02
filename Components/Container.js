@@ -7,7 +7,8 @@ function Container({
   Image,
   BGColor,
   ButtonText,
-  clickTo,
+  clickTo, 
+  imageClass,
 }) {
   return (
     <div
@@ -20,7 +21,7 @@ function Container({
       </div>
 
       <div className="relative bottom-0 hover:bottom-5 ease-in-out duration-300 object-contain max-w-[100%] h-[fit] overflow-hidden">
-        <image className="m-auto max-w-[100%] max-h-[100%]" src={Image}></image>
+      <img className={`m-auto max-w-[100%] max-h-[100%] ${imageClass}`} src={Image} alt={Title} />
       </div>
 
       <div className="relative bottom-0">
