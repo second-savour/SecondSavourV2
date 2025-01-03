@@ -81,18 +81,21 @@ function Page() {
         <h2> Our Impacts </h2>
         <div className="flex lg:flex-row flex-col justify-between w-[full] gap-[1rem]">
           <div className="bg-my-orange text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
-            <h2 className="whitespace-nowrap"> 50 G </h2>
-            <p> Of GHG reduced with every bag purchased</p>
+            <h2 className="whitespace-nowrap">
+              {" "}
+              50 Kg/m<sup>3</sup>{" "}
+            </h2>
+            <p> Of carbon emmisions saved </p>
           </div>
 
           <div className="bg-my-brown text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
-            <h2 className="whitespace-nowrap"> 1.5 KG </h2>
-            <p> Of food waste diverted from landfills by 2026</p>
+            <h2 className="whitespace-nowrap"> 213 KG </h2>
+            <p> Of waste diverted from landfills</p>
           </div>
 
           <div className="bg-my-green text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
-            <h2 className="whitespace-nowrap"> 4.3 K</h2>
-            <p> Oranges saved from the trash by 2025</p>
+            <h2 className="whitespace-nowrap"> 4000</h2>
+            <p> Oranges saved from te trash</p>
           </div>
         </div>
       </section>
