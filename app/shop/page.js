@@ -13,7 +13,7 @@ function page() {
             fruits
           </h3>
         </div>
-        <div className="flex  gap-[3vh] lg:flex-row flex-col width-[100%] mb-[3vh]">
+        <div className="flex  gap-[3vh] lg:flex-row flex-col width-50%] mb-[3vh]">
           <Container
             Title="Citrus Treats"
             Description="Our delicious Citrus Treats are made from the finest ingredients. They are perfect for any occasion and are sure to be a hit with your friends and family."
@@ -21,6 +21,7 @@ function page() {
             BGColor={"#E7D9BF"}
             ButtonText={"View Product"}
             clickTo={"/checkout"}
+            imageClass={"w-[40%] h-auto"}
           />
           <Container
             Title="Coming Soon"
