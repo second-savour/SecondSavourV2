@@ -51,7 +51,7 @@ function Page() {
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">
               <h1> Second Savour </h1>
-              <p>A student-led company that aims to combat food waste.</p>
+              <p>A student-led company that aims to combat food waste</p>
             </div>
             <div className="w-full">
               <a className="w-fit" href="/checkout">
@@ -95,7 +95,7 @@ function Page() {
 
           <div className="bg-my-green text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
             <h2 className="whitespace-nowrap"> 4000</h2>
-            <p> Oranges saved from te trash</p>
+            <p> Oranges saved from the trash</p>
           </div>
         </div>
       </section>
