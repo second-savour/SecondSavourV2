@@ -6,28 +6,27 @@ function Page() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
 
-  const updateCartQuantity = (name, newQuantity) => {
-    if (cart) {
-      const newItem = cart.map((item) =>
-        name === item.name ? { ...item, quantity: newQuantity } : item
-      );
-      setCart(newItem);
-    }
-  };
+  // const updateCartQuantity = (name, newQuantity) => {
+  //   if (cart) {
+  //     const newItem = cart.map((item) =>
+  //       name === item.name ? { ...item, quantity: newQuantity } : item
+  //     );
+  //     setCart(newItem);
+  //   }
+  // };
 
   useEffect(() => {
     let totalCost;
 
     if (cart) {
-      cart.length === 0
-        ? 0
-        : cart.map((item) => {
-            item.totalPrice = item.quantity * item.price;
-            totalCost = item.totalPrice;
-            console.log(item.quantity);
-            console.log(item.price);
-            console.log(item.totalPrice);
-          });
+      if (cart.length > 0)
+        cart.map((item) => {
+          item.totalPrice = item.quantity * item.price;
+          totalCost = item.totalPrice;
+          console.log(item.quantity);
+          console.log(item.price);
+          console.log(item.totalPrice);
+        });
     }
 
     setTotalPrice(totalCost);
@@ -98,7 +97,7 @@ function Page() {
               ? "Your cart is empty"
               : cart.map((item, index) => (
                   <ItemCheckout
-                    retkey={index}
+                    key={index}
                     name={item.name}
                     quantity={item.quantity}
                     img={item.img}

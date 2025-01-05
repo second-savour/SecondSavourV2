@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 
 function ItemCheckout({
@@ -8,11 +8,11 @@ function ItemCheckout({
   altText,
   name,
   price,
-  iD,
+  // iD,
   quantity,
-  retkey,
-  nameF,
-  quantityF,
+  key,
+  // nameF,
+  // quantityF,
   setArrF,
   arrF,
   totalPrice,
@@ -68,7 +68,7 @@ function ItemCheckout({
   };
 
   return (
-    <section className="flex flex-col gap-[1rem] " key={retkey}>
+    <section className="flex flex-col gap-[1rem] " key={key}>
       <div className="bg-my-green rounded-[0.5rem] p-[1rem] lg:min-w-[30vw] max-w-full max-h-[55vh] lg:max-w-[40vh] overflow-hidden">
         <Image
           src={img}
