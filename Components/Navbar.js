@@ -80,6 +80,13 @@ function Navbar() {
               HoverColor={"--purple"}
               Display={"none"}
             />
+            <Hyperlink
+              Text={"Shopping Cart"}
+              Link={"/checkout"}
+              Color={"--color-black"}
+              HoverColor={"--purple"}
+              Display={"none"}
+            />
           </div>
         </div>
         <div className="pb-[3%]"></div>

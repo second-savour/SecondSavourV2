@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 function ContainerText({
   Header,
@@ -6,7 +7,7 @@ function ContainerText({
   Text,
   ButtonText,
   clickTo,
-  Image,
+  img,
   altText,
 }) {
   return (
@@ -27,11 +28,13 @@ function ContainerText({
             </a>
           </div>
         </div>
-        <image
-          src={Image}
+        <Image
+          src={img}
           alt={altText}
           className="h-fit w-full lg:w-[42%]"
-        ></image>
+          width={1080}
+          height={1080}
+        />
       </div>
     </section>
   );
