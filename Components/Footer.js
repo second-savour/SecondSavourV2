@@ -1,7 +1,16 @@
+"use client";
+
 import React from "react";
 import Hyperlink from "./Hyperlink";
 
 function Footer() {
+  const copyEmailToClipboard = () => {
+    const email = "sales@secondsavour.ca";
+    navigator.clipboard.writeText(email).then(() => {
+      alert("Email Copied to clipboard");
+    });
+  };
+
   return (
     <div className="w-[90%] m-auto mt-[5rem] lg:mt-[10rem]">
       <nav className="min-h-[15rem]">
@@ -28,6 +37,7 @@ function Footer() {
                 HoverColor={"--purple"}
                 Display={"none"}
               />
+              <span onClick={copyEmailToClipboard}>Email Us</span>
             </div>
           </div>
 
