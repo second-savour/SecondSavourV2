@@ -5,33 +5,68 @@ import ItemCheckout from "../../Components/ItemCheckout";
 function Page() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
+  const [tax, setTax] = useState(0);
+  const [shipping, setShipping] = useState(0);
+  const [estTotal, setEstTotal] = useState(0);
 
-  // const updateCartQuantity = (name, newQuantity) => {
-  //   if (cart) {
-  //     const newItem = cart.map((item) =>
-  //       name === item.name ? { ...item, quantity: newQuantity } : item
-  //     );
-  //     setCart(newItem);
-  //   }
-  // };
+  //Handle save
+
+  // Load the cart from localStorage on initial render
+  useEffect(() => {
+    const retrievedCart = localStorage.getItem("savedCart");
+    if (retrievedCart) {
+      try {
+        const parsedCart = JSON.parse(retrievedCart);
+        setCart(parsedCart);
+        console.log("Cart loaded from localStorage:", parsedCart);
+        console.log("Cart from cart", cart);
+      } catch (error) {
+        console.error("Failed to parse savedCart:", error);
+        localStorage.removeItem("savedCart"); // Remove corrupted data
+      }
+    }
+  }, []);
+
+  //saves cart
+  useEffect(() => {
+    if (cart) {
+      localStorage.setItem("savedCart", JSON.stringify(cart));
+      console.log("Cart saved to localStorage:", cart);
+    }
+  }, [cart]);
 
   useEffect(() => {
-    let totalCost;
-
     if (cart) {
-      if (cart.length > 0)
-        cart.map((item) => {
-          item.totalPrice = item.quantity * item.price;
-          totalCost = item.totalPrice;
-          console.log(item.quantity);
-          console.log(item.price);
-          console.log(item.totalPrice);
+      if (cart.length > 0) {
+        let totalCost = 0;
+        let totalTax = tax;
+        let totalEstTotal = estTotal;
+        let totalShipping = shipping;
+
+        const updatedCart = cart.map((item) => {
+          const totalPrice = item.quantity * item.price;
+          totalCost += totalPrice;
+          return { ...item, totalPrice: parseFloat(totalPrice.toFixed(2)) }; // Create a new object with the updated totalPrice
         });
+
+        totalTax = parseFloat((totalCost * 0.05).toFixed(2));
+        totalShipping = 2;
+        totalEstTotal = parseFloat(
+          (totalTax + totalCost + totalShipping).toFixed(2)
+        );
+        setTotalPrice(totalCost);
+        setTax(totalTax);
+        setShipping(totalShipping);
+        setEstTotal(totalEstTotal);
+
+        const previouscart = localStorage.getItem("savedCart");
+        if (previouscart !== JSON.stringify(cart)) setCart(updatedCart);
+      }
     }
 
-    setTotalPrice(totalCost);
-    setCart(cart);
-    console.log("cart updated");
+    if (!cart) {
+      setShipping(0);
+    }
   }, [cart]);
 
   const updateCart = (name, quantity, img, altText, iD, price, totalPrice) => {
@@ -64,6 +99,7 @@ function Page() {
           <h2> Order </h2>
           <p> Review Your Order (__ Items) </p>
           <h2> Your items </h2>
+          {console.log("Latest Cart:", cart)}
 
           {cart.length === 0
             ? "0"
@@ -97,14 +133,14 @@ function Page() {
               ? "Your cart is empty"
               : cart.map((item, index) => (
                   <ItemCheckout
-                    key={index}
+                    keyF={index}
                     name={item.name}
                     quantity={item.quantity}
                     img={item.img}
                     altText={item.altText}
                     iD={item.iD}
                     price={item.price}
-                    totalPrice={item.totalPrice}
+                    totalPrice={totalPrice}
                     nameF={item.name}
                     quantityF={1}
                     setArrF={setCart}
@@ -120,15 +156,15 @@ function Page() {
                 </div>
                 <div className=" flex flex-row justify-between">
                   <h3> Shipping </h3>
-                  <p>$6.99</p>
+                  <p>${shipping}</p>
                 </div>
                 <div className=" flex flex-row justify-between">
                   <h3> Tax </h3>
-                  <p>$6.99</p>
+                  <p>${tax}</p>
                 </div>
                 <div className=" flex flex-row justify-between">
                   <h3> Estimated Total Order</h3>
-                  <p>$6.99</p>
+                  <p>${estTotal}</p>
                 </div>
               </div>
               <button className="mx-auto"> Continue to payment </button>
