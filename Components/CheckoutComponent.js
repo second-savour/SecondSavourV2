@@ -36,33 +36,28 @@ function CheckoutComponent({
   };
 
   const manageCart = (nameF, quantityF, state, setArrF, arrF) => {
-    let newCart;
-    if (state) {
-      arrF.map((item) =>
-        item.name === nameF
-          ? (newCart = [
-              {
-                ...item,
-                quantity: item.quantity + quantityF,
-                totalPrice: item.price * (item.quantity + quantityF),
-              },
-            ])
-          : item
-      );
-    }
-    if (!state) {
-      arrF.map((item) =>
-        item.name === name && item.quantity > 1
-          ? (newCart = [
-              {
-                ...item,
-                quantity: item.quantity - quantityF,
-                totalPrice: item.price * (item.quantity - quantityF),
-              },
-            ])
-          : (newCart = [{ ...item, quantity: 1 }])
-      );
-    }
+    const newCart = arrF.map((item) => {
+      if (item.name === nameF) {
+        if (state) {
+          // Adding to cart
+          return {
+            ...item,
+            quantity: item.quantity + quantityF,
+            totalPrice: item.price * (item.quantity + quantityF),
+          };
+        } else if (item.quantity > 1) {
+          // Reducing quantity if more than 1
+          return {
+            ...item,
+            quantity: item.quantity - quantityF,
+            totalPrice: item.price * (item.quantity - quantityF),
+          };
+        } else {
+          return { ...item, quantity: 1 };
+        }
+      }
+      return item; // Keep unchanged items
+    });
 
     setArrF(newCart);
   };

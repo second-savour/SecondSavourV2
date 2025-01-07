@@ -5,8 +5,7 @@ import ItemCheckout from "../../Components/ItemCheckout";
 import { useCart } from "../../Components/CartContext";
 
 function Page() {
-  const { cart, totalPrice, tax, shipping, estTotal, updateCart, setCart } =
-    useCart();
+  const { cart, totalPrice, tax, shipping, estTotal, updateCart } = useCart();
 
   return (
     <div className="w-[100%] bg-[#FEF7E6] flex justify-center">

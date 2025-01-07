@@ -12,10 +12,15 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [name, setName] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
   const [tax, setTax] = useState(0);
   const [shipping, setShipping] = useState(0);
   const [estTotal, setEstTotal] = useState(0);
+
+  //alert system
+  const [popup, setPopup] = useState(false);
+  const [purchase, setPurchase] = useState(false);
 
   //Protects from react strictmode
   const initalLoad = useRef(true);
@@ -54,9 +59,8 @@ export const CartProvider = ({ children }) => {
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("savedCart", JSON.stringify(cart));
-    const savedCart = localStorage.getItem("savedCart");
+    // const savedCart = localStorage.getItem("savedCart");
     calculateCartSummary();
-    console.log("Saved Cart:", savedCart);
   }, [cart]);
 
   const calculateCartSummary = () => {
@@ -113,8 +117,32 @@ export const CartProvider = ({ children }) => {
       newCart = [...cart, newItem];
     }
 
+    setName(name);
+    setPurchase(true);
     setCart(newCart);
   };
+
+  // Alert System code
+
+  useEffect(() => {
+    if (popup) {
+      const timer = setTimeout(() => {
+        setPopup(false);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [popup]);
+
+  useEffect(() => {
+    if (purchase) {
+      const timer = setTimeout(() => {
+        setPurchase(false);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
+  });
 
   return (
     <CartContext.Provider
@@ -127,6 +155,11 @@ export const CartProvider = ({ children }) => {
         updateCart,
         setCart,
         removeItem,
+        purchase,
+        setPurchase,
+        popup,
+        setPopup,
+        name,
       }}
     >
       {children}

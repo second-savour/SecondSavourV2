@@ -12,7 +12,19 @@ import { FaCartShopping } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 
 function Navbar() {
-  const { cart, totalPrice, tax, shipping, estTotal, setCart } = useCart();
+  const {
+    cart,
+    totalPrice,
+    tax,
+    shipping,
+    estTotal,
+    setCart,
+    popup,
+    setPopup,
+    purchase,
+    setPurchase,
+    name,
+  } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [price, setPrice] = useState(true);
   const [checkout, setCheckout] = useState(false);
@@ -190,6 +202,31 @@ function Navbar() {
           <p className="-mt-[1rem]"> Message about our shipping or delivery</p>
         </div>
         <button> Proceed to payment </button>
+      </div>
+
+      {/* Alerts */}
+      <div>
+        <div
+          className={`absolute px-[1rem] bg-red-200 py-[0.5rem] text-md ease-in-out duration-300 m-[2rem] transition-all right-0 filter flex flex-row gap-[0.5rem]
+        ${popup ? "mt-10 opacity-full z-[11]" : "mt-15 opacity-0 z-0"}`}
+        >
+          This item already exists in your cart!
+          <button className="strip" onClick={() => setPopup(!popup)}>
+            {" "}
+            x
+          </button>
+        </div>
+
+        <div
+          className={`fixed px-[1rem] top-0 bg-green-300 py-[0.5rem] text-md ease-in-out duration-300 m-[2rem] transition-all right-0 filter flex flex-row gap-[0.5rem]
+        ${purchase ? "mt-10 opacity-full z-10" : "mt-5 opacity-0 z-0"}`}
+        >
+          {name} added to your cart!
+          <button className="strip" onClick={() => setPurchase(!purchase)}>
+            {" "}
+            x
+          </button>
+        </div>
       </div>
     </nav>
   );
