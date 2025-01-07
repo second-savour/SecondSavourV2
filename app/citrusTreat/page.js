@@ -70,6 +70,22 @@ function Page() {
           >
             Add citrus treat
           </button>
+          <button
+            className="w-fit h-fit"
+            onClick={() =>
+              updateCart(
+                "Justin Cheung",
+                1,
+                "/static/images/justin3.png",
+                "Comes with his lucious curls too",
+                "ID",
+                1,
+                1
+              )
+            }
+          >
+            Buy Justin Cheung
+          </button>
           {/* <Button
             text="Purchase Now!"
             // clickTo="https://payments.secondsavour.ca/"

@@ -42,7 +42,14 @@ function Page() {
   return (
     <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
       <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
-
+        <Image
+          src="/static/images/heroImage.png"
+          alt="Background image of crates filled with colorful, fresh fruit at a lively market, showcasing natural abundance."
+          loading="eager"
+          className="opacity-[0.4] w-[101vw] h-full object-cover "
+          width={1080}
+          height={1080}
+        />
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">

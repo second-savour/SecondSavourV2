@@ -10,7 +10,7 @@ function ItemCheckout({
   price,
   // iD,
   quantity,
-  key,
+  // key,
   // nameF,
   // quantityF,
   setArrF,
@@ -67,7 +67,7 @@ function ItemCheckout({
   };
 
   return (
-    <section className="flex flex-col gap-[1rem] " key={key}>
+    <section className="flex flex-col gap-[1rem]">
       <div className="bg-my-green rounded-[0.5rem] p-[1rem] lg:min-w-[30vw] max-w-full max-h-[55vh] lg:max-w-[40vh] overflow-hidden">
         <Image
           src={img}

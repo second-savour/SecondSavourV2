@@ -35,25 +35,27 @@ function Page() {
         </section>
         <section>
           <div className="flex flex-col lg:flex-row gap-[2rem] ">
-            {cart.length === 0
-              ? "Your cart is empty"
-              : cart.map((item) => (
-                  <ItemCheckout
-                    key={item.iD}
-                    name={item.name}
-                    quantity={item.quantity}
-                    img={item.img}
-                    altText={item.altText}
-                    iD={item.iD}
-                    price={item.price}
-                    totalPrice={totalPrice}
-                    nameF={item.name}
-                    quantityF={1}
-                    setArrF={setCart}
-                    arrF={cart}
-                  ></ItemCheckout>
-                ))}
-            <section className="flex flex-col gap-[3rem] w-full rounded-[0.5rem] border-2 border-black p-[2rem] h-full lg:h-[70vh] justify-between">
+            <div className="flex flex-col">
+              {cart.length === 0
+                ? "Your cart is empty"
+                : cart.map((item) => (
+                    <ItemCheckout
+                      key={item.name}
+                      name={item.name}
+                      quantity={item.quantity}
+                      img={item.img}
+                      altText={item.altText}
+                      iD={item.iD}
+                      price={item.price}
+                      totalPrice={totalPrice}
+                      nameF={item.name}
+                      quantityF={1}
+                      setArrF={setCart}
+                      arrF={cart}
+                    ></ItemCheckout>
+                  ))}
+            </div>
+            <section className="flex flex-col gap-[3rem] rounded-[0.5rem] border-2 border-black p-[2rem] h-full lg:h-[70vh] w-[55%] justify-between fixed right-0 top-0 bg-my-beige m-[5rem] mt-[15vh]">
               <h2 className="text-left w-full h-fit"> Checkout Summary </h2>
               <div className=" flex flex-col lg:h-fit gap-[2rem]">
                 <div className=" flex flex-row justify-between">

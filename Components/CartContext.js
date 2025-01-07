@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 
 const CartContext = createContext();
 
@@ -11,18 +17,24 @@ export const CartProvider = ({ children }) => {
   const [shipping, setShipping] = useState(0);
   const [estTotal, setEstTotal] = useState(0);
 
+  //Protects from react strictmode
+  const initalLoad = useRef(true);
+
   // Load cart from localStorage on initial render
   useEffect(() => {
     console.log("Preparing to load save");
     const savedCart = localStorage.getItem("savedCart");
-    if (savedCart) {
-      try {
-        const parsedCart = JSON.parse(savedCart);
-        setCart(parsedCart);
-        console.log("Saved Cart Found:", savedCart);
-      } catch (error) {
-        console.error("Failed to parse savedCart:", error);
-        // localStorage.removeItem("savedCart");
+    if (initalLoad) {
+      if (savedCart) {
+        try {
+          const parsedCart = JSON.parse(savedCart);
+          setCart(parsedCart);
+          console.log("Saved Cart Found:", savedCart);
+        } catch (error) {
+          console.error("Failed to parse savedCart:", error);
+          // localStorage.removeItem("savedCart");
+        }
+        initalLoad.current = false;
       }
     }
     if (!savedCart) {
@@ -67,6 +79,13 @@ export const CartProvider = ({ children }) => {
     setEstTotal(totalEstTotal);
   };
 
+  const removeItem = (name) => {
+    if (cart) {
+      const newCart = cart.filter((item) => item.name !== name); //creates a new array that doesn't include name
+      setCart(newCart);
+    }
+  };
+
   const updateCart = (name, quantity, img, altText, iD, price) => {
     const existingItem = cart.find((item) => item.name === name);
     let newCart;
@@ -107,6 +126,7 @@ export const CartProvider = ({ children }) => {
         estTotal,
         updateCart,
         setCart,
+        removeItem,
       }}
     >
       {children}
