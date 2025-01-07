@@ -5,6 +5,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { CartProvider } from "../Components/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,6 @@ export const metadata = {
   title: "Second Savour",
   description:
     "Second Savour was founded by a group of friends at Simon Fraser University (SFU) with a mission to create environmental change.",
-    // Second Savour was founded by a group of friends at Simon Fraser University (SFU) with a mission to create environmental change.
 };
 
 export default function RootLayout({ children }) {
@@ -33,9 +33,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar></Navbar>
-        {children}
-        <Footer></Footer>
+        <CartProvider>
+          <Navbar></Navbar>
+          {children}
+          <Footer></Footer>
+        </CartProvider>
       </body>
       <Analytics />
     </html>

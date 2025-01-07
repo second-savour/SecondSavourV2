@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import Hyperlink from "./Hyperlink";
+import { useCart } from "../Components/CartContext";
 
 /* Icons */
 import { IoMenu } from "react-icons/io5";
 
 function Navbar() {
+  const { cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -87,6 +89,14 @@ function Navbar() {
               HoverColor={"--purple"}
               Display={"none"}
             />
+            {cart.length === 0
+              ? "0"
+              : cart.map((item, index) => (
+                  <p key={index}>
+                    {" "}
+                    {item.name}, {item.quantity},
+                  </p>
+                ))}
           </div>
         </div>
         <div className="pb-[3%]"></div>

@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "../../Components/Button.js";
+// import Button from "../../Components/Button.js";
+import Image from "next/image";
 import SmallSegment from "../../Components/SmallSegment.js";
+import { useCart } from "../../Components/CartContext.js";
 
 function Page() {
+  const { updateCart } = useCart();
+
   const [displayText, setDisplayText] = useState(
     <div>
       <h3 className="text-gray-600 mb-[2%]"> Nutrition </h3>
@@ -30,11 +34,14 @@ function Page() {
     <div className=" w-[95%] md:w-[95%] lg:w-[80%] m-auto  md:mt-[9%] lg:mt-[0%]">
       <div className="flex flex-col md:flex-row lg:flex-row gap-[3vh] lg:gap-[1%]">
         <div className="group relative bg-[#0D6A3D] min-w-[40%] lg:max-h-[100%] md:max-h-[100%] max-h-[50vh] lg:h-auto rounded-[1rem] flex justify-center hover:bg-[#17B267] hover:cursor-pointer ease-in-out duration-300 shadow-lg">
-          <image
+          <Image
             className="py-[5vw] px-[8vw] relative lg:object-contain object-scale-down top-3 group-hover:top-0 ease-in-out duration-300"
             src={"/static/images/Stand-Up Pouch Bag Mockup label.png"}
             alt="Our Delicious Product Citrus Candies"
-          ></image>
+            height={1080}
+            width={1080}
+            priority={true}
+          />
         </div>
 
         <div className=" bg-[#E7D9BF] rounded-[1rem] p-[2rem] md:p-[3rem] lg:p-[3rem] flex flex-col md:min-w-[60%] lg:min-w-[60%] shadow-lg">
@@ -47,10 +54,37 @@ function Page() {
               during study sessions, basically anywhere!
             </p>
           </div>
-          <Button
+          <button
+            className="w-fit h-fit"
+            onClick={() =>
+              updateCart(
+                "Citrus Treats",
+                1,
+                "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                "ID",
+                6.99,
+                6.99
+              )
+            }
+          >
+            Add citrus treat
+          </button>
+          {/* <Button
             text="Purchase Now!"
-            clickTo="https://payments.secondsavour.ca/"
-          />
+            // clickTo="https://payments.secondsavour.ca/"
+            setOnclick={() =>
+              updateCart(
+                "Citrus Treats",
+                1,
+                "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                "ID",
+                6.99,
+                6.99
+              )
+            }
+          /> */}
         </div>
       </div>
 
@@ -130,9 +164,7 @@ function Page() {
           </div>
         </div>
 
-        <div className="mt-[7%] flex flex-col gap-[1rem]">
-          <p> {displayText} </p>
-        </div>
+        <div className="mt-[7%] flex flex-col gap-[1rem]">{displayText}</div>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ function page() {
             Image={"static/images/Stand-Up Pouch Bag Mockup label.png"}
             BGColor={"#E7D9BF"}
             ButtonText={"View Product"}
-            clickTo={"/checkout"}
+            clickTo={"/citrusTreat"}
             imageClass={"w-[40%] h-auto"}
           />
           <Container

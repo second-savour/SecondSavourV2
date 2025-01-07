@@ -1,96 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ItemCheckout from "../../Components/ItemCheckout";
+import { useCart } from "../../Components/CartContext";
+
 function Page() {
-  const [cart, setCart] = useState([]);
-  const [totalPrice, setTotalPrice] = useState();
-  const [tax, setTax] = useState(0);
-  const [shipping, setShipping] = useState(0);
-  const [estTotal, setEstTotal] = useState(0);
-
-  //Handle save
-
-  // Load the cart from localStorage on initial render
-  useEffect(() => {
-    const retrievedCart = localStorage.getItem("savedCart");
-    if (retrievedCart) {
-      try {
-        const parsedCart = JSON.parse(retrievedCart);
-        setCart(parsedCart);
-        console.log("Cart loaded from localStorage:", parsedCart);
-        console.log("Cart from cart", cart);
-      } catch (error) {
-        console.error("Failed to parse savedCart:", error);
-        localStorage.removeItem("savedCart"); // Remove corrupted data
-      }
-    }
-  }, []);
-
-  //saves cart
-  useEffect(() => {
-    if (cart) {
-      localStorage.setItem("savedCart", JSON.stringify(cart));
-      console.log("Cart saved to localStorage:", cart);
-    }
-  }, [cart]);
-
-  useEffect(() => {
-    if (cart) {
-      if (cart.length > 0) {
-        let totalCost = 0;
-        let totalTax = tax;
-        let totalEstTotal = estTotal;
-        let totalShipping = shipping;
-
-        const updatedCart = cart.map((item) => {
-          const totalPrice = item.quantity * item.price;
-          totalCost += totalPrice;
-          return { ...item, totalPrice: parseFloat(totalPrice.toFixed(2)) }; // Create a new object with the updated totalPrice
-        });
-
-        totalTax = parseFloat((totalCost * 0.05).toFixed(2));
-        totalShipping = 2;
-        totalEstTotal = parseFloat(
-          (totalTax + totalCost + totalShipping).toFixed(2)
-        );
-        setTotalPrice(totalCost);
-        setTax(totalTax);
-        setShipping(totalShipping);
-        setEstTotal(totalEstTotal);
-
-        const previouscart = localStorage.getItem("savedCart");
-        if (previouscart !== JSON.stringify(cart)) setCart(updatedCart);
-      }
-    }
-
-    if (!cart) {
-      setShipping(0);
-    }
-  }, [cart]);
-
-  const updateCart = (name, quantity, img, altText, iD, price, totalPrice) => {
-    const existingItem = cart.find((item) => item.name === name);
-    let newItem;
-    if (!existingItem) {
-      newItem = [
-        ...cart,
-        { name, quantity, img, altText, iD, price, totalPrice },
-      ];
-    }
-    if (existingItem) {
-      newItem = cart.map((item) =>
-        item.name === name
-          ? {
-              ...item,
-              quantity: item.quantity + quantity,
-              totalPrice: (item.quantity + quantity) * price,
-            }
-          : item
-      );
-    }
-    setCart(newItem);
-  };
+  const { cart, totalPrice, tax, shipping, estTotal, updateCart, setCart } =
+    useCart();
 
   return (
     <div className="w-[100%] bg-[#FEF7E6] flex justify-center">
@@ -99,16 +15,6 @@ function Page() {
           <h2> Order </h2>
           <p> Review Your Order (__ Items) </p>
           <h2> Your items </h2>
-          {console.log("Latest Cart:", cart)}
-
-          {cart.length === 0
-            ? "0"
-            : cart.map((item, index) => (
-                <p key={index}>
-                  {" "}
-                  {item.name}, {item.quantity},
-                </p>
-              ))}
 
           <button
             className="w-fit h-fit"
@@ -131,9 +37,9 @@ function Page() {
           <div className="flex flex-col lg:flex-row gap-[2rem] ">
             {cart.length === 0
               ? "Your cart is empty"
-              : cart.map((item, index) => (
+              : cart.map((item) => (
                   <ItemCheckout
-                    keyF={index}
+                    key={item.iD}
                     name={item.name}
                     quantity={item.quantity}
                     img={item.img}
