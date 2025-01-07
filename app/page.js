@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import ContainerText from "../Components/ContainerText.js";
 import ReviewCard from "../Components/ReviewCard.js";
 
@@ -41,12 +42,14 @@ function Page() {
   return (
     <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
       <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
-        <image
-          src="static/images/heroImage.png"
+        <Image
+          src="/static/images/heroImage.png"
           alt="Background image of crates filled with colorful, fresh fruit at a lively market, showcasing natural abundance."
           loading="eager"
           className="opacity-[0.4] w-[101vw] h-full object-cover "
-        ></image>
+          height={1080}
+          width={1080}
+        />
         <div className="absolute top-0 left-0 w-[100%] h-[100%]">
           <div className="w-[80%] lg:w-[40%] mx-auto flex flex-col gap-[2rem] mt-[15%] text-center">
             <div className="flex flex-col gap-[2rem]">
@@ -118,29 +121,35 @@ function Page() {
             </div>
           </div>
           <div className=" lg:max-w-[50%] overflow-hidden flex flex-row gap-[1rem] flex-wrap justify-center items-center">
-            <image
-              src="static/images/sales1.png"
+            <Image
+              src="/static/images/sales1.png"
               alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className=" max-h-[40vh] lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></image>
-
-            <image
-              src="static/images/sales2.png"
+              height={1080}
+              width={1080}
+            />
+            <Image
+              src="/static/images/sales2.png"
               alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></image>
+              height={1080}
+              width={1080}
+            />
 
-            <image
-              src="static/images/sales3.png"
+            <Image
+              src="/static/images/sales3.png"
               alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></image>
-
-            <image
-              src="static/images/sales4.png"
+              height={1080}
+              width={1080}
+            />
+            <Image
+              src="/static/images/sales4.png"
               alt="A bag of citrus treats, filled with tangy, refreshing fruit snacks"
               className="hidden lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
-            ></image>
+              height={1080}
+              width={1080}
+            />
           </div>
         </div>
       </section>
@@ -151,10 +160,12 @@ function Page() {
         <h2>ORDER ONLINE</h2>
         <div className="flex flex-col lg:flex-row gap-[5vw]">
           <div>
-            <image
+            <Image
               src="static/images/mascot.png"
               alt="Second Savour Mascot"
               className="hidden lg:block md:block sm:block;"
+              height={1080}
+              width={1080}
             />
           </div>
           <div className="bg-yellow-400 rounded-[1rem] p-[2rem] flex flex-col gap-[1rem] lg:max-w-[70%]">
@@ -191,11 +202,13 @@ function Page() {
               </a>
             </div>
           </div>
-          <image
-            src="static/images/SSonShelf.png"
+          <Image
+            src="/static/images/SSonShelf.png"
             alt="Citrus treats displayed in-store, offering a vibrant selection of tangy, refreshing fruit snacks"
             className="object-cover w-full max-h-[44vh] rounded-[1rem]"
-          ></image>
+            height={1080}
+            width={1080}
+          />
         </div>
       </section>
 
@@ -216,10 +229,12 @@ function Page() {
                 <p className="font-bold">Our Story</p>
               </button>
             </a>
-            <image
-              src="static/images/SS Sticker.png"
+            <Image
+              src="/static/images/SS Sticker.png"
               alt="Green sticker with yellow text reading 'Second Savour,' featuring a clean and bold design"
               className="absolute top-[-5px] right-[1px] w-[5rem] lg:w-[10rem]"
+              height={1080}
+              width={1080}
             />
           </div>
         </div>
