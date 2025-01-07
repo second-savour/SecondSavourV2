@@ -1,4 +1,5 @@
 import React from "react";
+// import Image from 'next/image';
 import Button from "../Components/Button.js";
 
 function Segment({ Title, Text, Image, ButtonText, clickTo }) {
@@ -19,7 +20,13 @@ function Segment({ Title, Text, Image, ButtonText, clickTo }) {
             className="relative lg:pt-[0] pt-[3rem] ease-in-out duration-300 sm:w-[100%] lg:max-w-[50%] h-[100%]
                     flex flex-col"
           >
-            <image className="width:100% mx-auto;" src={Image}></image>
+            <Image
+              className="width:100% mx-auto;"
+              src={Image}
+              height={1080}
+              width={1080}
+              alt=" "
+            />
           </div>
         </div>
       </div>

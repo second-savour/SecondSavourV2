@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 import { HiArrowSmallRight } from "react-icons/hi2";
 import lemon from "../assets/lemon_man.png";
 
@@ -27,7 +28,7 @@ function BlogPage() {
           </div>
         </div>
       </div>
-      <image className="object-cover max-w-[50%]" src={lemon}></image>
+      <Image className="object-cover max-w-[50%]" src={lemon} height={1080} width={1080} alt="Lemons"/>
     </div>
   );
 }

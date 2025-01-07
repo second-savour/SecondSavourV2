@@ -1,4 +1,5 @@
 import React from "react";
+// import Image from "next/image";
 import Button from "../Components/Button.js";
 
 function SmallSegment({ header, Title, Text, Image, ButtonText, clickTo }) {
@@ -13,10 +14,13 @@ function SmallSegment({ header, Title, Text, Image, ButtonText, clickTo }) {
           </div>
 
           <div className="relative bottom-0 hover:bottom-5 ease-in-out duration-300 object-contain max-w-[100%] h-[100%] overflow-hidden">
-            <image
+            <Image
               className="m-auto max-w-[100%] max-h-[100%]"
               src={Image}
-            ></image>
+              height={1080}
+              width={1080}
+              alt=" "
+            />
           </div>
 
           <Button text={ButtonText} clickTo={clickTo} />

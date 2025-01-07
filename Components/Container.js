@@ -1,4 +1,5 @@
 import React from "react";
+// import Image from 'next/image';
 import Button from "./Button.js";
 
 function Container({
@@ -21,7 +22,7 @@ function Container({
       </div>
 
       <div className="relative bottom-0 hover:bottom-5 ease-in-out duration-300 object-contain max-w-[100%] h-[fit] overflow-hidden">
-      <img className={`m-auto max-w-[100%] max-h-[100%] ${imageClass}`} src={Image} alt={Title} />
+      <Image className={`m-auto max-w-[100%] max-h-[100%] ${imageClass}`} src={Image} alt={Title} height={1080} width={1080}/>
       </div>
 
       <div className="relative bottom-0">
