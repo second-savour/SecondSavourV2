@@ -78,7 +78,7 @@ function CheckoutComponent({
           className="max-w-[30%] h-fit "
         />
         <div className="flex flex-col justify-between">
-          <div className="flex flex-col gap-[0.5rem]">
+          <div className="flex flex-col gap-[0.5rem] min-h-[11vh] ">
             <h3>
               {name} x {quantity}
             </h3>
@@ -86,7 +86,7 @@ function CheckoutComponent({
           </div>
           <div className="flex flex-col gap-[0.75rem]">
             <button
-              className="min-h-[7vh] flex flex-col justify-end bg-transparent m-0 p-0 text-left  hover:text-red-600 hover:bg-transparent"
+              className="   h-fit flex flex-col justify-end bg-transparent m-0 p-0 text-left  hover:text-red-600 hover:bg-transparent"
               onClick={() => removeItem(name)}
             >
               {" "}
