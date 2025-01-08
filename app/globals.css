@@ -124,6 +124,20 @@ button p {
   height: fit-content;
 }
 
+.strip {
+  background-color: transparent;
+  height: auto;
+  width: auto;
+  color: black;
+  filter: none;
+  padding: 0 0;
+}
+
+.strip:hover {
+  background-color: transparent;
+  color: black;
+}
+
 /* intent
  tell them that you are interested in a role at their company
  ask them for their methadologies

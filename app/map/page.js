@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Segment from "../../Components/Segment.js";
+// import { useCart } from "../../Components/CartContext.js";
 function page() {
   return (
     <div className="w-[100%] bg-[#FEF7E6] flex justify-center">
