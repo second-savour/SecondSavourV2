@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ChatWidgetScript from "../Components/ChatWidgetScript";
 
 //Components
 import { Analytics } from "@vercel/analytics/react";
@@ -28,7 +29,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="public/favicon.ico" sizes="any" />
-        {/* Add any additional meta tags or link elements here */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -38,6 +42,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer></Footer>
         </CartProvider>
+        <ChatWidgetScript />
       </body>
       <Analytics />
     </html>
