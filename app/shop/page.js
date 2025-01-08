@@ -17,7 +17,7 @@ function page() {
           <Container
             Title="Citrus Treats"
             Description="Our delicious Citrus Treats are made from the finest ingredients. They are perfect for any occasion and are sure to be a hit with your friends and family."
-            Image={"static/images/Stand-Up Pouch Bag Mockup label.png"}
+            img={"/static/images/Stand-Up Pouch Bag Mockup label.png"}
             BGColor={"#E7D9BF"}
             ButtonText={"View Product"}
             clickTo={"/citrusTreat"}
@@ -26,7 +26,7 @@ function page() {
           <Container
             Title="Coming Soon"
             Description="Stay tuned! We’re working hard to expand our product line outside of Citrus Treats."
-            Image={"static/images/boxes.png"}
+            img={"/static/images/boxes.png"}
             BGColor={"#0D6A3D"}
             ButtonText={"Stay Updated!"}
             clickTo={"/shop"}
@@ -40,7 +40,7 @@ function page() {
             "We create our product using eco-friendly resources, offering sustainable food products."
           }
           ButtonText={"View Locations"}
-          Image={"static/images/boothing.png"}
+          img={"/static/images/boothing.png"}
           clickTo={"/map"}
         />
       </div>

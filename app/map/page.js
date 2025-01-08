@@ -27,7 +27,7 @@ function page() {
             "At Second Savour, we're expanding our sustainability initiatives to engage people outside of our communities.  Join us in making a positive impact on our planet!"
           }
           ButtonText={"Browse Products"}
-          Image={"static/images/boxes.png"}
+          img={"/static/images/boxes.png"}
           clickTo={"/shop"}
         />
       </div>

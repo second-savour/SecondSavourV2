@@ -1,8 +1,8 @@
 import React from "react";
-// import Image from 'next/image';
+import Image from "next/image";
 import Button from "../Components/Button.js";
 
-function Segment({ Title, Text, Image, ButtonText, clickTo }) {
+function Segment({ Title, Text, img, ButtonText, clickTo }) {
   return (
     <div className="">
       <div className="rounded-[0.5rem] p-[2rem] lg:p-[5rem] bg-[#E7D9BF] ease-in-out duration-300">
@@ -22,7 +22,7 @@ function Segment({ Title, Text, Image, ButtonText, clickTo }) {
           >
             <Image
               className="width:100% mx-auto;"
-              src={Image}
+              src={img}
               height={1080}
               width={1080}
               alt=" "
