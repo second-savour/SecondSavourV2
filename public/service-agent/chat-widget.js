@@ -78,6 +78,7 @@ window.chatWidget = {
                 background: #f8f9fa;
                 display: flex;
                 flex-direction: column;
+                margin-bottom: 60px;
             }
             .message-container {
                 display: flex;
@@ -102,12 +103,17 @@ window.chatWidget = {
                 margin-right: auto;
             }
             .chat-input-area {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
                 padding: 15px;
                 border-top: 1px solid #eee;
                 display: flex;
                 background: white;
                 border-radius: 0 0 15px 15px;
                 gap: 8px;
+                z-index: 1;
             }
             .chat-input {
                 flex-grow: 1;
@@ -144,6 +150,10 @@ window.chatWidget = {
             .chat-send:hover {
                 background: #004020;
             }
+            .message-container:last-child {
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
             @media (max-width: 768px) {
                 .chat-popup {
                     position: fixed;
@@ -166,13 +176,12 @@ window.chatWidget = {
                 }
                 .chat-messages {
                     height: calc(100vh - 130px);
+                    margin-bottom: 50px;
                 }
                 .chat-input-area {
-                    border-radius: 0;
                     position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
+                    padding: 15px;
+                    background: white;
                 }
                 .chat-popup.active + .chat-button {
                     display: none;
