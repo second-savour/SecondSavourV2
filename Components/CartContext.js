@@ -17,6 +17,8 @@ export const CartProvider = ({ children }) => {
   const [tax, setTax] = useState(0);
   const [shipping, setShipping] = useState(0);
   const [estTotal, setEstTotal] = useState(0);
+  const [img, setImg] = useState("");
+  const [quantity, setQuantity] = useState();
 
   //alert system
   const [popup, setPopup] = useState(false);
@@ -117,7 +119,9 @@ export const CartProvider = ({ children }) => {
       newCart = [...cart, newItem];
     }
 
+    setQuantity(quantity);
     setName(name);
+    setImg(img);
     setPurchase(true);
     setCart(newCart);
   };
@@ -128,7 +132,7 @@ export const CartProvider = ({ children }) => {
     if (popup) {
       const timer = setTimeout(() => {
         setPopup(false);
-      }, 1500);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -138,7 +142,7 @@ export const CartProvider = ({ children }) => {
     if (purchase) {
       const timer = setTimeout(() => {
         setPurchase(false);
-      }, 1500);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -160,6 +164,8 @@ export const CartProvider = ({ children }) => {
         popup,
         setPopup,
         name,
+        img,
+        quantity,
       }}
     >
       {children}
