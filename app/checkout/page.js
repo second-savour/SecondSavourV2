@@ -3,11 +3,18 @@
 import React from "react";
 import ItemCheckout from "../../Components/ItemCheckout";
 import { useCart } from "../../Components/CartContext";
+import { NextSeo} from "next-seo";
 
 function Page() {
   const { cart, totalPrice, tax, shipping, estTotal, updateCart } = useCart();
 
   return (
+      <>
+          <NextSeo
+            title="Second Savour Order Checkout | Vancouver BC"
+            description="Ready to finalize your purchase? Complete your Second Savour order here! "
+            canonical="https://second-savour-qa.vercel.app/checkout"
+          />
     <div className="w-[100%] bg-[#FEF7E6] flex justify-center">
       <div className="flex flex-col gap-[3vh] lg:gap-[10vh] min-h-fit text-center w-[90%]">
         <section className="lg:text-left text-center w-full h-fit">
@@ -80,6 +87,7 @@ function Page() {
         </section>
       </div>
     </div>
+    </>
   );
 }
 

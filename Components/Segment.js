@@ -30,7 +30,7 @@ function Segment({ Title, Text, img, ButtonText, clickTo }) {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   );
 }
 
