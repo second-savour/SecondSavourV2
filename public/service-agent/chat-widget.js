@@ -1,18 +1,34 @@
 window.chatWidget = {
     conversationId: null,
     messageHistory: [],
+    initialized: false,
 
     init: function() {
+        // Check if already initialized to prevent double initialization
+        if (this.initialized) {
+            console.log('Debug: Chat widget already initialized');
+            return;
+        }
+        
         // Check if there's an active session
         const sessionId = sessionStorage.getItem('chatSessionId');
         if (!sessionId) {
-            // Create new session ID if none exists
             sessionStorage.setItem('chatSessionId', Date.now().toString());
         }
         
         // Load existing messages from localStorage using session ID
         this.loadHistory();
         
+        // If this is a new conversation, add the welcome message to history
+        if (this.messageHistory.length === 0) {
+            const welcomeMessage = "Hello! 👋 Welcome to Second Savour! I'm here to help you with any questions about our sustainable Citrus Treats or store locations. How can I assist you today?";
+            this.messageHistory.push({ 
+                text: welcomeMessage, 
+                type: 'bot' 
+            });
+            this.saveHistory();
+        }
+
         // Add CSS
         const style = document.createElement('style');
         style.textContent = `
@@ -260,13 +276,7 @@ window.chatWidget = {
                         <i class="fas fa-times"></i>
                     </span>
                 </div>
-                <div class="chat-messages" id="chat-messages">
-                    <div class="message-container">
-                        <div class="message bot-message">
-                            Hello! How can I help you today?
-                        </div>
-                    </div>
-                </div>
+                <div class="chat-messages" id="chat-messages"></div>
                 <div class="chat-input-area">
                     <input type="text" class="chat-input" id="chat-input" 
                         placeholder="Type your message...">
@@ -285,11 +295,15 @@ window.chatWidget = {
             }
         });
 
-        // After creating chat-messages div, populate with history
+        // Display all messages from history
         const messagesDiv = document.getElementById('chat-messages');
         this.messageHistory.forEach(msg => {
             this.displayMessage(msg.text, msg.type);
         });
+
+        // Mark as initialized
+        this.initialized = true;
+        console.log('Debug: Chat widget initialization complete');
     },
 
     toggle: function() {
@@ -301,6 +315,7 @@ window.chatWidget = {
     },
 
     addMessage: function(text, type) {
+        console.log('Adding message:', { text, type });
         // Add to history first
         this.messageHistory.push({ text, type });
         this.saveHistory();
@@ -310,6 +325,7 @@ window.chatWidget = {
     },
 
     displayMessage: function(text, type) {
+        console.log('Displaying message:', { text, type });
         const messagesDiv = document.getElementById('chat-messages');
         const container = document.createElement('div');
         container.className = 'message-container';
@@ -317,9 +333,20 @@ window.chatWidget = {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
         
-        // Use marked to parse markdown if it's a bot message
-        if (type === 'bot' && window.marked) {
-            messageDiv.innerHTML = window.marked.parse(text);
+        if (type === 'bot') {
+            console.log('Bot message received:', text);
+            if (window.marked) {
+                console.log('Parsing with marked');
+                try {
+                    messageDiv.innerHTML = window.marked.parse(text);
+                } catch (error) {
+                    console.error('Markdown parsing error:', error);
+                    messageDiv.textContent = text;
+                }
+            } else {
+                console.warn('Marked not available');
+                messageDiv.textContent = text;
+            }
         } else {
             messageDiv.textContent = text;
         }
@@ -361,13 +388,17 @@ window.chatWidget = {
 
     loadHistory: function() {
         const sessionId = sessionStorage.getItem('chatSessionId');
+        console.log('Loading history for session:', sessionId);
         const saved = localStorage.getItem(`chatHistory_${sessionId}`);
+        console.log('Saved history:', saved);
         this.messageHistory = saved ? JSON.parse(saved) : [];
         this.conversationId = localStorage.getItem(`conversationId_${sessionId}`);
     },
 
     saveHistory: function() {
         const sessionId = sessionStorage.getItem('chatSessionId');
+        console.log('Saving history for session:', sessionId);
+        console.log('History to save:', this.messageHistory);
         localStorage.setItem(`chatHistory_${sessionId}`, JSON.stringify(this.messageHistory));
         if (this.conversationId) {
             localStorage.setItem(`conversationId_${sessionId}`, this.conversationId);
