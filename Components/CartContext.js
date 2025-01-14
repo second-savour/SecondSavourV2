@@ -96,34 +96,84 @@ export const CartProvider = ({ children }) => {
     const existingItem = cart.find((item) => item.name === name);
     let newCart;
 
-    if (existingItem) {
-      newCart = cart.map((item) =>
-        item.name === name
-          ? {
-              ...item,
-              quantity: item.quantity + quantity,
-              totalPrice: (item.quantity + quantity) * price,
-            }
-          : item
-      );
+    if (quantity === 1) {
+      // Adding item
+      if (existingItem) {
+        // Update existing item quantity
+        newCart = cart.map((item) =>
+          item.name === name
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                totalPrice: (item.quantity + 1) * price,
+              }
+            : item
+        );
+      } else {
+        // Add new item
+        const newItem = {
+          name,
+          quantity: 1,
+          img,
+          altText,
+          iD,
+          price,
+          totalPrice: price,
+        };
+        newCart = [...cart, newItem];
+      }
+      // Show "Added to cart" notification
+      setPurchase(true);
+      setPopup(false);
+      setQuantity(1);
+    } else if (quantity === -1 && existingItem) {
+      if (existingItem.quantity > 1) {
+        // Reduce quantity by 1
+        newCart = cart.map((item) =>
+          item.name === name
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+                totalPrice: (item.quantity - 1) * price,
+              }
+            : item
+        );
+      } else {
+        // Remove item completely if quantity would be 0
+        newCart = cart.filter((item) => item.name !== name);
+      }
+      // Show "Removed from cart" notification
+      setPurchase(false);
+      setPopup(true);
+      setQuantity(-1);
     } else {
-      const newItem = {
-        name,
-        quantity,
-        img,
-        altText,
-        iD,
-        price,
-        totalPrice: quantity * price,
-      };
-      newCart = [...cart, newItem];
+      // If trying to remove from empty cart or non-existent item
+      newCart = cart;
+      return; // Don't update state or show notifications
     }
 
-    setQuantity(quantity);
+    // Update state
     setName(name);
     setImg(img);
-    setPurchase(true);
     setCart(newCart);
+  };
+
+  //Update Cart Quantity
+  const updateCartQuantity = (name, newQuantity) => {
+    if (name) {
+      const newItem = cart.map((item) =>
+        name === item.name ? { ...item, quantity: newQuantity } : item
+      );
+      setCart(newItem);
+    }
+  };
+
+  //Keyboard listener
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      // Perform your desired action here, e.g., call a function
+      submitValue(inputValue);
+    }
   };
 
   // Alert System code
@@ -157,6 +207,7 @@ export const CartProvider = ({ children }) => {
         shipping,
         estTotal,
         updateCart,
+        updateCartQuantity,
         setCart,
         removeItem,
         purchase,
@@ -166,6 +217,7 @@ export const CartProvider = ({ children }) => {
         name,
         img,
         quantity,
+        handleKeyDown,
       }}
     >
       {children}

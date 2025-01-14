@@ -37,7 +37,14 @@ function Footer() {
                 HoverColor={"--purple"}
                 Display={"none"}
               />
-              <span onClick={copyEmailToClipboard}>Email Us</span>
+
+              <Hyperlink
+                Text={"Email Us"}
+                onClick={copyEmailToClipboard}
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
             </div>
           </div>
 

@@ -57,7 +57,7 @@ function Page() {
               <p>A student-led company that aims to combat food waste</p>
             </div>
             <div className="w-full">
-              <a className="w-fit" href="/checkout">
+              <a className="w-fit" href="/citrusTreat">
                 <button className="p-[1rem] bg-my-green text-white w-fit px-[2rem] font-bold">
                   <p className="font-bold">Purchase Now</p>
                 </button>{" "}

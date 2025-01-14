@@ -52,7 +52,7 @@ function Navbar() {
 
       <div className=" flex flex-row justify-center lg:mt-[1%]">
         <div
-          className={`flex flex-col lg:flex-row justify-between lg:w-[60vw] S w-[100vw] lg:rounded-full h-fit z-30 lg:py-[1%] pb-[6vh] lg:px-[3%] fixed lg:mt-[0%] mt-[-3%] lg:pt-[21] pt-[5%] rounded-[0.5rem]  ease-in-out duration-[500ms]  lg:bg-my-beige  ${
+          className={`flex flex-col lg:flex-row justify-between lg:w-[60vw] S w-[100vw] lg:rounded-full h-fit z-[100] lg:py-[1%] pb-[6vh] lg:px-[3%] fixed lg:mt-[0%] mt-[-3%] lg:pt-[21] pt-[5%] rounded-[0.5rem] ease-in-out duration-[500ms] lg:bg-my-beige  ${
             isOpen ? "bg-green-700" : "bg-[#fef7e6]"
           }`}
         >
@@ -190,7 +190,7 @@ function Navbar() {
                 )}
               </button>
             </div>
-            <p>${totalPrice}</p>
+            <p>${totalPrice.toFixed(2)}</p>
           </div>
           <div
             className={`flex flex-col gap-[1rem] overflow-hidden ease-in-out duration-300 transition-all 
@@ -198,15 +198,15 @@ function Navbar() {
           >
             <div className="flex flex-row justify-between">
               <h3> Tax</h3>
-              <p>${tax}</p>
+              <p>${tax.toFixed(2)}</p>
             </div>
             <div className="flex flex-row justify-between">
               <h3> Shipping</h3>
-              <p>${shipping}</p>
+              <p>${shipping.toFixed(2)}</p>
             </div>
             <div className="flex flex-row justify-between">
               <h3> Estimated Total</h3>
-              <p>${estTotal}</p>
+              <p>${estTotal.toFixed(2)}</p>
             </div>
           </div>
           <p className="-mt-[1rem]"> Message about our shipping or delivery</p>
@@ -225,19 +225,46 @@ function Navbar() {
       {/* Alerts */}
       <div>
         <div
-          className={`absolute px-[1rem] bg-red-200 py-[0.5rem] text-md ease-in-out duration-300 m-[2rem] transition-all right-0 filter flex flex-row gap-[0.5rem]
-        ${popup ? "mt-10 opacity-full z-[11]" : "mt-15 opacity-0 z-0"}`}
+          className={`fixed px-[1.5rem] lg:px-[1.5rem] top-0 bg-red-400 rounded-[0.5rem] py-[1rem] lg:w-fit w-[90vw] lg:left-[70vw] left-[5vw] mx-auto text-md ease-in-out duration-300 lg:m-[2rem] transition-all lg:right-[6vw] filter flex flex-row gap-[0.5rem] shadow-lg
+         ${popup ? "lg:mt-[5rem] mt-[0.5rem] opacity-full z-[5]" : "mt-[0rem] opacity-0 -z-50"}`}
         >
-          This item already exists in your cart!
-          <button className="strip" onClick={() => setPopup(!popup)}>
-            {" "}
-            x
-          </button>
+          <div className="flex flex-col gap-[0.5rem] w-fit">
+            <div className="flex flex-row justify-between">
+              <div className="">
+                {popup ? (
+                  <img src={img} className="max-w-[5rem] max-h-[5rem]"></img>
+                ) : (
+                  <img src={img} className="max-w-[5rem] max-h-[5rem]"></img>
+                )}
+              </div>
+              <div className="pl-[2rem] w-[100%] whitespace-nowrap flex flex-col gap-[0.25rem] text-left">
+                <h3>{name}</h3>
+                <span className="">
+                  <p> Quantity: {quantity}</p>
+                  <button
+                    className="strip text-[#272727] decoration-[#272727] underline whitespace-nowrap mt-[0.5rem]"
+                    onClick={() => (setCheckout(true), setPopup(false))}
+                  >
+                    <p className="text-[#272727]">Removed from cart</p>
+                  </button>
+                </span>
+              </div>
+              <button
+                className="strip flex flex-col"
+                onClick={() => setPurchase(!popup)}
+              >
+                {" "}
+                <p className="text-2xl ml-[1.5rem] leading-[1.2rem] text-black hover:text-[#272727] transition-all ease-in-out duration-300">
+                  x
+                </p>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div
-          className={`fixed px-[1.5rem] lg:px-[1.5rem] top-0 bg-white rounded-[0.5rem] py-[1rem] lg:w-fit w-[90vw] lg:left-[70vw] left-[5vw] mx-auto text-md ease-in-out duration-300 lg:m-[2rem] transition-all lg:right-[6vw] filter flex flex-row gap-[0.5rem] z-30 shadow-lg
-         ${purchase ? "lg:mt-[5rem] mt-[0.5rem] opacity-full z-10" : "mt-[0rem] opacity-0 -z-10"}`}
+          className={`fixed px-[1.5rem] lg:px-[1.5rem] top-0 bg-white rounded-[0.5rem] py-[1rem] lg:w-fit w-[90vw] lg:left-[70vw] left-[5vw] mx-auto text-md ease-in-out duration-300 lg:m-[2rem] transition-all lg:right-[6vw] filter flex flex-row gap-[0.5rem] shadow-lg
+         ${purchase ? "lg:mt-[5rem] mt-[0.5rem] opacity-full z-[5]" : "mt-[0rem] opacity-0 -z-50"}`}
         >
           <div className="flex flex-col gap-[0.5rem] w-fit">
             <div className="flex flex-row justify-between">

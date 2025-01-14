@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Profile from "../../Components/Profile";
 import { FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
 
 const teamData = {
   sales: [
@@ -10,28 +11,28 @@ const teamData = {
       Name: "Darren Lau",
       Role: "Director of Business Development",
       Concentration: "SFU Beedie",
-      Image: "static/images/Darren.png",
+      imgSrc: "/static/images/Darren.png",
       LinkedIn: "https://www.linkedin.com/in/darrennlau/",
     },
     {
       Name: "Gailza Wijaya",
       Role: "VP Sales",
       Concentration: "SFU Beedie",
-      Image: "static/images/Gailza.png",
+      imgSrc: "/static/images/Gailza.png",
       LinkedIn: "https://www.linkedin.com/in/gailzaaridinawijaya/",
     },
     {
       Name: "Michael Gudz",
       Role: "Sales Coordinator",
       Concentration: "SFU Beedie",
-      Image: "static/images/Michael.png",
+      imgSrc: "/static/images/Michael.png",
       LinkedIn: "https://www.linkedin.com/in/michael-gudz-4136812a7/",
     },
     {
       Name: "Raymond Shen",
       Role: "Sales Coordinator",
       Concentration: "UBC Engineering",
-      Image: "static/images/RaymondHeadshot.jpeg",
+      imgSrc: "/static/images/RaymondHeadshot.jpeg",
       LinkedIn: "https://www.linkedin.com/in/rayleishen/",
     },
   ],
@@ -40,21 +41,21 @@ const teamData = {
       Name: "Arianna Ha",
       Role: "VP Marketing",
       Concentration: "SFU Beedie",
-      Image: "static/images/Arianna.png",
+      imgSrc: "/static/images/Arianna.png",
       LinkedIn: "https://www.linkedin.com/in/arianna-ha/",
     },
     {
       Name: "Brandon Sun",
       Role: "Front End Developer",
       Concentration: "SFU Beedie",
-      Image: "static/images/Brandon.png",
+      imgSrc: "/static/images/Brandon.png",
       LinkedIn: "https://www.linkedin.com/in/brandnsun/",
     },
     {
       Name: "Caleb Wu",
       Role: "Front End Developer",
       Concentration: "SFU SIAT",
-      Image: "static/images/caleb.png",
+      imgSrc: "/static/images/caleb.png",
       LinkedIn: "https://www.linkedin.com/in/caleb-wu1",
     },
   ],
@@ -63,37 +64,35 @@ const teamData = {
       Name: "Naia Wong",
       Role: "Director of Operations",
       Concentration: "SFU Beedie",
-      Image: "static/images/Naia.png",
+      imgSrc: "/static/images/Naia.png",
       LinkedIn: "https://www.linkedin.com/in/naia-wong/",
     },
     {
       Name: "Jessica Tandibrata",
       Role: "Events Coordinator",
       Concentration: "SFU Beedie",
-      Image: "static/images/Jessica.png",
+      imgSrc: "/static/images/Jessica.png",
       LinkedIn: "https://www.linkedin.com/in/jessicatandibrata/",
     },
-
     {
       Name: "Vinay Aery",
       Role: "Finance Coordinator",
       Concentration: "SFU Beedie",
-      Image: "static/images/Vinay.png",
+      imgSrc: "/static/images/Vinay.png",
       LinkedIn: "https://www.linkedin.com/in/vinayaery/",
     },
-
     {
       Name: "Lucy Liu",
       Role: "Operations Coordinator",
       Concentration: "SFU Beedie",
-      Image: "static/images/Lucy.png",
+      imgSrc: "/static/images/Lucy.png",
       LinkedIn: "https://www.linkedin.com/in/lucyliuu/",
     },
     {
       Name: "Justin Cheung",
       Role: "Chief Executive Officer",
       Concentration: "SFU Beedie",
-      Image: "static/images/justinHeadshot.png",
+      imgSrc: "/static/images/justinHeadshot.png",
       LinkedIn: "https://www.linkedin.com/in/justinacheung/",
     },
   ],
@@ -131,32 +130,7 @@ function Page() {
 
         <section>
           <div className="flex justify-between flex-col  w-[100%] gap-[5%]">
-            <div className="text-left max-w-full  flex flex-col justify-between ">
-              {/* <div className="flex flex-col lg:gap-[1rem] gap-[1vh]">
-                <p className="text-gray-600"> Aspiring Changemakers</p>
-                <h1> MEET OUR TEAM </h1>
-                <p className="">
-                  {" "}
-                  Our team is a group of passionate individuals committed to
-                  delivering healthy and sustainable snacks. With diverse skills
-                  and backgrounds, each member brings unique expertise and
-                  dedication to the project. Together, we’re driven by a shared
-                  vision to bring you an amazing treat. Get to know the people
-                  behind our success!
-                </p>
-              </div> */}
-              {/* <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform?usp=sharing"
-                className="flex lg:w-[50%] justify-between mt-[5%]"
-              >
-                <h3 className="h-[100%] flex flex-col justify-center text-gray-600">
-                  Questions? Reach out
-                </h3>
-                <div className="flex flex-col justify-center p-[0.755rem] bg-[#0D6A3D] rounded-[0.25rem] text-white">
-                  <FaArrowRight size="10px" />
-                </div>
-              </a> */}
-            </div>
+            <div className="text-left max-w-full  flex flex-col justify-between "></div>
 
             <div className="flex flex-col justify-between">
               <div className="flex lg:flex-nowrap md:flex-nowrap flex-wrap overflow-hidden justify-between min-w-fit min-h-fit w-[100%] lg:gap-[2%] md:gap-[2%] gap-[1vh] mb-[2%]">
@@ -232,55 +206,94 @@ function Page() {
             </a>
           </div>
 
-          <div className="scale-[1] hover:scale-[1.1] ease-in-out duration-300">
-            <image
-              src={"static/images/team.png"}
+          <div className="scale-[1] hover:scale-[1.1] ease-in-out duration-300 relative w-full aspect-[4/3] flex items-center justify-center">
+            <Image
+              src={"/static/images/team.png"}
               alt="the Second Savour Team at our first social"
+              width={1080}
+              height={1080}
+              className="rounded-[1rem] max-w-full max-h-full object-contain"
+              priority
             />
           </div>
         </section>
 
         <section className="p-0 overflow-hidden overflow-x-hidden">
           <div className="h-fit w-[100%] gap-[0.25rem] flex flex-row absolute m-0 left-0">
-            <div className="">
-              <image src={"static/images/scroll1.png"} alt="scroll1" />
+            <div className="w-[33%] h-[100%]">
+              <Image
+                src="/static/images/sales1.png"
+                alt="Second Savour Sales Event 1"
+                width={1080}
+                height={1080}
+                className="max-h-[40vh] lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+                priority
+              />
             </div>
-            <div className="">
-              <image src={"static/images/scroll2.png"} alt="scroll2" />
+            <div className="w-[33%] h-[100%]">
+              <Image
+                src="/static/images/sales2.png"
+                alt="Second Savour Sales Event 2"
+                width={1080}
+                height={1080}
+                className="max-h-[40vh] lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+              />
             </div>
-            <div className="">
-              <image src={"static/images/scroll3.png"} alt="scroll3" />
+            <div className="w-[33%] h-[100%]">
+              <Image
+                src="/static/images/sales3.png"
+                alt="Second Savour Sales Event 3"
+                width={1080}
+                height={1080}
+                className="max-h-[40vh] lg:block lg:h-[45%] lg:w-[45%] h-fit w-full object-cover rounded-[1rem]"
+              />
             </div>
           </div>
           <div className="h-fit w-[100%] flex flex-row lg:flex-row opacity-0">
             <div className="">
-              <image src={"static/images/scroll1.png"} alt="scroll1" />
+              <Image
+                src={"/static/images/sales1.png"}
+                alt="sales1"
+                height={1080}
+                width={1080}
+              />
             </div>
             <div className="">
-              <image src={"static/images/scroll2.png"} alt="scroll2" />
+              <Image
+                src={"/static/images/sales2.png"}
+                alt="sales2"
+                height={1080}
+                width={1080}
+              />
             </div>
             <div className="">
-              <image src={"static/images/scroll3.png"} alt="scroll3" />
+              <Image
+                src={"/static/images/sales3.png"}
+                alt="sales3"
+                height={1080}
+                width={1080}
+              />
             </div>
           </div>
           <div className="text-left flex flex-col lg:flex-row mt-[4%] gap-[2%]">
             <p className="mt-[1rem] lg:mt-0">
               {" "}
-              <p className="mb-[1%] font-bold">Our Mission</p>We focus on
-              reducing waste and promoting sustainability by utilizing surplus
-              produce. By reducing the need for additional resources to create
-              new food, we contribute to conserving energy, water, and soil
-              health. Sustainability is more than a goal for us—it&apos;s the
-              way we operate.
+              <span className="mb-[1%] font-bold">Our Mission</span>
+              <br></br>We focus on reducing waste and promoting sustainability
+              by utilizing surplus produce. By reducing the need for additional
+              resources to create new food, we contribute to conserving energy,
+              water, and soil health. Sustainability is more than a goal for
+              us—it&apos;s the way we operate.
             </p>
             <p className="mt-[1rem] lg:mt-0">
               {" "}
-              <p className="mb-[1%] font-bold">Team Bond</p>At Second Savour, we
-              believe that a strong team is built on genuine connections and
-              shared experiences. Our team socials are more than just events;
-              they&apos;re a chance to bond, unwind, and celebrate our
-              collective efforts. Join us, and become part of a family that
-              values camaraderie as much as our mission to be sustainable.
+              <span className="mb-[1%] font-bold">Team Bond</span>
+              <br></br>At Second Savour, we believe that a strong team is built
+              on genuine connections and shared experiences. Our team socials
+              are more than just events; they&apos;re a chance to bond, unwind,
+              and celebrate our collective efforts. Join us, and become part of
+              a family that values camaraderie as much as our mission to be
+              sustainable.
             </p>
           </div>
         </section>
