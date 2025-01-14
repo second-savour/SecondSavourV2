@@ -18,12 +18,12 @@ function ItemCheckout({
   totalPrice,
 }) {
   //Keyboard listener
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      // Perform your desired action here, e.g., call a function
-      submitValue(inputValue);
-    }
-  };
+  // const handleKeyDown = (e) => {
+  //   if (e.key === "Enter") {
+  //     // Perform your desired action here, e.g., call a function
+  //     submitValue(inputValue);
+  //   }
+  // };
 
   const updateCartQuantity = (name, newQuantity) => {
     if (arrF) {
@@ -99,7 +99,7 @@ function ItemCheckout({
                 const inputValue = e.target.value;
                 const numericValue = parseFloat(inputValue) || ""; // Convert to number or empty string
                 updateCartQuantity(name, numericValue);
-                onKeyDown = { handleKeyDown };
+                // onKeyDown = { handleKeyDown };
               }}
             />
             <button

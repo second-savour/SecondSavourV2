@@ -18,24 +18,7 @@ function CheckoutComponent({
   arrF,
   // totalPrice,
 }) {
-  const { removeItem } = useCart();
-
-  //Keyboard listener
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      // Perform your desired action here, e.g., call a function
-      submitValue(inputValue);
-    }
-  };
-
-  const updateCartQuantity = (name, newQuantity) => {
-    if (arrF) {
-      const newItem = arrF.map((item) =>
-        name === item.name ? { ...item, quantity: newQuantity } : item
-      );
-      setArrF(newItem);
-    }
-  };
+  const { removeItem, updateCartQuantity } = useCart();
 
   const manageCart = (nameF, quantityF, state, setArrF, arrF) => {
     const newCart = arrF.map((item) => {
@@ -92,13 +75,12 @@ function CheckoutComponent({
               <p className="w-fit h-full flex flex-col justify-center">
                 <input
                   className="min-w-[5vw] max-w-[5rem] text-center"
-                  placeholder={quantity}
+                  type="number"
+                  min="1"
                   value={quantity}
                   onChange={(e) => {
-                    const inputValue = e.target.value;
-                    const numericValue = parseFloat(inputValue) || ""; // Convert to number or empty string
+                    const numericValue = parseFloat(e.target.value) || 1;
                     updateCartQuantity(name, numericValue);
-                    onKeyDown = { handleKeyDown };
                   }}
                 />
               </p>
@@ -116,7 +98,7 @@ function CheckoutComponent({
               {" "}
               <div className=" group w-fit text-left m-0 p-0  flex flex-row-reverse gap-[0.75rem]">
                 <p className="text-red-600 h-full flex flex-col justify-center group-hover:text-red-900 ease-in-out duration-300">
-                  remove item
+                  Remove item
                 </p>
                 <MdDelete className="text-2xl text-red-600 group-hover:text-red-900 ease-in-out duration-300"></MdDelete>
               </div>

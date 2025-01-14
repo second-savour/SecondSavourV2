@@ -5,11 +5,15 @@ import React, { useState } from "react";
 import Image from "next/image";
 import SmallSegment from "../../Components/SmallSegment.js";
 import { useCart } from "../../Components/CartContext.js";
-import { NextSeo } from 'next-seo';
-
 
 function Page() {
-  const { updateCart } = useCart();
+  const {
+    updateCart,
+
+    cart,
+
+    updateCartQuantity,
+  } = useCart();
 
   const [displayText, setDisplayText] = useState(
     <div>
@@ -33,12 +37,6 @@ function Page() {
   };
 
   return (
-    <>
-    <NextSeo
-        title="Citrus Treats | Vancouver BC "
-        description="Discover our delicious, upcycled Citrus Treats. Healthy, tasty, and eco-friendly!"
-        canonical="https://second-savour-qa.vercel.app/citrusTreat"
-      />
     <div className=" w-[95%] md:w-[95%] lg:w-[80%] m-auto  md:mt-[9%] lg:mt-[0%]">
       <div className="flex flex-col md:flex-row lg:flex-row gap-[3vh] lg:gap-[1%]">
         <div className="group relative bg-[#0D6A3D] min-w-[40%] lg:max-h-[100%] md:max-h-[100%] max-h-[50vh] lg:h-auto rounded-[1rem] flex justify-center hover:bg-[#17B267] hover:cursor-pointer ease-in-out duration-300 shadow-lg">
@@ -62,22 +60,60 @@ function Page() {
               during study sessions, basically anywhere!
             </p>
           </div>
-          <button
-            className="w-fit h-fit"
-            onClick={() =>
-              updateCart(
-                "Citrus Treats",
-                1,
-                "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
-                "ID",
-                6.99,
-                6.99
-              )
-            }
-          >
-            Add citrus treat
-          </button>
+          <div className="flex flex-row gap-[1rem]">
+            <button
+              className="w-fit h-fit"
+              onClick={() =>
+                updateCart(
+                  "Citrus Treats",
+                  1,
+                  "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                  "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                  "ID",
+                  6.99,
+                  6.99
+                )
+              }
+            >
+              +
+            </button>
+
+            {cart
+              ? cart.map((item) =>
+                  item.name === "Citrus Treats" ? (
+                    <input
+                      className="min-w-[5vw] max-w-[5rem] text-center"
+                      placeholder={item.quantity}
+                      value={item.quantity}
+                      key={item.name}
+                      onChange={(e) => {
+                        const inputValue = e.target.value;
+                        const numericValue = parseFloat(inputValue) || ""; // Convert to number or empty string
+                        updateCartQuantity(item.name, numericValue);
+                        // onKeyDown = { handleKeyDown };
+                      }}
+                    />
+                  ) : null
+                )
+              : "0"}
+
+            <button
+              className="w-fit h-fit"
+              onClick={() =>
+                updateCart(
+                  "Citrus Treats",
+                  -1,
+                  "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                  "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                  "ID",
+                  6.99,
+                  6.99
+                )
+              }
+            >
+              -
+            </button>
+          </div>
           <button
             className="w-fit h-fit"
             onClick={() =>
@@ -94,21 +130,6 @@ function Page() {
           >
             Buy Justin Cheung
           </button>
-          {/* <Button
-            text="Purchase Now!"
-            // clickTo="https://payments.secondsavour.ca/"
-            setOnclick={() =>
-              updateCart(
-                "Citrus Treats",
-                1,
-                "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
-                "ID",
-                6.99,
-                6.99
-              )
-            }
-          /> */}
         </div>
       </div>
 
@@ -157,7 +178,7 @@ function Page() {
                           "At Second Savour, we're expanding our sustainability initiatives to engage people outside of our communities.  Join us in making a positive impact on our planet!"
                         }
                         ButtonText={"Browse Products"}
-                        Image={"/static/images/boxes.png"}
+                        imgSrc={"/static/images/boxes.png"}
                       />
                     </div>
 
@@ -168,12 +189,12 @@ function Page() {
                           "We create our product using eco-friendly resources, offering sustainable food products."
                         }
                         ButtonText={"View Locations"}
-                        Image={"/static/images/boothing.png"}
+                        imgSrc={"/static/images/boothing.png"}
                       />
                     </div>
                   </div>,
 
-                  "Purchase"
+                  "Purchase in person"
                 )
               }
               className={`w-fit rounded-[0.5rem] px-[1rem] py-[0.5rem] hover:cursor-pointer hover:text-white hover:bg-[#0D6A3D] ease-in-out duration-300
@@ -191,7 +212,6 @@ function Page() {
         <div className="mt-[7%] flex flex-col gap-[1rem]">{displayText}</div>
       </div>
     </div>
-    </>
   );
 }
 

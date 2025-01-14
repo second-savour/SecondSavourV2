@@ -1,16 +1,19 @@
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
+import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
 
-function Profile({ Name, Role, Image, LinkedIn, Instagram }) {
+function Profile({ Name, Role, imgSrc, LinkedIn, Instagram }) {
   return (
     <div className="group basis-[20vh] md:basis-[10vw] lg:basis-[10rem] flex-grow-1 flex flex-col overflow-hidden w-full rounded-[0.5rem] flex-1 lg:h-fit max-h-[60vh] min-w-0 lg:max-w-[50%] ease-in-out duration-300">
       {/* Image Container */}
       <div className="relative rounded-[0.5rem] w-full aspect-[4/5] overflow-hidden">
-        <image
-          src={Image}
-          alt={`${Name} - ${Role}`}
-          className="group-hover:scale-110 group-hover:brightness-75 ease-in-out duration-300 w-full h-full object-cover object-top"
+        <Image
+          src={imgSrc}
+          alt={`${Name} - ${Role} at Second Savour`}
+          width={1080}
+          height={1080}
+          className="rounded-[1rem] w-full h-full object-cover"
         />
         {/* Overlay Content */}
         <div className="absolute inset-0 flex flex-col justify-end w-full h-full p-2 bg-gradient-to-t from-black/60 to-transparent">

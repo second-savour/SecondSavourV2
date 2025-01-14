@@ -1,8 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ChatWidgetScript from "../Components/ChatWidgetScript";
-
-//Components
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -29,8 +27,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="public/favicon.ico" sizes="any" />
-        <link 
-          rel="stylesheet" 
+        <link
+          rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
       </head>
@@ -41,10 +39,10 @@ export default function RootLayout({ children }) {
           <Navbar></Navbar>
           {children}
           <Footer></Footer>
+          <Analytics />
+          <ChatWidgetScript />
         </CartProvider>
-        <ChatWidgetScript />
       </body>
-      <Analytics />
     </html>
   );
 }
