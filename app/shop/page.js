@@ -1,16 +1,10 @@
 import React from "react";
 import Container from "../../Components/Container.js";
 import Segment from "../../Components/Segment.js";
-import { NextSeo } from "next-seo";
 
 function page() {
   return (
     <>
-      <NextSeo
-        title="Second Savour Order Checkout | Vancouver BC"
-        description="Ready to finalize your purchase? Complete your Second Savour order here! "
-        canonical="https://second-savour-qa.vercel.app/checkout"
-      />
       <div className="w-[100%] bg-[#FEF7E6] flex justify-center">
         <div className="flex flex-col gap-[3vh] lg:gap-[10vh] min-h-fit border-orange-400 border-5 text-center  w-[90%]">
           <div className="sm:mt-[5vh]">
