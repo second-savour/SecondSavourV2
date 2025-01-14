@@ -107,11 +107,16 @@ window.chatWidget = {
                 border-radius: 15px;
                 word-wrap: break-word;
                 width: fit-content;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+                font-size: 14px;
+                line-height: 1.4;
             }
             .user-message {
                 background: #005a2d;
                 color: white;
                 margin-left: auto;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+                font-size: 14px;
             }
             .bot-message {
                 background: white;
@@ -252,12 +257,17 @@ window.chatWidget = {
                 .chat-popup.active + .chat-button {
                     display: none;
                 }
+                .message {
+                    font-size: 13px;
+                }
+                
+                .user-message {
+                    font-size: 13px;
+                }
+                
                 .bot-message, .bot-message * {
                     font-size: 13px !important;
                 }
-                .bot-message h1 { font-size: 15px !important; }
-                .bot-message h2 { font-size: 14px !important; }
-                .bot-message h3 { font-size: 13px !important; }
             }
         `;
         document.head.appendChild(style);
