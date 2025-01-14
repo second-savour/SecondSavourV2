@@ -61,9 +61,8 @@ export const CartProvider = ({ children }) => {
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("savedCart", JSON.stringify(cart));
-    // const savedCart = localStorage.getItem("savedCart");
     calculateCartSummary();
-  }, [cart]);
+  }, [cart, calculateCartSummary]);
 
   const calculateCartSummary = () => {
     let totalCost = 0;

@@ -7,6 +7,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import CheckoutComponent from "../Components/CheckoutComponent";
 import { FaCartShopping } from "react-icons/fa6";
+import Image from "next/image";
 
 /* Icons */
 import { IoMenu } from "react-icons/io5";
@@ -232,9 +233,21 @@ function Navbar() {
             <div className="flex flex-row justify-between">
               <div className="">
                 {popup ? (
-                  <img src={img} className="max-w-[5rem] max-h-[5rem]"></img>
+                  <Image
+                    src={img}
+                    alt={`${name} product image`}
+                    width={80}
+                    height={80}
+                    className="max-w-[5rem] max-h-[5rem]"
+                  />
                 ) : (
-                  <img src={img} className="max-w-[5rem] max-h-[5rem]"></img>
+                  <Image
+                    src={img}
+                    alt={`${name} product image`}
+                    width={80}
+                    height={80}
+                    className="max-w-[5rem] max-h-[5rem]"
+                  />
                 )}
               </div>
               <div className="pl-[2rem] w-[100%] whitespace-nowrap flex flex-col gap-[0.25rem] text-left">
@@ -270,9 +283,21 @@ function Navbar() {
             <div className="flex flex-row justify-between">
               <div className="">
                 {purchase ? (
-                  <img src={img} className="max-w-[5rem] max-h-[5rem]"></img>
+                  <Image
+                    src={img}
+                    alt={`${name} product image`}
+                    width={80}
+                    height={80}
+                    className="max-w-[5rem] max-h-[5rem]"
+                  />
                 ) : (
-                  <img src={img} className="max-w-[5rem] max-h-[5rem]"></img>
+                  <Image
+                    src={img}
+                    alt={`${name} product image`}
+                    width={80}
+                    height={80}
+                    className="max-w-[5rem] max-h-[5rem]"
+                  />
                 )}
               </div>
               <div className="pl-[2rem] w-[100%] whitespace-nowrap flex flex-col gap-[0.25rem] text-left">

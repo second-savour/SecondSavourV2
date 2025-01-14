@@ -4,8 +4,15 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import ContainerText from "../Components/ContainerText.js";
 import ReviewCard from "../Components/ReviewCard.js";
+import { NextSeo } from "next-seo";
 
 function Page() {
+  <NextSeo
+    title="Second Savour"
+    description="Second Savour was founded by a group of friends at Simon Fraser University (SFU) in Burnaby, BC, with a mission to create environmental change. "
+    canonical=""
+  />;
+
   const [Inview, setInview] = useState(34);
 
   const increaseView = (amount) => {

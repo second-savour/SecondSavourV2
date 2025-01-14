@@ -101,6 +101,56 @@ window.chatWidget = {
                 background: white;
                 border: 1px solid #ddd;
                 margin-right: auto;
+                font-size: 14px;
+                line-height: 1.4;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+            }
+            .bot-message * {
+                font-size: 14px !important;
+                line-height: 1.4;
+                margin: 4px 0;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+            }
+            .bot-message p {
+                margin: 8px 0;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+            }
+            .bot-message h1, .bot-message h2, .bot-message h3 {
+                font-weight: bold;
+                color: #005a2d;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+            }
+            .bot-message h1 { font-size: 16px !important; }
+            .bot-message h2 { font-size: 15px !important; }
+            .bot-message h3 { font-size: 14px !important; }
+            .bot-message ul, .bot-message ol {
+                margin: 8px 0 8px 20px;
+                padding-left: 0;
+                list-style-position: outside;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+            }
+            .bot-message ul {
+                list-style-type: disc;
+            }
+            .bot-message ul ul {
+                list-style-type: circle;
+            }
+            .bot-message ol {
+                list-style-type: decimal;
+            }
+            .bot-message li {
+                margin: 4px 0;
+                padding-left: 5px;
+                display: list-item;
+                font-family: var(--font-geist-sans), Arial, sans-serif;
+            }
+            .bot-message li p {
+                margin: 0;
+                display: inline-block;
+            }
+            .bot-message a {
+                color: #005a2d;
+                text-decoration: underline;
             }
             .chat-input-area {
                 position: absolute;
@@ -186,6 +236,12 @@ window.chatWidget = {
                 .chat-popup.active + .chat-button {
                     display: none;
                 }
+                .bot-message, .bot-message * {
+                    font-size: 13px !important;
+                }
+                .bot-message h1 { font-size: 15px !important; }
+                .bot-message h2 { font-size: 14px !important; }
+                .bot-message h3 { font-size: 13px !important; }
             }
         `;
         document.head.appendChild(style);
@@ -260,7 +316,13 @@ window.chatWidget = {
         
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
-        messageDiv.textContent = text;
+        
+        // Use marked to parse markdown if it's a bot message
+        if (type === 'bot' && window.marked) {
+            messageDiv.innerHTML = window.marked.parse(text);
+        } else {
+            messageDiv.textContent = text;
+        }
         
         container.appendChild(messageDiv);
         messagesDiv.appendChild(container);
