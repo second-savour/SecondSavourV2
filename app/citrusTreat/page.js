@@ -67,11 +67,11 @@ function Page() {
                 updateCart(
                   "Citrus Treats",
                   1,
-                  "/static/images/justin3.png",
-                  "Comes with his lucious curls too",
+                  "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                  "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
                   "ID",
-                  1,
-                  1
+                  6.99,
+                  6.99
                 )
               }
             >
