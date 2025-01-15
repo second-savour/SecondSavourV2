@@ -238,7 +238,7 @@ function Navbar() {
                     alt={`${name} product image`}
                     width={80}
                     height={80}
-                    className="max-w-[5rem] max-h-[5rem]"
+                    className="max-w-[5rem] max-h-[10rem] object-contain"
                   />
                 ) : (
                   <Image
@@ -246,7 +246,7 @@ function Navbar() {
                     alt={`${name} product image`}
                     width={80}
                     height={80}
-                    className="max-w-[5rem] max-h-[5rem]"
+                    className="max-w-[5rem] max-h-[10rem] object-contain"
                   />
                 )}
               </div>
@@ -288,7 +288,7 @@ function Navbar() {
                     alt={`${name} product image`}
                     width={80}
                     height={80}
-                    className="max-w-[5rem] max-h-[5rem]"
+                    className="max-w-[5rem] max-h-[10rem]"
                   />
                 ) : (
                   <Image
@@ -296,7 +296,7 @@ function Navbar() {
                     alt={`${name} product image`}
                     width={80}
                     height={80}
-                    className="max-w-[5rem] max-h-[5rem]"
+                    className="max-w-[5rem] max-h-[10rem]"
                   />
                 )}
               </div>

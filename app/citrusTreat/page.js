@@ -60,76 +60,85 @@ function Page() {
               during study sessions, basically anywhere!
             </p>
           </div>
-          <div className="flex flex-row gap-[1rem]">
+          <div className="flex flex-col-reverse gap-[1rem]">
             <button
-              className="w-fit h-fit"
+              className="w-full h-fit bg-my-green text-white border-b-2 border-black px-[1rem] py-[1rem] rounded-full hover:border-b-0 ease-out duration-[100ms] trasition-all"
               onClick={() =>
                 updateCart(
                   "Citrus Treats",
                   1,
-                  "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                  "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                  "/static/images/justin3.png",
+                  "Comes with his lucious curls too",
                   "ID",
-                  6.99,
-                  6.99
+                  1,
+                  1
                 )
               }
             >
-              +
+              <p>Purchase Item</p>
             </button>
 
-            {cart
-              ? cart.map((item) =>
-                  item.name === "Citrus Treats" ? (
-                    <input
-                      className="min-w-[5vw] max-w-[5rem] text-center"
-                      placeholder={item.quantity}
-                      value={item.quantity}
-                      key={item.name}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const numericValue = parseFloat(inputValue) || ""; // Convert to number or empty string
-                        updateCartQuantity(item.name, numericValue);
-                        // onKeyDown = { handleKeyDown };
-                      }}
-                    />
-                  ) : null
-                )
-              : "0"}
+            <div className="flex flex-row gap-[1rem] border-b-2 border-black rounded-full bg-white overflow-hidden">
+              <button
+                className="bg-white max-w-[30%] text-2xl font-medium rounded-none hover:bg-gray-200 hover:text-black"
+                onClick={() =>
+                  updateCart(
+                    "Citrus Treats",
+                    1,
+                    "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                    "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                    "ID",
+                    6.99,
+                    6.99
+                  )
+                }
+              >
+                <p>+</p>
+              </button>
 
-            <button
-              className="w-fit h-fit"
-              onClick={() =>
-                updateCart(
-                  "Citrus Treats",
-                  -1,
-                  "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                  "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
-                  "ID",
-                  6.99,
-                  6.99
-                )
-              }
-            >
-              -
-            </button>
+              {cart.length !== 0 ? (
+                cart.map((item) => (
+                  <input
+                    className="w-[40%] text-center"
+                    placeholder={item.quantity}
+                    value={item.quantity}
+                    key={item.name}
+                    onChange={(e) => {
+                      const inputValue = e.target.value;
+                      const numericValue = parseFloat(inputValue) || (
+                        <p className="w-[40%]">10</p>
+                      ); // Convert to number or empty string
+                      updateCartQuantity(item.name, numericValue);
+                    }}
+                  />
+                ))
+              ) : (
+                <input
+                  className="w-[40%] text-center"
+                  placeholder={0}
+                  value={0}
+                  key={0}
+                />
+              )}
+
+              <button
+                className="bg-white max-w-[30%] text-2xl font-medium rounded-none hover:bg-gray-200 hover:text-black"
+                onClick={() =>
+                  updateCart(
+                    "Citrus Treats",
+                    -1,
+                    "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                    "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                    "ID",
+                    6.99,
+                    6.99
+                  )
+                }
+              >
+                -
+              </button>
+            </div>
           </div>
-          <button
-            className="w-fit h-fit"
-            onClick={() =>
-              updateCart(
-                "Justin Cheung",
-                1,
-                "/static/images/justin3.png",
-                "Comes with his lucious curls too",
-                "ID",
-                1,
-                1
-              )
-            }
-          >
-            Buy Justin Cheung
-          </button>
         </div>
       </div>
 
