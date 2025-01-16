@@ -33,6 +33,44 @@ function Navbar() {
   const [checkout, setCheckout] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+  const [paymentLink, setPaymentLink] = useState(null);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/createPaymentLink', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: 'Auto Detailing', amount: 100 }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error:', errorText);
+        throw new Error('Failed to create payment link');
+      }
+
+      const contentType = response.headers.get('Content-Type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        // Automatically open the payment link in a new tab
+        window.open(data.paymentLink.url, '_blank');
+      } else {
+        const text = await response.text();
+        console.error('Unexpected response format:', text);
+        throw new Error('Received non-JSON response');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while creating the payment link');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize(); // Run on initial render
@@ -212,7 +250,14 @@ function Navbar() {
           </div>
           <p className="-mt-[1rem]"> Message about our shipping or delivery</p>
         </div>
-        <button> Proceed to payment </button>
+        
+        {/* ///////////////////////////////////////// */}
+        <button onClick={handleCheckout} disabled={loading}>
+        {loading ? 'Loading...' : 'Pay $100'}
+      </button>
+      {/* ///////////////////////////////////////// */}
+
+
       </div>
 
       {/* Screen to click out the shopping cart from  */}

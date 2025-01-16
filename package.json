@@ -15,7 +15,8 @@
     "nextjs": "^0.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.4.0",
+    "square": "^39.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
