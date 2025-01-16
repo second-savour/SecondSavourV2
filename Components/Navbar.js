@@ -253,7 +253,7 @@ function Navbar() {
               <div className="pl-[2rem] w-[100%] whitespace-nowrap flex flex-col gap-[0.25rem] text-left">
                 <h3>{name}</h3>
                 <span className="">
-                  <p> Quantity: {quantity}</p>
+                  <p> Quantity: {quantity?.toString() || "0"}</p>
                   <button
                     className="strip text-[#272727] decoration-[#272727] underline whitespace-nowrap mt-[0.5rem]"
                     onClick={() => (setCheckout(true), setPopup(false))}
@@ -303,7 +303,7 @@ function Navbar() {
               <div className="pl-[2rem] w-[100%] whitespace-nowrap flex flex-col gap-[0.25rem] text-left">
                 <h3>{name}</h3>
                 <span className="">
-                  <p> Quantity: {quantity}</p>
+                  <p> Quantity: {quantity?.toString() || "0"}</p>
 
                   <button
                     className="strip text-[#272727] decoration-[#272727] underline whitespace-nowrap mt-[0.5rem]"

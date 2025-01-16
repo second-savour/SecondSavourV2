@@ -67,28 +67,29 @@ function CheckoutComponent({
           <div className="flex flex-col gap-[0.75rem]">
             <div className="flex flex-row border-[2.1px] border-gray-300 rounded-[0.5rem] justify-between overflow-hidden">
               <button
-                className="w-fit h-fit bg-transparent hover:bg-transparent hover:text-gray-400 px-[1rem] py-[0.75rem] rounded-none"
-                onClick={() => manageCart(name, 1, true, setArrF, arrF)}
+                className="w-fit h-fit bg-transparent hover:bg-transparent  hover:text-gray-400 px-[1rem] py-[0.75rem] border-l-2rounded-none"
+                onClick={() => manageCart(name, 1, false, setArrF, arrF)}
               >
-                <p className="2xl">+</p>
+                <p className="2xl">-</p>
               </button>
               <p className="w-fit h-full flex flex-col justify-center">
                 <input
                   className="min-w-[5vw] max-w-[5rem] text-center"
                   type="number"
                   min="1"
-                  value={quantity}
+                  value={quantity.toString()}
                   onChange={(e) => {
                     const numericValue = parseFloat(e.target.value) || 1;
                     updateCartQuantity(name, numericValue);
                   }}
                 />
               </p>
+
               <button
-                className="w-fit h-fit bg-transparent hover:bg-transparent  hover:text-gray-400 px-[1rem] py-[0.75rem] border-l-2rounded-none"
-                onClick={() => manageCart(name, 1, false, setArrF, arrF)}
+                className="w-fit h-fit bg-transparent hover:bg-transparent hover:text-gray-400 px-[1rem] py-[0.75rem] rounded-none"
+                onClick={() => manageCart(name, 1, true, setArrF, arrF)}
               >
-                <p className="2xl">-</p>
+                <p className="2xl">+</p>
               </button>
             </div>
             <button

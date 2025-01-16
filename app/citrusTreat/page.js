@@ -7,13 +7,15 @@ import SmallSegment from "../../Components/SmallSegment.js";
 import { useCart } from "../../Components/CartContext.js";
 
 function Page() {
-  const {
-    updateCart,
+  const { updateCart } = useCart();
 
-    cart,
+  const [quantity, setQuantity] = useState(0);
 
-    updateCartQuantity,
-  } = useCart();
+  const addQuantity = (number) => {
+    if (quantity + number > 0) {
+      setQuantity(quantity + number);
+    }
+  };
 
   const [displayText, setDisplayText] = useState(
     <div>
@@ -64,54 +66,47 @@ function Page() {
             <button
               className="w-full h-fit bg-my-green text-white border-b-2 border-black px-[1rem] py-[1rem] rounded-full hover:border-b-0 ease-out duration-[100ms] trasition-all"
               onClick={() =>
-                updateCart(
-                  "Citrus Treats",
-                  1,
-                  "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                  "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
-                  "ID",
-                  6.99,
-                  6.99
-                )
+                quantity > 0
+                  ? updateCart(
+                      "Citrus Treats",
+                      1,
+                      quantity,
+                      "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                      "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                      "ID",
+                      6.99,
+                      6.99
+                    )
+                  : null
               }
             >
-              <p>Purchase Item</p>
+              <p>Add Item to Cart</p>
             </button>
 
             <div className="flex flex-row gap-[1rem] border-b-2 border-black rounded-full bg-white overflow-hidden">
               <button
                 className="bg-white max-w-[30%] text-2xl font-medium rounded-none hover:bg-gray-200 hover:text-black"
-                onClick={() =>
-                  updateCart(
-                    "Citrus Treats",
-                    1,
-                    "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                    "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
-                    "ID",
-                    6.99,
-                    6.99
-                  )
-                }
+                onClick={() => addQuantity(-1)}
               >
-                <p>+</p>
+                <p>-</p>
               </button>
 
-              {cart.length !== 0 ? (
-                cart.map((item) => (
-                  <input
-                    className="w-[40%] text-center"
-                    placeholder={item.quantity}
-                    value={item.quantity}
-                    key={item.name}
-                    onChange={(e) => {
-                      const inputValue = e.target.value;
-                      const numericValue = parseFloat(inputValue) || (
-                        <p className="w-[40%]">10</p>
-                      ); // Convert to number or empty string
-                      updateCartQuantity(item.name, numericValue);
-                    }}
-                  />
-                ))
+              {/* {cart.length !== 0 ? (
+                cart.map((item) => ( */}
+              <input
+                className="w-[40%] text-center"
+                placeholder={quantity}
+                value={quantity}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  const numericValue = parseFloat(inputValue) || (
+                    <p className="w-[40%]">10</p>
+                  ); // Convert to number or empty string
+                  //
+                  setQuantity(numericValue);
+                }}
+              />
+              {/* ))
               ) : (
                 <input
                   className="w-[40%] text-center"
@@ -119,23 +114,13 @@ function Page() {
                   value={0}
                   key={0}
                 />
-              )}
+              )} */}
 
               <button
                 className="bg-white max-w-[30%] text-2xl font-medium rounded-none hover:bg-gray-200 hover:text-black"
-                onClick={() =>
-                  updateCart(
-                    "Citrus Treats",
-                    -1,
-                    "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                    "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
-                    "ID",
-                    6.99,
-                    6.99
-                  )
-                }
+                onClick={() => addQuantity(1)}
               >
-                -
+                +
               </button>
             </div>
           </div>
