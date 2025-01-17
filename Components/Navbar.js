@@ -253,7 +253,7 @@ function Navbar() {
         
         {/* ///////////////////////////////////////// */}
         <button onClick={handleCheckout} disabled={loading}>
-        {loading ? 'Loading...' : 'Pay $100'}
+        {loading ? 'Loading...' : 'Proceed to Checkout'}
       </button>
       {/* ///////////////////////////////////////// */}
 
