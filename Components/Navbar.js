@@ -42,7 +42,7 @@ function Navbar() {
       const response = await fetch('/api/createPaymentLink', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: 'Auto Detailing', amount: 100 }),
+        body: JSON.stringify({ name: 'Second Savour Snacks', amount: totalPrice }),
       });
 
       if (!response.ok) {
@@ -68,8 +68,6 @@ function Navbar() {
       setLoading(false);
     }
   };
-
-
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
