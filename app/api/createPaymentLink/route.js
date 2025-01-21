@@ -48,6 +48,7 @@ export async function POST(req) {
                   title: 'Add a note to your order', // Title for the custom field
               },
           ],
+          redirectUrl: 'https://www.secondsavour.ca/checkoutConfirm', // Redirect URL after payment
           merchantSupportEmail: 'sales@secondsavour.ca',
           askForShippingAddress: true,
           acceptedPaymentMethods: {
