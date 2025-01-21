@@ -21,7 +21,7 @@ export async function POST(req) {
       quickPay: {
           name,
           priceMoney: {
-              amount: amount * 100, // Convert dollars to cents
+              amount: Math.round(amount*100), // Convert dollars to cents
               currency: 'CAD',
           },
           locationId: process.env.SQUARE_LOCATION_ID,
@@ -42,10 +42,13 @@ export async function POST(req) {
       //   ],
       // },
       checkoutOptions: {
-          allowTipping: true,
+          //allowTipping: true,
           customFields: [
               {
                   title: 'Add a note to your order', // Title for the custom field
+                  text: 'Add a note', // Placeholder text for the custom field
+                  type: 'TEXT', // Type of the custom field
+                  required: false, // Whether the field is required
               },
           ],
           redirectUrl: 'https://www.secondsavour.ca/checkoutConfirm', // Redirect URL after payment
