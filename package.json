@@ -5,17 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node_modules/next/dist/bin/next start -p $PORT",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
+    "json-bigint": "^1.0.0",
     "next": "^15.1.0",
     "next-seo": "^6.6.0",
     "nextjs": "^0.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.4.0",
+    "square": "^39.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
