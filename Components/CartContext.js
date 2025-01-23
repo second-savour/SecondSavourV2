@@ -38,7 +38,9 @@ export const CartProvider = ({ children }) => {
       totalCost += item.quantity * item.price;
     });
 
-    totalTax = parseFloat((totalCost * 0.05).toFixed(2));
+    //add back 0.05% tax this line below
+    // totalTax = parseFloat((totalCost * 0.05).toFixed(2));
+    totalTax = parseFloat((totalCost * 0).toFixed(2));
     const totalEstTotal = parseFloat(
       (totalCost + totalShipping + totalTax).toFixed(2)
     );

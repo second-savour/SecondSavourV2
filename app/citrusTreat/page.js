@@ -74,8 +74,8 @@ function Page() {
                       "/static/images/Stand-Up Pouch Bag Mockup label.png",
                       "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
                       "ID",
-                      6.99,
-                      6.99
+                      7.99,
+                      7.99
                     )
                   : null
               }
