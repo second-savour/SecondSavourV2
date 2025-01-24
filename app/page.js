@@ -170,7 +170,7 @@ function Page() {
             <Image
             <Image
               src="static/images/mascot.png"
-              alt="Second Savour Mascot"
+              alt="Second Savur Mascot"
               className="hidden lg:block md:block sm:block;"
               height={1080}
               width={1080}
