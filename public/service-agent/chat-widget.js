@@ -233,40 +233,72 @@ window.chatWidget = {
                     right: 0;
                     bottom: 0;
                     width: 100% !important;
-                    height: 100vh !important;
+                    height: 100% !important;
                     margin: 0;
                     border-radius: 0;
                     transform: translateY(100%);
                     z-index: 999999;
+                    display: flex;
+                    flex-direction: column;
+                    background: #f8f9fa;
                 }
-                .chat-popup.active {
-                    transform: translateY(0);
-                }
+                
                 .chat-header {
                     border-radius: 0;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 2;
+                    padding: env(safe-area-inset-top) 15px 15px;
                 }
+                
                 .chat-messages {
-                    height: calc(100vh - 130px);
-                    margin-bottom: 50px;
+                    flex: 1;
+                    padding: calc(60px + env(safe-area-inset-top)) 10px 120px;
+                    height: 100%;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+                    margin-bottom: 0;
                 }
+                
                 .chat-input-area {
                     position: fixed;
+                    bottom: max(env(safe-area-inset-bottom), 20px);
+                    left: 0;
+                    right: 0;
                     padding: 15px;
                     background: white;
+                    border-top: 1px solid #ddd;
+                    z-index: 1000000;
                 }
-                .chat-popup.active + .chat-button {
-                    display: none;
+
+                .message-container {
+                    padding: 0 5px;
+                    max-width: 100%;
                 }
+
                 .message {
+                    max-width: 85%;
                     font-size: 13px;
+                    padding: 8px 12px;
                 }
-                
-                .user-message {
-                    font-size: 13px;
+
+                .chat-input {
+                    height: 40px;
+                    padding: 8px 12px;
+                    font-size: 16px; /* Prevent zoom on iOS */
                 }
-                
-                .bot-message, .bot-message * {
-                    font-size: 13px !important;
+
+                /* iPhone specific adjustments */
+                @supports (-webkit-touch-callout: none) {
+                    .chat-input-area {
+                        padding-bottom: max(15px, env(safe-area-inset-bottom));
+                    }
+                    
+                    .chat-messages {
+                        padding-bottom: calc(120px + env(safe-area-inset-bottom));
+                    }
                 }
             }
         `;
