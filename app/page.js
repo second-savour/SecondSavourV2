@@ -118,7 +118,7 @@ function Page() {
               <p>
                 Find us at boothing events or local retail stores to explore our
                 eco-friendly products and support a sustainable mission. Check
-                out where we’ll be next!
+                out where well be next!
               </p>
               <a className="w-fit" href="/map">
                 <button className="lg:w-fit w-full bg-my-green text-my-white mx-auto px-[2rem] font-bold p-[1rem]">
