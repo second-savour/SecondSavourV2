@@ -45,7 +45,7 @@ function Navbar() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: "Second Savour Snacks",
+          name: "Citrus Treats",
           amount: totalPrice,
         }),
       });
