@@ -255,8 +255,14 @@ function Navbar() {
         </div>
 
         {/* ///////////////////////////////////////// */}
-        <button onClick={handleCheckout} disabled={loading}>
-          {loading ? "Loading..." : "Proceed to Checkout"}
+        <button
+          className="w-full h-fit bg-my-green text-white border-b-2 border-black px-[1rem] py-[1rem] rounded-full hover:border-b-0 ease-out duration-[100ms] trasition-all"
+          onClick={() => {
+            if (cart.length > 0) handleCheckout(); // Properly call the function here
+          }}
+          disabled={loading}
+        >
+          {loading ? <p>Loading...</p> : <p>Proceed to checkout</p>}
         </button>
         {/* ///////////////////////////////////////// */}
       </div>
