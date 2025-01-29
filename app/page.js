@@ -9,7 +9,7 @@ import { NextSeo } from "next-seo";
 function Page() {
   <NextSeo
     title="Second Savour"
-    description="Second Savour was founded by a group of friends at Simon Fraser University (SFU) in Burnaby, BC, with a mission to create environmental change. "
+    description="Second Savour was founded by a group of friends at Simon Fraser University (SFU) in Burnaby, BC, with a mission to create environmental change."
     canonical=""
   />;
 
