@@ -60,7 +60,7 @@ function Navbar() {
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
         // Automatically open the payment link in a new tab
-        window.open(data.paymentLink.url, "_blank");
+        window.open(data.paymentLink.url, "_self");
       } else {
         const text = await response.text();
         console.error("Unexpected response format:", text);
