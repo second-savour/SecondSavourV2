@@ -18,4 +18,6 @@ function Button({ text, clickTo, setOnClick }) {
   );
 }
 
+//consolle
+
 export default Button;
