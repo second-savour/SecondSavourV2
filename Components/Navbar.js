@@ -75,7 +75,7 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 1020);
     handleResize(); // Run on initial render
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -92,9 +92,9 @@ function Navbar() {
         top-0 left-0 bg---color-black backdrop-blur-[8px]"
       ></div>
 
-      <div className=" flex flex-row justify-center lg:mt-[1%]">
+      <div className=" flex flex-row justify-center lg:mt-[1%] ">
         <div
-          className={`flex flex-col lg:flex-row justify-between lg:w-[60vw] S w-[100vw] lg:rounded-full h-fit z-[100] lg:py-[1%] pb-[6vh] lg:px-[3%] fixed lg:mt-[0%] mt-[-3%] lg:pt-[21] pt-[5%] rounded-[0.5rem] ease-in-out duration-[500ms] lg:bg-my-beige  ${
+          className={`flex flex-col lg:flex-row justify-between  lg:w-[60vw] w-[100vw] lg:rounded-full h-fit z-[100] lg:py-[1%]  pb-[4vh] lg:px-[3%] fixed lg:mt-[0%] mt-[-3%] lg:pt-[21] pt-[5%] rounded-[0.5rem] ease-in-out duration-[500ms] lg:bg-my-beige  ${
             isOpen ? "bg-green-700" : "bg-[#fef7e6]"
           }`}
         >
@@ -121,7 +121,11 @@ function Navbar() {
                   isOpen ? "text-black" : "text-black"
                 }`}
               >
-                {isOpen ? "x" : <IoMenu className="w-[10] h-[10] text-4xl" />}
+                {isOpen ? (
+                  "x"
+                ) : (
+                  <IoMenu className="w-[10] h-[10] text-6xl lg:text-4xl" />
+                )}
               </span>
             </button>
           </div>
@@ -156,7 +160,7 @@ function Navbar() {
                 className="relative w-fit h-full p-0 shadow-none hover:bg-transparent  hover:text-my-green text-xl bg-transparent"
                 onClick={() => toggle(setCheckout, checkout)}
               >
-                <FaCartShopping />
+                <FaCartShopping className="w-[10] h-[10] text-[1.2vw]" />
 
                 {cart.length !== 0 ? (
                   <div className="absolute top-0 right-0 bg-red-700 text-sm w-fit h-fit px-[0.4rem] rounded-full -mt-[0.6rem] -mr-[0.8rem]">
@@ -175,8 +179,8 @@ function Navbar() {
       {/* cart */}
       <div
         className={`lg:w-[24vw] lg:right-0 w-full h-[100vh] lg:h-[96vh] overflow-auto overscroll-y-auto fixed  rounded-[0.5rem] lg:py-[2rem] px-[2rem] bg-white opacity-full z-[100] flex flex-col gap-[5rem] ease-in-out duration-300 transition-all lg:my-[0] lg:top-[2vh] top-0 py-[2rem]
-          ${checkout && !isMobile ? "mr-[2vh]" : "-mr-[30rem]"} ${
-            checkout && isMobile ? "-mt-[1vh]" : "-mt-[110vh]"
+          ${checkout && !isMobile ? "mr-[2vh]" : "-mr-[100vw]"} ${
+            checkout && isMobile ? "-mt-[0vh]" : "-mt-[100vh]"
           }`}
       >
         <div>

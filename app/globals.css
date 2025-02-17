@@ -26,11 +26,11 @@ img {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.2rem;
+  line-height: 140%;
 }
 
 p#little {
@@ -61,21 +61,30 @@ h1 {
   font-family: "Tanker", sans-serif;
   font-weight: 800;
   letter-spacing: 2px;
-  font-size: 5rem;
-  line-height: 5rem;
+  font-size: 5vw;
+  line-height: 5vw;
 }
 
 h2 {
   font-family: "Tanker", sans-serif;
-  font-weight: 500;
-  font-size: 3.4rem;
-  line-height: 0.95;
+  font-weight: 200;
+  font-size: 2vw;
+  line-height: 3vw;
 }
 
 h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.2vw;
+  letter-spacing: -0.2px;
+  font-weight: 0.5;
+  line-height: normal;
+}
+
+h5 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.2vw;
   letter-spacing: -0.2px;
   font-weight: 0.5;
   line-height: normal;
@@ -171,7 +180,7 @@ button p {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 60rem) {
+@media only screen and (max-width: 1020px) {
   h1 {
     font-size: 30pt;
     line-height: 30pt;
@@ -181,12 +190,17 @@ button p {
     font-size: 30pt;
   }
 
+  h5 {
+    font-size: 2em;
+  }
+
   p {
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 140%;
   }
 
   button {
     padding: 0.75rem 1rem;
+    /* font-size: 1rem; */
   }
 }
