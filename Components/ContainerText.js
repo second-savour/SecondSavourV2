@@ -19,10 +19,10 @@ function ContainerText({
         <div className="flex flex-col lg:min-h-[60vh] justify-around w-full lg:w-[50%] ">
           <div className="flex flex-col h-fit gap-[1.5rem] text-white">
             <h1 className="">{Header}</h1>
-            <h2 className="lg:text-4xl text-xl">{Subheader}</h2>
+            <h2 className="">{Subheader}</h2>
             <p>{Text}</p>
             <a className="w-fit" href={clickTo}>
-              <button className="lg:w-fit text-my-green bg-my-beige w-full p-[1rem] px-[2rem]">
+              <button className="lg:w-fit text-my-green bg-my-beige w-full p-[1em] px-[2em] rounded-full mt-[2rem]">
                 <p className="font-bold">{ButtonText}</p>
               </button>
             </a>

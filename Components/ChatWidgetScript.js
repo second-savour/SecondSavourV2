@@ -10,7 +10,8 @@ export default function ChatWidgetScript() {
       script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
       script.onload = () => {
         console.log('Debug: Marked.js loaded dynamically');
-        if (window.marked) {
+        if (window.marked) {e
+          
           window.marked.setOptions({
             breaks: true,
             gfm: true,
