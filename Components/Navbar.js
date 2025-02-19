@@ -60,7 +60,7 @@ function Navbar() {
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
         // Automatically open the payment link in a new tab
-        window.open(data.paymentLink.url, "_self");
+        window.open(data.paymentLink.url, "_blank");
       } else {
         const text = await response.text();
         console.error("Unexpected response format:", text);
@@ -185,7 +185,7 @@ function Navbar() {
       >
         <div>
           <div className="flex flex-row justify-between ">
-            <h2> Your cart </h2>
+            <h2> You cart </h2>
             <button
               className="text-xl  w-fit h-fit flex flex-col justify-center py-[0.5rem] px-[1rem] rounded-full text-white bg-red-600 hover:bg-red-800"
               onClick={() => (
