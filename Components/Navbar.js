@@ -92,13 +92,16 @@ function Navbar() {
         top-0 left-0 bg---color-black backdrop-blur-[8px]"
       ></div>
 
-      <div className=" flex flex-row justify-center lg:mt-[1%] ">
+      <div className=" flex flex-row justify-center lg:mt-[1%]">
         <div
-          className={`flex flex-col lg:flex-row justify-between  lg:w-[60vw] w-[100vw] lg:rounded-full h-fit z-[100] lg:py-[1%]  pb-[4vh] lg:px-[3%] fixed lg:mt-[0%] mt-[-3%] lg:pt-[21] pt-[5%] rounded-[0.5rem] ease-in-out duration-[500ms] lg:bg-my-beige  ${
+          className={`flex flex-col lg:flex-row justify-between lg:w-[60vw] w-[100vw] lg:rounded-full h-[fit] z-[100] lg:py-[1%] lg:pb-[1%] pb-[10vh] lg:px-[3%] fixed lg:mt-[0%] mt-[-3%] lg:pt-[21] pt-[5%] rounded-[0.5rem] ease-in-out duration-[500ms] lg:bg-my-beige  ${
             isOpen ? "bg-green-700" : "bg-[#fef7e6]"
           }`}
         >
-          <div className="flex flex-row lg:w-fit w-full h-fit justify-between lg:relative  fixed lg:px-0  pr-[1%] pl-[5%]">
+          <div
+            className={`flex flex-row lg:w-fit w-full h-fit justify-between lg:relative  fixed lg:px-0  pr-[1%] pl-[5%]
+              isOpen ? "bg-none" : "bg-[#fef7e6]"`}
+          >
             <div className="flex flex-col justify-center">
               <Hyperlink
                 Text={"Second Savour"}
@@ -124,14 +127,14 @@ function Navbar() {
                 {isOpen ? (
                   "x"
                 ) : (
-                  <IoMenu className="w-[10] h-[10] text-6xl lg:text-4xl" />
+                  <IoMenu className="w-[10] h-[10] text-3xl lg:text-4xl" />
                 )}
               </span>
             </button>
           </div>
           <div
             className={`flex flex-col lg:flex-row lg:gap-[1rem] gap-[1rem] min-w-[50%] lg:w-[20%]  lg:px-0 px-[7%] lg:mt-0 justify-end z-10 ease-in-out duration-300 ${
-              isOpen ? "mt-[6vh] " : "mt-[-30vh] "
+              isOpen ? "mt-[10vh] " : "mt-[-30vh] "
             }`}
           >
             <Hyperlink
@@ -160,7 +163,7 @@ function Navbar() {
                 className="relative w-fit h-full p-0 shadow-none hover:bg-transparent  hover:text-my-green text-xl bg-transparent"
                 onClick={() => toggle(setCheckout, checkout)}
               >
-                <FaCartShopping className="w-[10] h-[10] text-[1.2vw]" />
+                <FaCartShopping className="w-[10] h-[10] text-[8vw] lg:text-[1.2vw]" />
 
                 {cart.length !== 0 ? (
                   <div className="absolute top-0 right-0 bg-red-700 text-sm w-fit h-fit px-[0.4rem] rounded-full -mt-[0.6rem] -mr-[0.8rem]">
