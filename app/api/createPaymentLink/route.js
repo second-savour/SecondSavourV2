@@ -18,7 +18,7 @@ export async function POST(req) {
     const response = await client.checkoutApi.createPaymentLink({
       idempotencyKey: crypto.randomUUID(), // Ensure idempotency
       quickPay: {
-      name,
+        name,
         priceMoney: {
           amount: Math.round(amount * 100), // Convert dollars to cents
           currency: "CAD",
@@ -82,6 +82,7 @@ export async function POST(req) {
     );
   } catch (error) {
     console.error("API Error:", error.message);
+    console.error("Full error details:", error); // Log full error object
     return new Response(
       JSON.stringify({ error: "Failed to create payment link" }),
       {
