@@ -13,7 +13,7 @@ function Profile({ Name, Role, imgSrc, LinkedIn, Instagram }) {
           alt={`${Name} - ${Role} at Second Savour`}
           width={1080}
           height={1080}
-          className="rounded-[1rem] w-full h-full object-cover"
+          className="rounded-[1rem] w-full h-auto min-h-full object-cover"
         />
         {/* Overlay Content */}
         <div className="absolute inset-0 flex flex-col justify-end w-full h-full p-2 bg-gradient-to-t from-black/60 to-transparent">

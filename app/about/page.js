@@ -100,7 +100,7 @@ const teamData = {
 
 function Page() {
   const [selectImage, setSelectImage] = useState(
-    <div className="flex lg:flex-row  min-w-[50v%] lg:min-w-fit flex-wrap justify-between w-[100%] lg:gap-[1rem] gap-[2.5vw]">
+    <div className="flex lg:flex-row min-w-[50v%] lg:min-w-fit flex-wrap justify-between w-[100%] lg:gap-[1rem] gap-[2.5vw]">
       {teamData.operations.map((member, index) => (
         <Profile key={index} {...member} />
       ))}
@@ -112,7 +112,7 @@ function Page() {
   const handleImage = (teamType) => {
     setSelectedTeam(teamType);
     setSelectImage(
-      <div className="flex lg:flex-row  min-w-[50v%] lg:min-w-fit flex-wrap justify-between w-[100%] lg:gap-[1rem] gap-[2.5vw]">
+      <div className="flex lg:flex-row  min-w-[50vh] lg:min-w-fit h-fit flex-wrap justify-between w-[100%] lg:gap-[1rem] gap-[2.5vw]">
         {teamData[teamType].map((member, index) => (
           <Profile key={index} {...member} />
         ))}

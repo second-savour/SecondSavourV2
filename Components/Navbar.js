@@ -187,7 +187,7 @@ function Navbar() {
           }`}
       >
         <div>
-          <div className="flex flex-row justify-between ">
+          <div className="flex flex-row justify-between z-[100] ">
             <h2> You cart </h2>
             <button
               className="text-xl  w-fit h-fit flex flex-col justify-center py-[0.5rem] px-[1rem] rounded-full text-white bg-red-600 hover:bg-red-800"
@@ -335,7 +335,7 @@ function Navbar() {
         </div>
 
         <div
-          className={`fixed px-[1.5rem] lg:px-[1.5rem] top-0 bg-white rounded-[0.5rem] py-[1rem] lg:w-fit w-[90vw] lg:left-[70vw] left-[5vw] mx-auto text-md ease-in-out duration-300 lg:m-[2rem] transition-all lg:right-[6vw] filter flex flex-row gap-[0.5rem] shadow-lg
+          className={`fixed px-[1.5rem] lg:px-[1.5rem] top-[20vh] bg-white lg:top-0 rounded-[0.5rem] py-[1rem] lg:w-fit w-[90vw] lg:left-[70vw] left-[5vw] mx-auto text-md ease-in-out duration-300 lg:m-[2rem] transition-all lg:right-[6vw] filter flex flex-row gap-[0.5rem] shadow-lg
          ${purchase ? "lg:mt-[5rem] mt-[0.5rem] opacity-full z-[5]" : "mt-[0rem] opacity-0 -z-50"}`}
         >
           <div className="flex flex-col gap-[0.5rem] w-fit">
