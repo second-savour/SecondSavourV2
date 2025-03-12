@@ -71,7 +71,7 @@ export async function POST(req) {
     });
 
     // Log the payment link URL to the console
-    console.log("Payment link created:", response.result.paymentLink.url);
+    console.log("Payment link created:", response.result.paymentLink.longUrl);
 
     return new Response(
       JSON.stringify({ paymentLink: response.result.paymentLink }),
