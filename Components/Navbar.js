@@ -258,7 +258,7 @@ function Navbar() {
               <p>${estTotal.toFixed(2)}</p>
             </div>
           </div>
-          <p className="-mt-[1rem]"> Message about our shipping or delivery</p>
+          <p className="-mt-[1rem]"> Currently, we only ship within Greater Vancouver Area. Thank you for your understanding!</p>
         </div>
 
         {/* ///////////////////////////////////////// */}

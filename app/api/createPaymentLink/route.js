@@ -44,10 +44,7 @@ export async function POST(req) {
         //allowTipping: true,
         customFields: [
           {
-            title: "Add a note to your order", // Title for the custom field
-            text: "Add a note", // Placeholder text for the custom field
-            type: "TEXT", // Type of the custom field
-            required: false, // Whether the field is required
+            title: "We only ship within GVA. Please type, 'I confirm'"
           },
         ],
         redirectUrl: "https://www.secondsavour.ca/checkoutConfirm", // Redirect URL after payment
