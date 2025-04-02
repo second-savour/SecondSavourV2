@@ -15,6 +15,9 @@ export default {
         "my-orange": "#FF780D",
         "my-brown": "#3B1D1D",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],

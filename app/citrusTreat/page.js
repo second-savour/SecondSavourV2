@@ -39,7 +39,7 @@ function Page() {
   };
 
   return (
-    <div className=" w-[95%] md:w-[95%] lg:w-[80%] m-auto  md:mt-[9%] lg:mt-[0%]">
+    <div className=" w-[95%] md:w-[95%] lg:w-[80%] m-auto  mt-[12vh] lg:mt-[0%]">
       <div className="flex flex-col md:flex-row lg:flex-row gap-[3vh] lg:gap-[1%]">
         <div className="group relative bg-[#0D6A3D] min-w-[40%] lg:max-h-[100%] md:max-h-[100%] max-h-[50vh] lg:h-auto rounded-[1rem] flex justify-center hover:bg-[#17B267] hover:cursor-pointer ease-in-out duration-300 shadow-lg">
           <Image

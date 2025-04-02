@@ -1,280 +1,165 @@
 "use client";
-
-import React, { useState } from "react";
-import Profile from "../../Components/Profile";
-import { FaArrowRight } from "react-icons/fa";
+import React from "react";
 import Image from "next/image";
+import AboutProfile from "../../Components/aboutProfile";
 
-const teamData = {
-  sales: [
-    {
-      Name: "Darren Lau",
-      Role: "Director of Business Development",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Darren.png",
-      LinkedIn: "https://www.linkedin.com/in/darrennlau/",
-    },
-    {
-      Name: "Gailza Wijaya",
-      Role: "VP Sales",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Gailza.png",
-      LinkedIn: "https://www.linkedin.com/in/gailzaaridinawijaya/",
-    },
-    {
-      Name: "Michael Gudz",
-      Role: "Sales Coordinator",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Michael.png",
-      LinkedIn: "https://www.linkedin.com/in/michael-gudz-4136812a7/",
-    },
-    {
-      Name: "Raymond Shen",
-      Role: "Sales Coordinator",
-      Concentration: "UBC Engineering",
-      imgSrc: "/static/images/RaymondHeadshot.jpeg",
-      LinkedIn: "https://www.linkedin.com/in/rayleishen/",
-    },
-  ],
-  marketing: [
-    {
-      Name: "Arianna Ha",
-      Role: "VP Marketing",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Arianna.png",
-      LinkedIn: "https://www.linkedin.com/in/arianna-ha/",
-    },
-    {
-      Name: "Brandon Sun",
-      Role: "Front End Developer",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Brandon.png",
-      LinkedIn: "https://www.linkedin.com/in/brandnsun/",
-    },
-    {
-      Name: "Caleb Wu",
-      Role: "Front End Developer",
-      Concentration: "SFU SIAT",
-      imgSrc: "/static/images/caleb.png",
-      LinkedIn: "https://www.linkedin.com/in/caleb-wu1",
-    },
-  ],
-  operations: [
-    {
-      Name: "Naia Wong",
-      Role: "Director of Operations",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Naia.png",
-      LinkedIn: "https://www.linkedin.com/in/naia-wong/",
-    },
-    {
-      Name: "Jessica Tandibrata",
-      Role: "Events Coordinator",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Jessica.png",
-      LinkedIn: "https://www.linkedin.com/in/jessicatandibrata/",
-    },
-    {
-      Name: "Vinay Aery",
-      Role: "Finance Coordinator",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Vinay.png",
-      LinkedIn: "https://www.linkedin.com/in/vinayaery/",
-    },
-    {
-      Name: "Lucy Liu",
-      Role: "Operations Coordinator",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/Lucy.png",
-      LinkedIn: "https://www.linkedin.com/in/lucyliuu/",
-    },
-    {
-      Name: "Justin Cheung",
-      Role: "Chief Executive Officer",
-      Concentration: "SFU Beedie",
-      imgSrc: "/static/images/justinHeadshot.png",
-      LinkedIn: "https://www.linkedin.com/in/justinacheung/",
-    },
-  ],
-};
-
-function Page() {
-  const [selectImage, setSelectImage] = useState(
-    <div className="flex lg:flex-row min-w-[50v%] lg:min-w-fit flex-wrap justify-between w-[100%] lg:gap-[1rem] gap-[2.5vw]">
-      {teamData.operations.map((member, index) => (
-        <Profile key={index} {...member} />
-      ))}
-    </div>
-  );
-
-  const [selectedTeam, setSelectedTeam] = useState("operations");
-
-  const handleImage = (teamType) => {
-    setSelectedTeam(teamType);
-    setSelectImage(
-      <div className="flex lg:flex-row  min-w-[50vh] lg:min-w-fit h-fit flex-wrap justify-between w-[100%] lg:gap-[1rem] gap-[2.5vw]">
-        {teamData[teamType].map((member, index) => (
-          <Profile key={index} {...member} />
-        ))}
-      </div>
-    );
-  };
-
+function page() {
   return (
-    <div className="w-[100%] bg-[#FEF7E6] flex justify-center overflow-hidden">
-      <div className="flex flex-col gap-[5vh] lg:gap-[15vh] min-h-fit border-5 text-center w-[90%]">
-        <section>
-          <h1> ABOUT US </h1>
-          <h3 className="mt-[1%]"> Meet the team behind the dream</h3>
-        </section>
+    <div className="flex flex-col lg:gap-[200px] lg:mt-[6vh] mt-[12vh] md:gap-[120px] gap-[60px]">
+      <section>
+        <div className=" w-full flex flex-col items-center ">
+          <h1> About Us </h1>
+          <p> Meet the team behind the dream.</p>
+        </div>
+      </section>
 
-        <section>
-          <div className="flex justify-between flex-col  w-[100%] gap-[5%]">
-            <div className="text-left max-w-full  flex flex-col justify-between "></div>
-
-            <div className="flex flex-col justify-between">
-              <div className="flex lg:flex-nowrap md:flex-nowrap flex-wrap overflow-hidden justify-between min-w-fit min-h-fit w-[100%] lg:gap-[2%] md:gap-[2%] gap-[1vh] mb-[2%]">
-                <button
-                  onClick={() => handleImage("operations")}
-                  className={`${
-                    selectedTeam === "operations"
-                      ? "bg-[#0d6a3d] text-white"
-                      : ""
-                  }`}
-                >
-                  <p>Operations</p>
-                </button>
-                <button
-                  onClick={() => handleImage("sales")}
-                  className={`${
-                    selectedTeam === "sales" ? "bg-[#0d6a3d] text-white" : ""
-                  }`}
-                >
-                  <p>Sales</p>
-                </button>
-                <button
-                  onClick={() => handleImage("marketing")}
-                  className={`${
-                    selectedTeam === "marketing"
-                      ? "bg-[#0d6a3d] text-white"
-                      : ""
-                  }`}
-                >
-                  <p>Marketing</p>
-                </button>
-              </div>
-
-              <div> {selectImage} </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="grid grid-rows-1 lg:grid-cols-2 gap-[5%]">
-          <div className="text-left flex flex-col gap-[0.5rem]">
-            <h1> WHAT IS SECOND SAVOUR </h1>
-            <h3 className="lg:mt-[2rem] mt-[1rem] text-gray-600">
-              {" "}
-              Aspiring Changemakers{" "}
-            </h3>
+      <section className="flex flex-col lg:mt-[-16vh] lg:gap-[60px] gap-[20px] lg:mx-[120px] md:mx-[40px] mx-[20px]">
+        <div className=" w-full h-fit justify-center flex flex-row">
+          {" "}
+          <Image
+            src={"/static/images/newTeam.png"}
+            alt="the Second Savour Team at our first social"
+            width={1080}
+            height={1080}
+            className="rounded-[1rem] w-full h-full object-contain"
+            priority
+          />
+        </div>
+        <div className="w-full h-fit flex lg:flex-row flex-col justify-end gap-[20px]">
+          <div className="flex flex-col gap-[10px]">
+            <p className="text-my-gray">Aspiring Changemakers</p>
             <p>
+              {" "}
               Second Savour was founded by a group of friends at Simon Fraser
-              University (SFU) with a mission to create and sustainable
-              environmental change.
+              University (SFU) with a mission to create and foster sustainable
+              environmental change
             </p>
-            <h3 className="lg:mt-0 md:mt-0 mt-[1rem] text-gray-600">
-              {" "}
-              What We Do{" "}
-            </h3>
-            <p>
-              We aim to reduce supply chain waste by taking a unique approach,
-              promoting the use of the whole promote, leaving no waste. We do
-              not dare to dream about a better world, we dare to enact the
-              change.{" "}
-            </p>
-
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform?usp=sharing"
-              className="flex lg:w-[50%] justify-between mt-[5%]"
-              target="_blank"
-            >
-              <h3 className="h-[100%] flex flex-col justify-center text-gray-600 hover:text-[#0D6A3D] hover:cursor-pointer ease-in-out duration-300">
-                Questions? Reach out
-              </h3>
-              <div className="flex flex-col justify-center p-[0.755rem] bg-[#0D6A3D] rounded-[0.25rem] text-white">
-                <FaArrowRight size="10px" />
-              </div>
-            </a>
           </div>
+          <div className="flex flex-col gap-[10px]">
+            <p className="text-my-gray">Aspiring Changemakers</p>
+            <p>
+              {" "}
+              Second Savour was founded by a group of friends at Simon Fraser
+              University (SFU) with a mission to create and foster sustainable
+              environmental change
+            </p>
+          </div>
+        </div>
+        <button className="text-white px-[40px] max-w-fit bg-my-green">
+          Contact Us
+        </button>
+      </section>
 
-          <div className="scale-[1] hover:scale-[1.1] ease-in-out duration-300 relative w-full aspect-[4/3] flex items-center justify-center">
+      <section className="flex flex-col gap-[60px] lg:mx-[120px] md:mx-[40px] mx-[20px]">
+        <h1> About our departments </h1>
+        <div className="flex flex-row gap-[30px] overflow-auto overscroll-auto">
+          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[90vw]">
             <Image
-              src={"/static/images/team.png"}
+              src={"/static/images/newOperations.png"}
               alt="the Second Savour Team at our first social"
               width={1080}
               height={1080}
-              className="rounded-[1rem] max-w-full max-h-full object-contain"
+              className=" w-full h-full  object-cover rounded-t-[20px]"
+              priority
+            />
+            <div className="w-full h-fit bg-my-green rounded-b-[20px]">
+              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[40px] mb-[40px]">
+                <h2 className="text-[50px] text-white"> Operations</h2>
+                <p className="text-white">
+                  The backbone of Second Savour, our Operations team ensures
+                  smooth production and logistics. From sourcing imperfect
+                  produce to overseeing kitchen operations, they make sure our
+                  products reach customers efficiently and sustainably.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[90vw]">
+            <Image
+              src={"/static/images/newSales.png"}
+              alt="the Second Savour Team at our first social"
+              width={1080}
+              height={1080}
+              className=" w-full h-full object-cover rounded-t-[20px]"
+              priority
+            />
+            <div className="w-full h-fit bg-my-orange rounded-b-[20px]">
+              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[40px] mb-[40px]">
+                <h2 className="text-[50px] text-white text-center"> Sales</h2>
+                <p className="text-white">
+                  Our Sales team connects Second Savour with the community,
+                  ensuring our product reaches as many people as possible. They
+                  build relationships with customers and partners while
+                  expanding our presence in markets, retail, and beyond.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[90vw]">
+            <Image
+              src={"/static/images/newMarketing.png"}
+              alt="the Second Savour Team at our first social"
+              width={1080}
+              height={1080}
+              className=" w-full h-full object-cover rounded-t-[20px]"
+              priority
+            />
+            <div className="w-full h-fit bg-[#FFCA41] rounded-b-[20px]">
+              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[40px] mb-[40px]">
+                <h2 className="text-[50px] text-white text-center">
+                  {" "}
+                  MArketing
+                </h2>
+                <p className="text-white">
+                  The storytellers of Second Savour, our Marketing team spreads
+                  awareness about food waste and our mission. Through creative
+                  campaigns, social media, and branding, they engage our
+                  audience and inspire change.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-[60px] lg:mx-[120px] md:mx-[40px] mx-[20px]">
+        <h1> The values the drive us forward </h1>
+        <div className="flex lg:flex-row-reverse flex-col gap-[40px]">
+          <div className="lg:w-[70%] w-[100%] h-full">
+            <Image
+              src={"/static/images/newExec.png"}
+              alt="the Second Savour Team at our first social"
+              width={1080}
+              height={1080}
+              className=" w-full h-full max-h-[70vh] object-cover rounded-[20px]"
               priority
             />
           </div>
-        </section>
-
-        <section className="p-0 relative overflow-hidden h-[40vh]">
-          <div className="h-fit w-[100%] gap-[0.25rem] flex flex-row absolute m-0 left-0">
-            <div className="w-[33%] h-[100%]">
-              <Image
-                src="/static/images/sales1.png"
-                alt="Second Savour Sales Event 1"
-                width={1080}
-                height={1080}
-                className="h-[40vh] w-full object-cover rounded-[1rem]"
-                priority
-              />
-            </div>
-            <div className="w-[33%] h-[100%]">
-              <Image
-                src="/static/images/sales2.png"
-                alt="Second Savour Sales Event 2"
-                width={1080}
-                height={1080}
-                className="h-[40vh] w-full object-cover rounded-[1rem]"
-              />
-            </div>
-            <div className="w-[33%] h-[100%]">
-              <Image
-                src="/static/images/sales3.png"
-                alt="Second Savour Sales Event 3"
-                width={1080}
-                height={1080}
-                className="h-[40vh] w-full object-cover rounded-[1rem]"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="text-left">
-          <div className=" lg:w-[60%] flex flex-col gap-[1rem]">
-            <p className="text-gray-600"> Aspiring Changemakers</p>
-            <h1> THE VALUES THAT DRIVE US FORWARDS</h1>
-          </div>
-
-          <div className="flex lg:flex-row flex-col flex-wrap gap-[2vh] lg:gap-[1%] mt-[3%]">
-            <div className="h-fit lg:min-h-[50vh] flex-1 w-[100%] p-[2rem] rounded-[0.5rem] bg-[#F3892C] flex flex-col gap-[1rem]">
-              <h2>Sustainability</h2>
+          <div className="flex flex-col lg:gap-[40px] gap-[20px] lg:w-[30%] w-[100%] h-full">
+            <div className="flex flex-col lg:gap-[20px] gap-[10px]">
+              <h2 className="text-my-green lg:text-[50px] md:text-[30px] text-[20px]">
+                Sustainability
+              </h2>
               <p>
                 We create our products using eco-friendly resources, offering
-                sustainable food products.
+                sustainable food products. lg:{" "}
               </p>
             </div>
-
-            <div className="h-fit lg:min-h-[50vh] flex-1 p-[2rem] rounded-[0.5rem] bg-[#0D6A3D] flex flex-col gap-[1rem]">
-              <h2>Engagement</h2>
+            <div className="flex flex-col lg:gap-[20px] gap-[10px]">
+              <h2 className="text-my-green lg:text-[50px] md:text-[30px] text-[20px]">
+                Engagement
+              </h2>
               <p>
                 We aim to inspire and empower individuals to rethink food waste,
-                motivating them to be part of the solution.
+                motivating them to be part of the solution. lg:{" "}
               </p>
             </div>
-            <div className="h-fit lg:min-h-[50vh] flex-1 p-[2rem] rounded-[0.5rem] bg-[#E7D9BF] flex flex-col gap-[1rem]">
-              <h2>Repurpose</h2>
+            <div className="flex flex-col lg:gap-[20px] gap-[10px]">
+              <h2 className="text-my-green lg:text-[50px] md:text-[30px] text-[20px]">
+                Repurpose
+              </h2>
               <p>
                 We repurpose surplus or unwanted produce into upcycled food
                 products, reducing waste while raising awareness to address
@@ -282,10 +167,104 @@ function Page() {
               </p>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-[60px] lg:mx-[120px] md:mx-[40px] mx-[20px]">
+        <h1 className="lg:w-[70%] w-[100%]">
+          {" "}
+          Who is the team behind second savour?
+        </h1>
+        <div className="flex flex-col gap-[20px]">
+          <div className="flex flex-row gap-[15px] h-fit lg:justify-center items-center justify-items-center w-full lg:overscroll-contain overscroll-auto lg:overflow-hidden overflow-auto lg:flex-wrap">
+            <AboutProfile
+              Profile="/static/images/newJustin.png"
+              Name="Justin Cheung"
+              Role="Chief Executive Officer"
+              Linkedin="https://www.linkedin.com/in/justinacheung/"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newNaia.png"
+              Name="Naia Wong"
+              Role="Director of Operations"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newGailza.png"
+              Name="Gailza Wijaya"
+              Role="VP Sales"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newDarren.png"
+              Name="Darren Lau"
+              Role="Director of Business Development"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newArianna.png"
+              Name="Arianna Ha"
+              Role="VP Marketing"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newBrandon.png"
+              Name="Brandon Sun "
+              Role="Front End Developer"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newVinay.png"
+              Name="Vinay Aery"
+              Role="Finance Coordinator"
+            />
+            <AboutProfile
+              Profile="/static/images/newMichael.png"
+              Name="Michael Gudz"
+              Role="Sales Coordinator"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newJessica.png"
+              Name="Jessica Tandibrata"
+              Role="Events Coordinator"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newLucy.png"
+              Name="Lucy Liu"
+              Role="Operations Coordinator"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newFaith.png"
+              Name="Faith Leung"
+              Role="Marketing Coordinator"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newRebecca.png"
+              Name="Rebecca Yeung"
+              Role="Marketing Coordinator"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newCaleb.png"
+              Name="Caleb Wu"
+              Role="Front End Developer"
+            />
+
+            <AboutProfile
+              Profile="/static/images/newRaymond.png"
+              Name="Raymond Shen"
+              Role="Backend Coordinator"
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default Page;
+export default page;
