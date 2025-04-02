@@ -27,7 +27,7 @@ function page() {
         </div>
         <div className="w-full h-fit flex lg:flex-row flex-col justify-end gap-[20px]">
           <div className="flex flex-col gap-[10px]">
-            <p className="text-my-gray">Aspiring Changemakers</p>
+            <p className="text-black font-semibold">Aspiring Changemakers</p>
             <p>
               {" "}
               Second Savour was founded by a group of friends at Simon Fraser
@@ -36,12 +36,13 @@ function page() {
             </p>
           </div>
           <div className="flex flex-col gap-[10px]">
-            <p className="text-my-gray">Aspiring Changemakers</p>
+            <p className="text-black font-semibold ">What we do</p>
             <p>
               {" "}
-              Second Savour was founded by a group of friends at Simon Fraser
-              University (SFU) with a mission to create and foster sustainable
-              environmental change
+              We aim to reduce supply chain waste by taking a unique approach,
+              promoting the use of the whole promote, leaving no waste. We do
+              not dare to dream about a better world, we dare to enact the
+              change.
             </p>
           </div>
         </div>
