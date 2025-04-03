@@ -189,12 +189,14 @@ function page() {
               Profile="/static/images/newNaia.png"
               Name="Naia Wong"
               Role="Director of Operations"
+              Linkedin="https://www.linkedin.com/in/naia-wong/"
             />
 
             <AboutProfile
               Profile="/static/images/newGailza.png"
               Name="Gailza Wijaya"
               Role="VP Sales"
+              Linkedin="https://www.linkedin.com/in/gailzaaridinawijaya/"
             />
 
             <AboutProfile
