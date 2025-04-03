@@ -203,65 +203,76 @@ function page() {
               Profile="/static/images/newDarren.png"
               Name="Darren Lau"
               Role="Director of Business Development"
+              Linkedin="https://www.linkedin.com/in/darrennlau/"
             />
 
             <AboutProfile
               Profile="/static/images/newArianna.png"
               Name="Arianna Ha"
               Role="VP Marketing"
+              Linkedin="https://www.linkedin.com/in/arianna-ha/"
             />
 
             <AboutProfile
               Profile="/static/images/newBrandon.png"
               Name="Brandon Sun "
               Role="Front End Developer"
+              Linkedin="https://www.linkedin.com/in/brandnsun/"
             />
 
             <AboutProfile
               Profile="/static/images/newVinay.png"
               Name="Vinay Aery"
               Role="Finance Coordinator"
+              Linkedin="https://www.linkedin.com/in/vinayaery/"
             />
             <AboutProfile
               Profile="/static/images/newMichael.png"
               Name="Michael Gudz"
               Role="Sales Coordinator"
+              Linkedin="https://www.linkedin.com/in/michaelgudz123/"
             />
 
             <AboutProfile
               Profile="/static/images/newJessica.png"
               Name="Jessica Tandibrata"
               Role="Events Coordinator"
+              Linkedin="https://www.linkedin.com/in/jessicatandibrata/"
             />
 
             <AboutProfile
               Profile="/static/images/newLucy.png"
               Name="Lucy Liu"
               Role="Operations Coordinator"
+              Linkedin="https://www.linkedin.com/in/lucyliuu/"
             />
 
             <AboutProfile
               Profile="/static/images/newFaith.png"
               Name="Faith Leung"
               Role="Marketing Coordinator"
+              Linkedin="https://www.linkedin.com/in/faith-leung-/"
             />
 
             <AboutProfile
               Profile="/static/images/newRebecca.png"
               Name="Rebecca Yeung"
               Role="Marketing Coordinator"
+              Linkedin="https://www.linkedin.com/in/rebecca-yeung-9bb11a316/"
             />
 
             <AboutProfile
               Profile="/static/images/newCaleb.png"
               Name="Caleb Wu"
               Role="Front End Developer"
+              Linkedin="https://www.linkedin.com/in/caleb-wu-/"
             />
 
             <AboutProfile
               Profile="/static/images/newRaymond.png"
               Name="Raymond Shen"
               Role="Backend Coordinator"
+              Linkedin="https://www.linkedin.com/in/rayleishen/"
             />
           </div>
         </div>
