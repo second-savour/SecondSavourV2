@@ -119,7 +119,7 @@ function page() {
               <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[20px] mb-[30px] lg:mt-[0px] pt-[20px] min-h-[15rem]">
                 <h2 className="text-[50px] text-white text-center">
                   {" "}
-                  MArketing
+                  Marketing
                 </h2>
                 <p className="text-white">
                   The storytellers of Second Savour, our Marketing team spreads
