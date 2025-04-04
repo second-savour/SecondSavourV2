@@ -104,11 +104,11 @@ function Navbar() {
           >
             <div className="flex flex-col justify-center">
               <Hyperlink
-                Text={"Second Savour"}
                 Link={"/"}
                 Color={"--color-black"}
                 HoverColor={"--purple"}
                 Display={"none"}
+                show={true}
               />
             </div>
 
@@ -258,7 +258,11 @@ function Navbar() {
               <p>${estTotal.toFixed(2)}</p>
             </div>
           </div>
-          <p className="-mt-[1rem]"> Currently, we only ship within Greater Vancouver Area. Thank you for your understanding!</p>
+          <p className="-mt-[1rem]">
+            {" "}
+            Currently, we only ship within Greater Vancouver Area. Thank you for
+            your understanding!
+          </p>
         </div>
 
         {/* ///////////////////////////////////////// */}

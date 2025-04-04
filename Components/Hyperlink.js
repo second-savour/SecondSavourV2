@@ -1,5 +1,7 @@
 import React from "react";
 import { MdArrowOutward } from "react-icons/md";
+import Image from "next/image";
+import Logo from "../public/static/images/Logo.png";
 
 function Hyperlink({
   Text,
@@ -10,6 +12,7 @@ function Hyperlink({
   Download,
   Target,
   onClick,
+  show,
 }) {
   return (
     <div
@@ -29,7 +32,21 @@ function Hyperlink({
             "--hover-color": `var(${HoverColor})`,
           }}
         >
-          {Text}
+          {show === true ? (
+            <Image
+              src={Logo}
+              alt="the Second Savour Team at our first social"
+              width={1080}
+              height={1080}
+              className="max-w-fit h-[1rem] object-cover"
+              priority
+            />
+          ) : (
+            <div className="hidden"></div>
+          )}
+
+          {show === true ? <div className="h-0 w-0"> </div> : Text}
+
           <div
             className="flex flex-col justify-center"
             style={{
