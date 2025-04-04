@@ -9,7 +9,7 @@ function page() {
       <section>
         <div className=" w-full flex flex-col items-center ">
           <h1> About Us </h1>
-          <p> Meet the team behind the dream.</p>
+          <p> Meet the team behind the dream</p>
         </div>
       </section>
 
@@ -36,7 +36,7 @@ function page() {
             </p>
           </div>
           <div className="flex flex-col gap-[10px]">
-            <p className="text-black font-semibold ">What we do</p>
+            <p className="text-black font-semibold ">What We Do</p>
             <p>
               {" "}
               We aim to reduce supply chain waste by taking a unique approach,
@@ -46,15 +46,20 @@ function page() {
             </p>
           </div>
         </div>
-        <button className="text-white px-[40px] max-w-fit bg-my-green">
-          Contact Us
-        </button>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform?usp=sharing"
+          target="_blank"
+        >
+          <button className="text-white px-[40px] max-w-fit bg-my-green">
+            Contact Us
+          </button>
+        </a>
       </section>
 
       <section className="flex flex-col gap-[60px] lg:mx-[120px] md:mx-[40px] mx-[20px]">
         <h1> About our departments </h1>
         <div className="flex flex-row gap-[30px] overflow-auto overscroll-auto">
-          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[90vw]">
+          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[80vw]">
             <Image
               src={"/static/images/newOperations.png"}
               alt="the Second Savour Team at our first social"
@@ -63,9 +68,12 @@ function page() {
               className=" w-full h-full  object-cover rounded-t-[20px]"
               priority
             />
-            <div className="w-full h-fit bg-my-green rounded-b-[20px]">
-              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[40px] mb-[40px]">
-                <h2 className="text-[50px] text-white"> Operations</h2>
+            <div className="w-full h-[20rem] bg-my-green rounded-b-[20px]">
+              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[20px] mb-[30px] lg:mt-[0px] pt-[20px] min-h-[15rem]">
+                <h2 className="text-[50px] text-center text-white">
+                  {" "}
+                  Operations
+                </h2>
                 <p className="text-white">
                   The backbone of Second Savour, our Operations team ensures
                   smooth production and logistics. From sourcing imperfect
@@ -76,7 +84,7 @@ function page() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[90vw]">
+          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[80vw]">
             <Image
               src={"/static/images/newSales.png"}
               alt="the Second Savour Team at our first social"
@@ -85,8 +93,8 @@ function page() {
               className=" w-full h-full object-cover rounded-t-[20px]"
               priority
             />
-            <div className="w-full h-fit bg-my-orange rounded-b-[20px]">
-              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[40px] mb-[40px]">
+            <div className="w-full h-[20rem] bg-my-orange rounded-b-[20px]">
+              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[20px] mb-[30px] lg:mt-[0px] pt-[20px] min-h-[15rem]">
                 <h2 className="text-[50px] text-white text-center"> Sales</h2>
                 <p className="text-white">
                   Our Sales team connects Second Savour with the community,
@@ -98,7 +106,7 @@ function page() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[90vw]">
+          <div className="flex flex-col justify-around lg:w-fit md:w-fit lg:min-w-[10vw] md:min-w-[10vw] min-w-[80vw]">
             <Image
               src={"/static/images/newMarketing.png"}
               alt="the Second Savour Team at our first social"
@@ -107,8 +115,8 @@ function page() {
               className=" w-full h-full object-cover rounded-t-[20px]"
               priority
             />
-            <div className="w-full h-fit bg-[#FFCA41] rounded-b-[20px]">
-              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[40px] mb-[40px]">
+            <div className="w-full h-[20rem] bg-[#FFCA41] rounded-b-[20px]">
+              <div className="flex flex-col lg:gap-[20px] gap-[40px] lg:m-[20px] m-[20px] mb-[30px] lg:mt-[0px] pt-[20px] min-h-[15rem]">
                 <h2 className="text-[50px] text-white text-center">
                   {" "}
                   MArketing
@@ -145,7 +153,7 @@ function page() {
               </h2>
               <p>
                 We create our products using eco-friendly resources, offering
-                sustainable food products. lg:{" "}
+                sustainable food products.
               </p>
             </div>
             <div className="flex flex-col lg:gap-[20px] gap-[10px]">
@@ -154,7 +162,7 @@ function page() {
               </h2>
               <p>
                 We aim to inspire and empower individuals to rethink food waste,
-                motivating them to be part of the solution. lg:{" "}
+                motivating them to be part of the solution.
               </p>
             </div>
             <div className="flex flex-col lg:gap-[20px] gap-[10px]">
@@ -216,7 +224,7 @@ function page() {
             <AboutProfile
               Profile="/static/images/newBrandon.png"
               Name="Brandon Sun "
-              Role="Front End Developer"
+              Role="Sales Lead"
               Linkedin="https://www.linkedin.com/in/brandnsun/"
             />
 
