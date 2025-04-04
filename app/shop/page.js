@@ -7,9 +7,9 @@ function page() {
     <>
       <div className="w-[100%] bg-[#FEF7E6] flex justify-center">
         <div className="flex flex-col gap-[3vh] lg:gap-[10vh] min-h-fit border-orange-400 border-5 text-center  w-[90%]">
-          <div className="sm:mt-[5vh]">
+          <div className="mt-[6vh] lg:mt-[0vh]">
             <h1> OUR PRODUCTS </h1>
-            <h3 className="mt-[1%]">
+            <h3 className="mt-[2%]">
               Second Savour crafts sustainable, delicious candy by upcycling
               fruits
             </h3>

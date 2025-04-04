@@ -6,9 +6,9 @@ function Page() {
   return (
     <div className="w-[100%] bg-[#FEF7E6] flex justify-center">
       <div className="flex flex-col gap-[3vh] lg:gap-[10vh] min-h-fit text-center w-[90%]">
-        <div className="m-w-lvw">
+        <div className="mt-[6vh] lg:mt-[0vh]">
           <h1> Where to Find Us </h1>
-          <h3 className="mt-[1%]"> Visit us in person </h3>
+          <h3 className="mt-[2%]"> Visit us in person </h3>
         </div>
 
         <div className="border-2 border-black w-[100%] h-auto flex flex-cols justify-center">
