@@ -99,7 +99,7 @@ function Page() {
           </div>
 
           <div className="bg-my-brown text-white flex lg:flex-col flex-row justify-around gap-[0.5rem] lg:gap-[2rem] px-[1rem] py-[1.5rem] lg:px-[2rem] font-bold lg:py-[3rem] rounded-[0.5rem] lg:rounded-[1rem] lg:w-[31%] text-center min-h-fit lg:min-h-fit">
-            <h2 className="whitespace-nowrap"> 213 KG </h2>
+            <h2 className="whitespace-nowrap"> 700 KG </h2>
             <p> Of waste diverted from landfills</p>
           </div>
 
