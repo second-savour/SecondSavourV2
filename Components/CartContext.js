@@ -21,6 +21,9 @@ export const CartProvider = ({ children }) => {
   const [img, setImg] = useState("");
   const [quantity, setQuantity] = useState();
 
+  //state to track if cart is open
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
   //alert system
   const [popup, setPopup] = useState(false);
   const [purchase, setPurchase] = useState(false);
@@ -178,6 +181,19 @@ export const CartProvider = ({ children }) => {
     }
   });
 
+  useEffect(() => {
+    if (isCartOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  
+    // Clean up on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isCartOpen]);  
+
   return (
     <CartContext.Provider
       value={{
@@ -198,6 +214,8 @@ export const CartProvider = ({ children }) => {
         img,
         quantity,
         handleKeyDown,
+        isCartOpen,
+        setIsCartOpen 
       }}
     >
       {children}
