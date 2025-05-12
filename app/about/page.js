@@ -208,8 +208,8 @@ function page() {
             />
 
             <AboutProfile
-              Profile="/static/images/newBrandon.png"
-              Name="Brandon Sun "
+              Profile="/static/images/BrandonNew.png" 
+              Name="Brandon Sun"
               Role="Head of Sales & Partnerships"
               Linkedin="https://www.linkedin.com/in/brandnsun/"
             />
