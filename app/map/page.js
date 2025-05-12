@@ -12,10 +12,9 @@ function Page() {
         </div>
 
         <div className="border-2 border-black w-[100%] h-auto flex flex-cols justify-center">
-          <iframe
-            className="w-[100%]"
-            src="https://www.google.com/maps/d/embed?mid=1avx0suLqYVZ5XO0ErTpqftE5P188U-c&ehbc=2E312F&noprof=1"
-            width="640"
+          <iframe 
+            src="https://www.google.com/maps/d/u/0/embed?mid=1PVmbdQjkaw-Qix5ZYnaL3oRBYvy1vzU&ehbc=2E312F&noprof=1" 
+            width="640" 
             height="480"
           ></iframe>
         </div>
