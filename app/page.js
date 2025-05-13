@@ -265,7 +265,7 @@ function Page() {
               </button>
 
               <div
-                className={`lg:w-[90%] max-h-[33vh] lg:overflow-hidden lg:overscroll-none overflow-x-auto overscroll-x-auto w-full`}
+                className={`lg:w-[90%] lg:overflow-hidden lg:overscroll-none overflow-x-auto overscroll-x-auto w-full`}
               >
                 <div
                   className={`flex flex-row justify-between gap-[1.4%] w-fit
