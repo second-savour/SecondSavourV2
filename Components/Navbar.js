@@ -94,14 +94,15 @@ function Navbar() {
               isOpen ? "bg-none" : "bg-[#fef7e6]"`}
           >
             <div className="flex flex-col justify-center">
-              <Hyperlink
-                Link={"/"}
-                Color={"--color-black"}
-                HoverColor={"--purple"}
-                Display={"none"}
-                show={true}
-              />
+                <a
+                    href="/"
+                    className="text-2xl lg:text-xl font-bold tracking-wide"
+                    style={{ color: "var(--color-black)" }}
+                >
+                    SECOND SAVOUR
+                </a>
             </div>
+
 
             <button
               className="lg:hidden lg:bg-transparent lg:w-0 w-fit bg-transparent group-hover:bg-transparent hover:bg-transparent active:bg-transparent"
