@@ -44,7 +44,7 @@ export async function POST(req) {
         //allowTipping: true,
         customFields: [
           {
-            title: "We only ship within GVA. Please type, 'I confirm'"
+            title: "Located within GVA?"
           },
         ],
         redirectUrl: "https://www.secondsavour.ca/checkoutConfirm", // Redirect URL after payment
