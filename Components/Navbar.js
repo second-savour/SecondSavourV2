@@ -6,7 +6,7 @@ import { useCart } from "../Components/CartContext";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import CheckoutComponent from "../Components/CheckoutComponent";
 import { FaCartShopping } from "react-icons/fa6";
-import Image from "next/image";
+import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
 
 function Navbar() {
@@ -17,11 +17,9 @@ function Navbar() {
     estTotal,
     setCart,
     popup,
-    setPopup,
     purchase,
     setPurchase,
     name,
-    img,
     quantity,
     isCartOpen,
     setIsCartOpen,
@@ -94,13 +92,13 @@ function Navbar() {
               isOpen ? "bg-none" : "bg-[#fef7e6]"`}
           >
             <div className="flex flex-col justify-center">
-                <a
+                <Link
                     href="/"
                     className="text-2xl lg:text-xl font-bold tracking-wide"
                     style={{ color: "var(--color-black)" }}
                 >
                     SECOND SAVOUR
-                </a>
+                </Link>
             </div>
 
 
