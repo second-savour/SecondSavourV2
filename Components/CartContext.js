@@ -179,7 +179,7 @@ export const CartProvider = ({ children }) => {
 
       return () => clearTimeout(timer);
     }
-  });
+  }, [purchase]);
 
   useEffect(() => {
     if (isCartOpen) {

@@ -269,7 +269,17 @@ function Navbar() {
       ></button>
 
       {/* Alerts */}
-      {/* ... your existing popup and purchase alerts unchanged ... */}
+      {popup && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-[#0D6A3D] text-white px-6 py-3 rounded-lg shadow-lg z-[200] animate-fade-in border-2 border-black">
+          <p className="font-semibold">Item added to cart!</p>
+        </div>
+      )}
+      
+      {purchase && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-[#0D6A3D] text-white px-6 py-3 rounded-lg shadow-lg z-[200] animate-fade-in border-2 border-black">
+          <p className="font-semibold">{quantity} {name} added to cart!</p>
+        </div>
+      )}
     </nav>
   );
 }
