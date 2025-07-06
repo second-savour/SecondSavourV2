@@ -1,5 +1,4 @@
 import { Client } from "square";
-import JSONBig from "json-bigint";
 
 BigInt.prototype.toJSON = function () {
   return this.toString();
@@ -8,6 +7,9 @@ BigInt.prototype.toJSON = function () {
 export async function POST(req) {
   try {
     const { name, amount } = await req.json();
+
+    // Amount already includes 12% GST from the frontend
+    const totalWithTax = amount;
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
@@ -20,7 +22,7 @@ export async function POST(req) {
       quickPay: {
         name,
         priceMoney: {
-          amount: Math.round(amount * 100), // Convert dollars to cents
+          amount: Math.round(totalWithTax * 100), // Convert dollars to cents (total already includes GST)
           currency: "CAD",
         },
         locationId: process.env.SQUARE_LOCATION_ID,
@@ -53,13 +55,6 @@ export async function POST(req) {
         acceptedPaymentMethods: {
           apple_pay: true,
           google_pay: true,
-        },
-        shippingFee: {
-          name: "Shipping",
-          charge: {
-            amount: JSONBig.parse(JSONBig.stringify(200)), // $2.00
-            currency: "CAD",
-          },
         },
         enableCoupon: true, // Moved inside checkoutOptions
       },

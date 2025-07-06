@@ -34,16 +34,15 @@ export const CartProvider = ({ children }) => {
   // Move calculateCartSummary before the useEffect that uses it
   const calculateCartSummary = useCallback(() => {
     let totalCost = 0;
-    let totalShipping = cart.length > 0 ? 2 : 0;
+    let totalShipping = 0; // Removed shipping costs
     let totalTax = 0;
 
     cart.forEach((item) => {
       totalCost += item.quantity * item.price;
     });
 
-    //add back 0.05% tax this line below
-    // totalTax = parseFloat((totalCost * 0.05).toFixed(2));
-    totalTax = parseFloat((totalCost * 0).toFixed(2));
+    // Calculate 12% GST (5% + 7% combined)
+    totalTax = parseFloat((totalCost * 0.12).toFixed(2));
     const totalEstTotal = parseFloat(
       (totalCost + totalShipping + totalTax).toFixed(2)
     );

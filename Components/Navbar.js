@@ -13,7 +13,7 @@ function Navbar() {
   const {
     cart,
     totalPrice,
-    shipping,
+    tax,
     estTotal,
     setCart,
     popup,
@@ -38,7 +38,7 @@ function Navbar() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: "Citrus Treats",
-          amount: totalPrice,
+          amount: estTotal, // Send total with tax included
         }),
       });
 
@@ -230,18 +230,20 @@ function Navbar() {
               price ? "h-0" : "h-[15vh]"
             }`}
           >
-            <div className="flex flex-row justify-between">
-              <h3>Shipping</h3>
-              <p>${shipping.toFixed(2)}</p>
+            <div className="flex flex-col gap-1">
+              <div className="flex flex-row justify-between">
+                <h3>Tax (12%)</h3>
+                <p>${tax.toFixed(2)}</p>
+              </div>
+              <p className="text-xs text-gray-500 ml-1">(includes 5% GST + 7% PST)</p>
             </div>
             <div className="flex flex-row justify-between">
-              <h3>Estimated Total</h3>
+              <h3>Total</h3>
               <p>${estTotal.toFixed(2)}</p>
             </div>
           </div>
           <p className="-mt-[1rem]">
-            Currently, we only ship within Greater Vancouver Area. Thank you for
-            your understanding!
+            Free shipping within Greater Vancouver Area!
           </p>
         </div>
 
@@ -252,7 +254,7 @@ function Navbar() {
           }}
           disabled={loading}
         >
-          {loading ? <p>Loading...</p> : <p>Proceed to checkout</p>}
+          {loading ? <p>Loading...</p> : <p>Proceed to checkout - ${estTotal.toFixed(2)}</p>}
         </button>
       </div>
 
