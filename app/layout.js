@@ -40,7 +40,6 @@ export default function RootLayout({ children }) {
           {children}
           <Footer></Footer>
           <Analytics />
-          <ChatWidgetScript />
         </CartProvider>
       </body>
     </html>
