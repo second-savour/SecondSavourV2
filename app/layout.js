@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ChatWidgetScript from "../Components/ChatWidgetScript";
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
