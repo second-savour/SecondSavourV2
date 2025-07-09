@@ -122,12 +122,8 @@ export const CartProvider = ({ children }) => {
         };
         newCart = [...cart, newItem];
       }
-      setPurchase(true);
-      setPopup(false);
       setQuantity(numNewQuantity);
-
-      // setPurchase(false);
-      // setPopup(true);
+      setIsCartOpen(true); // Open cart drawer automatically
     }
 
     // Update state
