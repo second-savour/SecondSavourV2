@@ -41,8 +41,8 @@ export const CartProvider = ({ children }) => {
       totalCost += item.quantity * item.price;
     });
 
-    // Calculate 12% GST (5% + 7% combined)
-    totalTax = parseFloat((totalCost * 0.12).toFixed(2));
+    // Calculate 5% GST only (PST removed)
+    totalTax = parseFloat((totalCost * 0.05).toFixed(2));
     const totalEstTotal = parseFloat(
       (totalCost + totalShipping + totalTax).toFixed(2)
     );
@@ -73,10 +73,9 @@ export const CartProvider = ({ children }) => {
   // useEffect(() => {
   //   console.log("Cart updated:", cart);
   //   console.log("Total price:", totalPrice);
-  //   console.log("Tax:", tax);
   //   console.log("Shipping:", shipping);
   //   console.log("Estimated Total:", estTotal);
-  // }, [cart, totalPrice, tax, shipping, estTotal]);
+  // }, [cart, totalPrice, shipping, estTotal]);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {

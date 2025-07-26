@@ -8,7 +8,7 @@ export async function POST(req) {
   try {
     const { name, amount } = await req.json();
 
-    // Amount already includes 12% GST from the frontend
+    // Amount includes 5% GST from the frontend
     const totalWithTax = amount;
 
     const client = new Client({
@@ -22,7 +22,7 @@ export async function POST(req) {
       quickPay: {
         name,
         priceMoney: {
-          amount: Math.round(totalWithTax * 100), // Convert dollars to cents (total already includes GST)
+          amount: Math.round(totalWithTax * 100), // Convert dollars to cents (total includes GST)
           currency: "CAD",
         },
         locationId: process.env.SQUARE_LOCATION_ID,
