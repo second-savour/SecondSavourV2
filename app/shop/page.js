@@ -8,8 +8,8 @@ export default function ShopPage() {
     <>
       <main className="bg-[#FEF7E6] px-4 lg:px-20 pb-16 space-y-16">
         {/* OUR PRODUCT */}
-        <section className="text-center pt-16">
-          <h1 className="text-3xl lg:text-4xl font-bold">OUR PRODUCT</h1>
+        <section className="text-center mt-[12vh] lg:mt-[6vh]">
+          <h1>OUR PRODUCT</h1>
           <p className="mt-3 text-base lg:text-lg text-gray-800">
             Second Savour crafts sustainable, delicious candy by upcycling fruits
           </p>
