@@ -8,7 +8,9 @@ function Page() {
       <div className="flex flex-col gap-[3vh] lg:gap-[10vh] min-h-fit text-center w-[90%]">
         <div className="mt-[6vh] lg:mt-[0vh]">
           <h1> Where to Find Us </h1>
-          <h3 className="mt-[2%]"> Visit us in person </h3>
+          <p className="mt-[2%] text-gray-800 max-w-[600px] mx-auto">
+            Craving our sweet treats? Use the map below to discover stores carrying Second Savour products. Availability may vary by location.
+          </p>
         </div>
 
         <div className="border-2 border-black w-[100%] h-auto flex flex-cols justify-center">
