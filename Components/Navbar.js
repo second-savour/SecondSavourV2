@@ -16,10 +16,14 @@ function Navbar() {
     tax,
     estTotal,
     setCart,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     popup,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     purchase,
     setPurchase,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     name,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     quantity,
     isCartOpen,
     setIsCartOpen,

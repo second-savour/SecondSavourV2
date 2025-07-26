@@ -2,13 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import { NextSeo } from "next-seo";
 
 export default function ShopPage() {
   return (
     <>
-      <NextSeo title="Our Product – Second Savour" />
-
       <main className="bg-[#FEF7E6] px-4 lg:px-20 pb-16 space-y-16">
         {/* OUR PRODUCT */}
         <section className="text-center pt-16">
