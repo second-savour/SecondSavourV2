@@ -38,7 +38,7 @@ function Navbar() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: "Citrus Treats",
-          amount: estTotal, // Send total with tax included
+          amount: estTotal, // Send total with GST included
         }),
       });
 
@@ -225,17 +225,16 @@ function Navbar() {
             </div>
             <p>${totalPrice.toFixed(2)}</p>
           </div>
-          <div
+                      <div
             className={`flex flex-col gap-[1rem] overflow-hidden ease-in-out duration-300 transition-all ${
               price ? "h-0" : "h-[15vh]"
             }`}
           >
             <div className="flex flex-col gap-1">
               <div className="flex flex-row justify-between">
-                <h3>Tax (12%)</h3>
+                <h3>Tax (5% GST)</h3>
                 <p>${tax.toFixed(2)}</p>
               </div>
-              <p className="text-xs text-gray-500 ml-1">(includes 5% GST + 7% PST)</p>
             </div>
             <div className="flex flex-row justify-between">
               <h3>Total</h3>
