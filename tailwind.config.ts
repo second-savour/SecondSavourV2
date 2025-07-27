@@ -14,6 +14,12 @@ export default {
         "my-green": "#015A2E",
         "my-orange": "#FF780D",
         "my-brown": "#3B1D1D",
+        "my-red": "#F35255",
+        "my-yellow": "#FFD700",
+        "ssorange": "#FF780D",
+        "ssyellow": "#FFD700",
+        "ssgreen": "#015A2E",
+        "ssred": "#F35255",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
