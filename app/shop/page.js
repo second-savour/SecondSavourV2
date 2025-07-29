@@ -135,24 +135,7 @@ export default function ShopPage() {
           </div>
         </section>
 
-        {/* HOW OUR PRODUCT IS MADE */}
-        <section className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
-          <div className="lg:w-1/2 text-black space-y-3">
-            <h2 className="text-2xl lg:text-3xl font-bold">HOW OUR PRODUCT IS MADE</h2>
-            <p className="text-gray-700">
-              From rescued fruit to delicious treats, every step is sustainable.
-            </p>
-          </div>
-          <div className="lg:w-1/2 flex justify-center">
-            <Image
-              src="/static/images/HowProductMade.png"
-              alt="Production process illustration"
-              width={350}
-              height={250}
-              className="object-contain"
-            />
-          </div>
-        </section>
+
 
 
       </main>
