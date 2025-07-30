@@ -23,8 +23,8 @@ export default function ShopPage() {
               <Image
                 src="/static/images/Stand-Up Pouch Bag Mockup label.png"
                 alt="Citrus Treats"
-                width={200}
-                height={200}
+                width={210}
+                height={210}
                 className="object-contain"
               />
             </div>
@@ -46,10 +46,10 @@ export default function ShopPage() {
           <div className="border-4 border-my-yellow rounded-xl overflow-hidden flex flex-col">
             <div className="bg-my-yellow flex justify-center items-center p-6">
               <Image
-                src="/static/images/Stand-Up Pouch Bag Mockup label.png"
+                src="/static/images/yellowpouch.png"
                 alt="Citrus Treats Lemon"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 className="object-contain blur-sm"
               />
             </div>
@@ -71,10 +71,10 @@ export default function ShopPage() {
           <div className="border-4 border-my-green rounded-xl overflow-hidden flex flex-col">
             <div className="bg-my-green flex justify-center items-center p-6">
               <Image
-                src="/static/images/Stand-Up Pouch Bag Mockup label.png"
+                src="/static/images/greenpouch.png"
                 alt="Citrus Treats Lime"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 className="object-contain blur-sm"
               />
             </div>
@@ -96,10 +96,10 @@ export default function ShopPage() {
           <div className="border-4 border-my-red rounded-xl overflow-hidden flex flex-col">
             <div className="bg-my-red flex justify-center items-center p-6">
               <Image
-                src="/static/images/Stand-Up Pouch Bag Mockup label.png"
+                src="/static/images/redpouch.png"
                 alt="Citrus Treats Grapefruit"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
                 className="object-contain blur-sm"
               />
             </div>
