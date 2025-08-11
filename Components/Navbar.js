@@ -14,6 +14,7 @@ function Navbar() {
     cart,
     totalPrice,
     tax,
+    shipping,
     estTotal,
     setCart,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -27,6 +28,8 @@ function Navbar() {
     quantity,
     isCartOpen,
     setIsCartOpen,
+    shippingLocation,
+    setShippingLocation,
   } = useCart();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +45,7 @@ function Navbar() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: "Citrus Treats",
-          amount: estTotal, // Send total with GST included
+          amount: estTotal, // Send total with GST and shipping included
         }),
       });
 
@@ -213,9 +216,50 @@ function Navbar() {
         )}
 
         <div className="flex flex-col gap-[1rem]">
+          {/* Shipping Location Selector */}
+          <div className="border-t-2 border-gray-200 pt-4 bg-gray-50 p-4 rounded-lg">
+            <h3 className="mb-3 font-semibold text-gray-800">Shipping Location</h3>
+            <div className="flex flex-col gap-3">
+              <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg hover:bg-white transition-colors border border-gray-200 hover:border-my-green">
+                <input
+                  type="radio"
+                  name="shippingLocation"
+                  value="lowerMainland"
+                  checked={shippingLocation === "lowerMainland"}
+                  onChange={(e) => setShippingLocation(e.target.value)}
+                  className="w-4 h-4 text-my-green focus:ring-my-green"
+                />
+                <span className="text-sm font-medium">Located in the Lower Mainland</span>
+              </label>
+              <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg hover:bg-white transition-colors border border-gray-200 hover:border-my-green">
+                <input
+                  type="radio"
+                  name="shippingLocation"
+                  value="outside"
+                  checked={shippingLocation === "outside"}
+                  onChange={(e) => setShippingLocation(e.target.value)}
+                  className="w-4 h-4 text-my-green focus:ring-my-green"
+                />
+                <span className="text-sm font-medium">Located outside the Lower Mainland</span>
+              </label>
+            </div>
+            {shippingLocation === "outside" && (
+              <div className="mt-3 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-xs text-blue-800">
+                  💡 Shipping fee of $10.00 will be added to your total
+                </p>
+              </div>
+            )}
+          </div>
+
           <div className="flex flex-row justify-between">
-            <div className="flex flex-row">
+            <div className="flex flex-row items-center gap-2">
               <h3>Subtotal</h3>
+              {shipping > 0 && (
+                <span className="text-xs text-gray-500 bg-yellow-100 px-2 py-1 rounded-full">
+                  + Shipping
+                </span>
+              )}
               <button
                 onClick={() => toggle(setPrice, price)}
                 className="w-fit p-[0.2rem] bg-transparent h-fit shadow-none hover:bg-transparent hover:text-black"
@@ -231,7 +275,7 @@ function Navbar() {
           </div>
                       <div
             className={`flex flex-col gap-[1rem] overflow-hidden ease-in-out duration-300 transition-all ${
-              price ? "h-0" : "h-[15vh]"
+              price ? "h-0" : "h-[25vh]"
             }`}
           >
             <div className="flex flex-col gap-1">
@@ -239,14 +283,41 @@ function Navbar() {
                 <h3>Tax (5% GST)</h3>
                 <p>${tax.toFixed(2)}</p>
               </div>
+              <div className="flex flex-row justify-between">
+                <h3>Shipping</h3>
+                <div className="flex items-center gap-2">
+                  {shipping > 0 && (
+                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                      +$10.00
+                    </span>
+                  )}
+                  <p className={shipping > 0 ? "text-my-green font-semibold" : ""}>
+                    {shipping > 0 ? `$${shipping.toFixed(2)}` : "Free"}
+                  </p>
+                </div>
+              </div>
+              <div className="border-t border-gray-200 pt-2 mt-2">
+                <div className="flex flex-row justify-between font-semibold">
+                  <h3>Subtotal (with tax)</h3>
+                  <p>${(totalPrice + tax).toFixed(2)}</p>
+                </div>
+              </div>
             </div>
             <div className="flex flex-row justify-between">
               <h3>Total</h3>
-              <p>${estTotal.toFixed(2)}</p>
+              <div className="flex flex-col items-end">
+                <p className="text-lg font-bold">${estTotal.toFixed(2)}</p>
+                {shipping > 0 && (
+                  <p className="text-xs text-gray-500">includes $10.00 shipping</p>
+                )}
+              </div>
             </div>
           </div>
           <p className="-mt-[1rem]">
-            Free shipping within Greater Vancouver Area!
+            {shippingLocation === "lowerMainland" 
+              ? "Free shipping within Greater Vancouver Area!" 
+              : "Shipping fee applies for locations outside Lower Mainland"
+            }
           </p>
         </div>
 

@@ -20,6 +20,7 @@ export const CartProvider = ({ children }) => {
   const [estTotal, setEstTotal] = useState(0);
   const [img, setImg] = useState("");
   const [quantity, setQuantity] = useState();
+  const [shippingLocation, setShippingLocation] = useState("lowerMainland"); // "lowerMainland" or "outside"
 
   //state to track if cart is open
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -34,12 +35,19 @@ export const CartProvider = ({ children }) => {
   // Move calculateCartSummary before the useEffect that uses it
   const calculateCartSummary = useCallback(() => {
     let totalCost = 0;
-    let totalShipping = 0; // Removed shipping costs
+    let totalShipping = 0;
     let totalTax = 0;
 
     cart.forEach((item) => {
       totalCost += item.quantity * item.price;
     });
+
+    // Calculate shipping based on location
+    if (shippingLocation === "outside") {
+      totalShipping = 10.00; // $10 shipping fee for outside Lower Mainland
+    } else {
+      totalShipping = 0.00; // Free shipping within Lower Mainland
+    }
 
     // Calculate 5% GST only (PST removed)
     totalTax = parseFloat((totalCost * 0.05).toFixed(2));
@@ -51,20 +59,29 @@ export const CartProvider = ({ children }) => {
     setTax(totalTax);
     setShipping(totalShipping);
     setEstTotal(totalEstTotal);
-  }, [cart]);
+  }, [cart, shippingLocation]);
 
   // Load cart from localStorage on initial render
   useEffect(() => {
     console.log("Preparing to load save");
     const savedCart = localStorage.getItem("savedCart");
-    if (initalLoad.current && savedCart) {
-      try {
-        const parsedCart = JSON.parse(savedCart);
-        setCart(parsedCart);
-        console.log("Saved Cart Found:", savedCart);
-      } catch (error) {
-        console.error("Failed to parse savedCart:", error);
+    const savedShippingLocation = localStorage.getItem("savedShippingLocation");
+    
+    if (initalLoad.current) {
+      if (savedCart) {
+        try {
+          const parsedCart = JSON.parse(savedCart);
+          setCart(parsedCart);
+          console.log("Saved Cart Found:", savedCart);
+        } catch (error) {
+          console.error("Failed to parse savedCart:", error);
+        }
       }
+      
+      if (savedShippingLocation) {
+        setShippingLocation(savedShippingLocation);
+      }
+      
       initalLoad.current = false;
     }
   }, []);
@@ -82,6 +99,11 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("savedCart", JSON.stringify(cart));
     calculateCartSummary();
   }, [cart, calculateCartSummary]);
+
+  // Save shipping location to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("savedShippingLocation", shippingLocation);
+  }, [shippingLocation]);
 
   const removeItem = (name) => {
     if (cart) {
@@ -209,7 +231,9 @@ export const CartProvider = ({ children }) => {
         quantity,
         handleKeyDown,
         isCartOpen,
-        setIsCartOpen 
+        setIsCartOpen,
+        shippingLocation,
+        setShippingLocation
       }}
     >
       {children}
