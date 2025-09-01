@@ -1,3 +1,4 @@
+
 ## Welcome to Second Savour
 
 Reading this will give you a basic introduction and a quick way to get started.
@@ -69,5 +70,6 @@ npm run build
 Open http://localhost:3000
 
 ## 2.0 Contact
-[Kurtis Lin](https://www.linkedin.com/in/kurtis-lin-516107306/)
+[Daniel Zhou](https://github.com/manggo-cd)
+[Kurtis Lin](https://github.com/Kurtis24)
 
