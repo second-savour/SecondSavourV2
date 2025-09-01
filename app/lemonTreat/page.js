@@ -25,7 +25,7 @@ function Page() {
       </p>
       <h3 className="text-gray-600 mt-[2%] mb-[2%]">Ingredients</h3>
       <p>
-        Our recipe consists of only THREE ingredients: Orange Peels, Sugar, and
+        Our recipe consists of only THREE ingredients: Lemon Peels, Sugar, and
         Citric Acid.
       </p>
     </div>
@@ -57,8 +57,8 @@ function Page() {
             <h1 className=""> Lemon Treats </h1>
             <h3 className="text-gray-600"> $7.99 Per Package </h3>
             <p>
-              Nutritious, vitamin-filled, citrus delicacies hand-made from
-              repurposed juiced oranges. Made to enjoy in class, on a drive,
+              Nutritious, vitamin-filled, lemon delicacies hand-made from
+              repurposed juiced lemons. Made to enjoy in class, on a drive,
               during study sessions, basically anywhere!
             </p>
           </div>
