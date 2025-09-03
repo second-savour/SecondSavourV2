@@ -197,8 +197,18 @@ export const CartProvider = ({ children }) => {
     }
   }, [purchase]);
 
-    // Note: Removed direct body style manipulation to prevent hydration errors
-  // Consider using CSS classes or a different approach for body overflow control  
+  useEffect(() => {
+    if (isCartOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  
+    // Clean up on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isCartOpen]);  
 
   return (
     <CartContext.Provider
