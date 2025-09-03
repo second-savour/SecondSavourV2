@@ -48,22 +48,22 @@ export default function ShopPage() {
               <Image
                 src="/static/images/yellowpouch.png"
                 alt="Citrus Treats Lemon"
-                width={250}
-                height={250}
-                className="object-contain blur-sm"
+                width={238}
+                height={240}
+                className="object-contain"
               />
             </div>
             <div className="bg-white p-4 flex-1 flex flex-col justify-between">
               <div>
-                <h2 className="text-lg font-semibold">Citrus Treats</h2>
-                <p className="text-gray-600 mt-1">L****</p>
+                <h2 className="text-lg font-semibold">Lemon Treats</h2>
+                <p className="text-gray-600 mt-1">Lemon</p>
               </div>
-              <button
-                disabled
-                className="mt-4 inline-block bg-my-green text-white text-center py-2 rounded-lg font-semibold opacity-60 cursor-not-allowed text-sm"
+              <a
+                href="/lemonTreat"
+                className="mt-4 inline-block bg-my-green text-white text-center py-2 rounded-lg font-semibold cursor-pointer text-sm"
               >
-                Coming Soon!
-              </button>
+                View Product
+              </a>
             </div>
           </div>
 
