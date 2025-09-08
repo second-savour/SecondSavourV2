@@ -44,8 +44,11 @@ function Navbar() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: "Citrus Treats",
-          amount: estTotal, // Send total with GST and shipping included
+          cartItems: cart, // Send individual cart items
+          subtotal: totalPrice, // Subtotal before tax and shipping
+          tax: tax, // Tax amount
+          shipping: shipping, // Shipping amount
+          total: estTotal, // Final total
         }),
       });
 
@@ -298,8 +301,8 @@ function Navbar() {
               </div>
               <div className="border-t border-gray-200 pt-2 mt-2">
                 <div className="flex flex-row justify-between font-semibold">
-                  <h3>Subtotal (with tax)</h3>
-                  <p>${(totalPrice + tax).toFixed(2)}</p>
+                  <h3>Subtotal (with tax & shipping)</h3>
+                  <p>${(totalPrice + tax + shipping).toFixed(2)}</p>
                 </div>
               </div>
             </div>
