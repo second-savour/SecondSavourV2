@@ -30,7 +30,7 @@ export default function ShopPage() {
             </div>
             <div className="bg-white p-4 flex-1 flex flex-col justify-between">
               <div>
-                <h2 className="text-lg font-semibold">Citrus Treats</h2>
+                <h2 className="text-lg font-semibold">Orange Treats</h2>
                 <p className="text-gray-600 mt-1">Orange</p>
               </div>
               <a
