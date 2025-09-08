@@ -68,11 +68,11 @@ function Page() {
               onClick={() =>
                 quantity > 0
                   ? updateCart(
-                      "Citrus Treats",
+                      "Orange Citrus Treats",
                       1,
                       quantity,
                       "/static/images/Stand-Up Pouch Bag Mockup label.png",
-                      "A bag of citrus treats, filled with tangy, refreshing fruit snacks",
+                      "A bag of orange citrus treats, filled with tangy, refreshing fruit snacks",
                       "ID",
                       7.99,
                       7.99

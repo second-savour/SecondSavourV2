@@ -6,10 +6,7 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { name, amount } = await req.json();
-
-    // Amount includes 5% GST from the frontend
-    const totalWithTax = amount;
+    const { cartItems, subtotal, tax, shipping, total } = await req.json();
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
@@ -17,38 +14,42 @@ export async function POST(req) {
       // environment: "sandbox",
     });
 
-    const response = await client.checkoutApi.createPaymentLink({
-      idempotencyKey: crypto.randomUUID(), // Ensure idempotency
-      quickPay: {
-        name,
-        priceMoney: {
-          amount: Math.round(totalWithTax * 100), // Convert dollars to cents (total includes GST)
+    // Create line items from cart
+    const lineItems = cartItems.map(item => ({
+      name: item.name,
+      quantity: item.quantity.toString(),
+      basePriceMoney: {
+        amount: Math.round(item.price * 100), // Convert to cents
+        currency: "CAD",
+      },
+    }));
+
+    // Add shipping as a line item if applicable
+    if (shipping > 0) {
+      lineItems.push({
+        name: "Shipping",
+        quantity: "1",
+        basePriceMoney: {
+          amount: Math.round(shipping * 100),
           currency: "CAD",
         },
+      });
+    }
+
+    const response = await client.checkoutApi.createPaymentLink({
+      idempotencyKey: crypto.randomUUID(), // Ensure idempotency
+      order: {
         locationId: process.env.SQUARE_LOCATION_ID,
-      },
-      // order: {
-      //   locationId: process.env.SQUARE_LOCATION_ID,
-      //   taxes: [
-      //       {
-      //           name: 'Sales Tax',
-      //           percentage: '5',
-      //       },
-      //   ],
-      //   discounts: [
-      //       {
-      //           name: '10% off',
-      //           percentage: '10',
-      //       },
-      //   ],
-      // },
-      checkoutOptions: {
-        //allowTipping: true,
-        customFields: [
+        lineItems: lineItems,
+        taxes: [
           {
-            title: "Located within GVA?"
+            name: 'GST (5%)',
+            percentage: '5',
           },
         ],
+      },
+      checkoutOptions: {
+        //allowTipping: true,
         redirectUrl: "https://www.secondsavour.ca/checkoutConfirm", // Redirect URL after payment
         merchantSupportEmail: "sales@secondsavour.ca",
         askForShippingAddress: true,

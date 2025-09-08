@@ -110,19 +110,19 @@ function ItemCheckout({
             </button>
             <div className="flex flex-row justify-between w-full h-fit">
               <button
-                onClick={() => updateCartQuantity("Citrus Treats", 10)}
+                onClick={() => updateCartQuantity(name, 10)}
                 className=" w-fit px-[1rem] p-[0.5rem] bg-my-green text-white rounded-[0.25rem]"
               >
                 x10
               </button>
               <button
-                onClick={() => updateCartQuantity("Citrus Treats", 20)}
+                onClick={() => updateCartQuantity(name, 20)}
                 className=" w-fit px-[1rem] p-[0.5rem] bg-my-green text-white rounded-[0.25rem]"
               >
                 x20
               </button>
               <button
-                onClick={() => updateCartQuantity("Citrus Treats", 50)}
+                onClick={() => updateCartQuantity(name, 50)}
                 className=" w-fit px-[1rem] p-[0.5rem] bg-my-green text-white rounded-[0.25rem]"
               >
                 x100
