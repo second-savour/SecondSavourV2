@@ -65,11 +65,12 @@ Reading this will give you a basic introduction and a quick way to get started.
 ## 1.0 How to Run
 ```sh
 npm i
-npm run build
+npm run dev
 ```
 Open http://localhost:3000
 
 ## 2.0 Contact
 [Daniel Zhou](https://github.com/manggo-cd)
 [Kurtis Lin](https://github.com/Kurtis24)
+
 
