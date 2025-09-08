@@ -71,7 +71,14 @@ export const CartProvider = ({ children }) => {
       if (savedCart) {
         try {
           const parsedCart = JSON.parse(savedCart);
-          setCart(parsedCart);
+          // Migrate old product names to new names
+          const migratedCart = parsedCart.map(item => {
+            if (item.name === "Citrus Treats" || item.name === "Orange Citrus Treats") {
+              return { ...item, name: "Orange Treats" };
+            }
+            return item;
+          });
+          setCart(migratedCart);
           console.log("Saved Cart Found:", savedCart);
         } catch (error) {
           console.error("Failed to parse savedCart:", error);

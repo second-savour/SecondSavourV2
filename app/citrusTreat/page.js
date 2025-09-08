@@ -54,7 +54,7 @@ function Page() {
 
         <div className=" bg-[#E7D9BF] rounded-[1rem] p-[2rem] md:p-[3rem] lg:p-[3rem] flex flex-col md:min-w-[60%] lg:min-w-[60%] shadow-lg">
           <div className="h-full flex flex-col gap-[1rem] py-[0.5rem]">
-            <h1 className=""> Citrus Treats </h1>
+            <h1 className=""> Orange Treats </h1>
             <h3 className="text-gray-600"> $7.99 Per Package </h3>
             <p>
               Nutritious, vitamin-filled, citrus delicacies hand-made from
@@ -68,7 +68,7 @@ function Page() {
               onClick={() =>
                 quantity > 0
                   ? updateCart(
-                      "Orange Citrus Treats",
+                      "Orange Treats",
                       1,
                       quantity,
                       "/static/images/Stand-Up Pouch Bag Mockup label.png",

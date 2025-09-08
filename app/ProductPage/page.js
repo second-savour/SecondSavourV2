@@ -10,7 +10,7 @@ export default function Page() {
   // This now always adds 1 item to cart—no quantity input
   const handleAddToCart = () => {
     updateCart(
-      "Orange Citrus Treats",
+      "Orange Treats",
       1,
       1, // always add 1
       "/static/images/Stand-Up Pouch Bag Mockup label.png",
