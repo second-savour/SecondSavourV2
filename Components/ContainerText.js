@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function ContainerText({
   Header,
@@ -21,11 +22,11 @@ function ContainerText({
             <h1 className="">{Header}</h1>
             <h2 className="">{Subheader}</h2>
             <p>{Text}</p>
-            <a className="w-fit" href={clickTo}>
+            <Link href={clickTo} className="w-fit">
               <button className="lg:w-fit text-my-green bg-my-beige w-full p-[1em] px-[2em] rounded-full mt-[2rem]">
                 <p className="font-bold">{ButtonText}</p>
               </button>
-            </a>
+            </Link>
           </div>
         </div>
         <Image

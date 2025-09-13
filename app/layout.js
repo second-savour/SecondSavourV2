@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { CartProvider } from "../Components/CartContext";
+import TransitionProvider from "../Components/TransitionProvider";
+import RouteLoadingWrapper from "../Components/RouteLoadingWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +38,16 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
       >
         <CartProvider>
-          <Navbar></Navbar>
-          {children}
-          <Footer></Footer>
-          <Analytics />
+          <TransitionProvider>
+            <RouteLoadingWrapper>
+              <Navbar></Navbar>
+              <div className="page-transition">
+                {children}
+              </div>
+              <Footer></Footer>
+              <Analytics />
+            </RouteLoadingWrapper>
+          </TransitionProvider>
         </CartProvider>
       </body>
     </html>
