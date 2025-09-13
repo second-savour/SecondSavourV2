@@ -19,7 +19,6 @@ export default function RouteLoadingWrapper({ children }) {
       return;
     }
 
-    // Only trigger if pathname actually changed
     if (pathname === previousPathnameRef.current) {
       return;
     }
@@ -27,30 +26,26 @@ export default function RouteLoadingWrapper({ children }) {
     console.log(`Route changed from ${previousPathnameRef.current} to ${pathname}`);
     previousPathnameRef.current = pathname;
 
-    // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
 
-    // Start loading immediately
     startLoading("Loading page...");
     
-    // Stop loading after exactly 1 second
     timeoutRef.current = setTimeout(() => {
       console.log("Stopping loading after 1 second");
       stopLoading();
       timeoutRef.current = null;
     }, 1000);
 
-    // Cleanup function
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
       }
     };
-  }, [pathname]); // Only depend on pathname, not the functions
+  }, [pathname]);
 
   return children;
 }

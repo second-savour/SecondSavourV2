@@ -231,7 +231,6 @@ button p {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Loading dot animations */
 @keyframes dotBounce {
   0%, 80%, 100% {
     transform: translateY(0);
@@ -261,7 +260,6 @@ button p {
   }
 }
 
-/* Custom dot animation classes */
 .dot-bounce {
   animation: dotBounce 1.4s infinite ease-in-out !important;
   animation-fill-mode: both !important;
@@ -274,7 +272,6 @@ button p {
   backface-visibility: hidden !important;
 }
 
-/* Ensure animations work on all elements */
 .dot-bounce, .dot-pulse {
   will-change: transform, opacity !important;
   transform-origin: center !important;
@@ -284,7 +281,6 @@ button p {
   animation: spin 1s linear infinite;
 }
 
-/* Smooth page transition */
 @keyframes fadeInUp {
   from {
     opacity: 0;

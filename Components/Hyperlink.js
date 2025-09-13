@@ -43,7 +43,7 @@ function Hyperlink({
       <div
         className="flex flex-col justify-center"
         style={{
-          display: Display, // Referenced from stack overflow, https://stackoverflow.com/questions/52005083/how-to-define-css-variables-in-style-attribute-in-react-and-typescript
+          display: Display,
         }}
       >
         <MdArrowOutward />
