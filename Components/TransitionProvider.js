@@ -1,8 +1,5 @@
 "use client";
-
 import React, { createContext, useContext, useState } from "react";
-
-// Create context for loading state
 const TransitionContext = createContext();
 
 export const useTransition = () => {

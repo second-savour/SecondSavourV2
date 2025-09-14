@@ -23,7 +23,6 @@ export default function RouteLoadingWrapper({ children }) {
       return;
     }
 
-    console.log(`Route changed from ${previousPathnameRef.current} to ${pathname}`);
     previousPathnameRef.current = pathname;
 
     if (timeoutRef.current) {
@@ -34,7 +33,6 @@ export default function RouteLoadingWrapper({ children }) {
     startLoading("Loading page...");
     
     timeoutRef.current = setTimeout(() => {
-      console.log("Stopping loading after 1 second");
       stopLoading();
       timeoutRef.current = null;
     }, 1000);
