@@ -37,7 +37,9 @@ export default function RootLayout({ children }) {
       >
         <CartProvider>
           <Navbar></Navbar>
-          {children}
+          <div className="page-transition">
+            {children}
+          </div>
           <Footer></Footer>
           <Analytics />
         </CartProvider>

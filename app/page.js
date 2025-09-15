@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ContainerText from "../Components/ContainerText.js";
 import ReviewCard from "../Components/ReviewCard.js";
 import { NextSeo } from "next-seo";
@@ -64,11 +65,11 @@ function Page() {
               <p>A student-led company that aims to combat food waste</p>
             </div>
             <div className="w-full">
-              <a className="w-fit" href="/shop">
+              <Link href="/shop" className="w-fit">
                 <button className="p-[1rem] bg-my-green text-white w-fit px-[2rem] font-bold">
                   <p className="font-bold">Purchase Now</p>
-                </button>{" "}
-              </a>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -120,11 +121,11 @@ function Page() {
                 eco-friendly products and support a sustainable mission. Check
                 out where well be next!
               </p>
-              <a className="w-fit" href="/map">
+              <Link href="/map" className="w-fit">
                 <button className="lg:w-fit w-full bg-my-green text-my-white mx-auto px-[2rem] font-bold p-[1rem]">
                   <p className="font-bold">View Locations</p>
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
           <div className=" lg:max-w-[50%] overflow-hidden flex flex-row gap-[1rem] flex-wrap justify-center items-center">
@@ -182,11 +183,11 @@ function Page() {
               initiatives to engage people outside of our communities. Join us
               in making a positive impact on our planet!
             </p>
-            <a className='w-fit' href="/shop">
+            <Link href="/shop" className='w-fit'>
               <button className="lg:w-fit lg:mx-none bg-my-green text-[#e7d9bf] px-[2rem] font-bold rounded-[0.5rem]  mx-auto w-full p-[1rem]">
                 <p className="font-bold">Shop Now</p>
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </section> */}
@@ -232,11 +233,11 @@ function Page() {
               University (SFU) in Burnaby, BC, with a mission to create
               environmental change.
             </p>
-            <a className="w-fit" href="/about">
+            <Link href="/about" className="w-fit">
               <button className="lg:w-fit w-full bg-my-green text-[#e7d9bf] px-[2rem] font-bold p-[1rem]">
                 <p className="font-bold">Our Story</p>
               </button>
-            </a>
+            </Link>
             <Image
               src="/static/images/SS Sticker.png"
               alt="Green sticker with yellow text reading 'Second Savour,' featuring a clean and bold design"
