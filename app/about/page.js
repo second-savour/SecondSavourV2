@@ -234,6 +234,13 @@ function page() {
               Role="Front End Developer"
               Linkedin="https://www.linkedin.com/in/caleb-wu-/"
             />
+
+            <AboutProfile
+              Profile="/static/images/DanielZhouHeadshot.png"
+              Name="Daniel Zhou"
+              Role="Software Developer"
+              Linkedin="https://www.linkedin.com/in/dzhou05/"
+            />
           </div>
         </div>
       </section>
