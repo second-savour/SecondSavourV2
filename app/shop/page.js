@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ShopPage() {
   return (
@@ -33,12 +34,12 @@ export default function ShopPage() {
                 <h2 className="text-lg font-semibold">Orange Treats</h2>
                 <p className="text-gray-600 mt-1">Orange</p>
               </div>
-              <a
+              <Link
                 href="/citrusTreat"
                 className="mt-4 inline-block bg-my-green text-white text-center py-2 rounded-lg font-semibold text-sm"
               >
                 View Product
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -58,12 +59,12 @@ export default function ShopPage() {
                 <h2 className="text-lg font-semibold">Lemon Treats</h2>
                 <p className="text-gray-600 mt-1">Lemon</p>
               </div>
-              <a
+              <Link
                 href="/lemonTreat"
                 className="mt-4 inline-block bg-my-green text-white text-center py-2 rounded-lg font-semibold cursor-pointer text-sm"
               >
                 View Product
-              </a>
+              </Link>
             </div>
           </div>
 
