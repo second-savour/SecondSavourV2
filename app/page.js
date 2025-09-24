@@ -77,7 +77,7 @@ function Page() {
 
       <ContainerText
         Header="Citrus Treats"
-        Subheader="$7.99 Per Package"
+        Subheader="$4.99 Per Package"
         Text="     Snack with a Purpose – Indulge in sweet and tangy goodness while
               making an eco-friendly choice. Our nutritious hand-crafted citrus
               delicacies are made from rescued oranges, offering you a
