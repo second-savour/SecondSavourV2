@@ -24,6 +24,12 @@ export async function POST(req) {
       },
     }));
 
+    // Compute Buy 6 Get 1 discount (based on cheapest bag)
+    const totalQuantity = cartItems.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+    const freeItems = Math.floor(totalQuantity / 6);
+    const minUnitPrice = cartItems.length > 0 ? Math.min(...cartItems.map(i => Number(i.price || 0))) : 0;
+    const discountCents = Math.max(0, Math.round(freeItems * minUnitPrice * 100));
+
     // Add shipping as a line item if applicable
     if (shipping > 0) {
       lineItems.push({
@@ -41,6 +47,17 @@ export async function POST(req) {
       order: {
         locationId: process.env.SQUARE_LOCATION_ID,
         lineItems: lineItems,
+        ...(discountCents > 0
+          ? {
+              discounts: [
+                {
+                  name: "Buy 6 Get 1 Free",
+                  amountMoney: { amount: discountCents, currency: "CAD" },
+                  scope: "ORDER",
+                },
+              ],
+            }
+          : {}),
         taxes: [
           {
             name: 'GST (5%)',

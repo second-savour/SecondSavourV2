@@ -18,6 +18,8 @@ export const CartProvider = ({ children }) => {
   const [tax, setTax] = useState(0);
   const [shipping, setShipping] = useState(0);
   const [estTotal, setEstTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [discountedSubtotal, setDiscountedSubtotal] = useState(0);
   const [img, setImg] = useState("");
   const [quantity, setQuantity] = useState();
   const [shippingLocation, setShippingLocation] = useState("lowerMainland"); // "lowerMainland" or "outside"
@@ -34,28 +36,40 @@ export const CartProvider = ({ children }) => {
 
   // Move calculateCartSummary before the useEffect that uses it
   const calculateCartSummary = useCallback(() => {
-    let totalCost = 0;
+    let grossSubtotal = 0;
     let totalShipping = 0;
     let totalTax = 0;
 
+    // Subtotal before promos
     cart.forEach((item) => {
-      totalCost += item.quantity * item.price;
+      grossSubtotal += item.quantity * item.price;
     });
 
-    // Calculate shipping based on location
-    if (shippingLocation === "outside") {
-      totalShipping = 10.00; // $10 shipping fee for outside Lower Mainland
+    // Buy 6 get 1 free promo (across all bags)
+    const totalQuantity = cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+    const freeItems = Math.floor(totalQuantity / 6);
+    const minUnitPrice = cart.length > 0 ? Math.min(...cart.map((i) => Number(i.price || 0))) : 0;
+    const promoDiscount = parseFloat((freeItems * minUnitPrice).toFixed(2));
+
+    const netSubtotal = Math.max(0, parseFloat((grossSubtotal - promoDiscount).toFixed(2)));
+
+    // Shipping rules - free shipping if subtotal (after promos, before tax) >= $50 anywhere
+    if (netSubtotal >= 50) {
+      totalShipping = 0.0; // Free shipping for orders $50+ (pre-tax)
+    } else if (shippingLocation === "outside") {
+      totalShipping = 10.0; // $10 shipping fee for outside Lower Mainland
     } else {
-      totalShipping = 0.00; // Free shipping within Lower Mainland
+      totalShipping = 0.0; // Free shipping within Lower Mainland
     }
 
-    // Calculate 5% GST only (PST removed)
-    totalTax = parseFloat((totalCost * 0.05).toFixed(2));
-    const totalEstTotal = parseFloat(
-      (totalCost + totalShipping + totalTax).toFixed(2)
-    );
+    // 5% GST on discounted subtotal
+    totalTax = parseFloat((netSubtotal * 0.05).toFixed(2));
 
-    setTotalPrice(totalCost);
+    const totalEstTotal = parseFloat((netSubtotal + totalShipping + totalTax).toFixed(2));
+
+    setTotalPrice(grossSubtotal);
+    setDiscount(promoDiscount);
+    setDiscountedSubtotal(netSubtotal);
     setTax(totalTax);
     setShipping(totalShipping);
     setEstTotal(totalEstTotal);
@@ -71,15 +85,25 @@ export const CartProvider = ({ children }) => {
       if (savedCart) {
         try {
           const parsedCart = JSON.parse(savedCart);
-          // Migrate old product names to new names
+          // Migrate old product names and prices
           const migratedCart = parsedCart.map(item => {
+            let updatedItem = { ...item };
+            
+            // Migrate old product names
             if (item.name === "Citrus Treats" || item.name === "Orange Citrus Treats") {
-              return { ...item, name: "Orange Treats" };
+              updatedItem.name = "Orange Treats";
             }
-            return item;
+            
+            // Migrate old prices - update any item with price 7.99 to 4.99
+            if (Number(item.price) === 7.99) {
+              updatedItem.price = 4.99;
+              updatedItem.totalPrice = updatedItem.quantity * 4.99;
+            }
+            
+            return updatedItem;
           });
           setCart(migratedCart);
-          console.log("Saved Cart Found:", savedCart);
+          console.log("Saved Cart Found and migrated:", savedCart);
         } catch (error) {
           console.error("Failed to parse savedCart:", error);
         }
@@ -222,6 +246,8 @@ export const CartProvider = ({ children }) => {
       value={{
         cart,
         totalPrice,
+        discount,
+        discountedSubtotal,
         tax,
         shipping,
         estTotal,

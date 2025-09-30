@@ -14,12 +14,32 @@ export default function ShopPage() {
           <p className="mt-3 text-base lg:text-lg text-gray-800">
             Second Savour crafts sustainable, delicious candy by upcycling fruits
           </p>
+          
+          {/* Promotions Banner */}
+          <div className="mt-5 max-w-2xl mx-auto space-y-2">
+            <div className="bg-white text-black p-3 rounded-lg shadow-sm border-2 border-green-600">
+              <h2 
+                className="text-sm lg:text-base font-black mb-0.5 tracking-wider"
+                style={{ fontFamily: "Tanker, sans-serif", letterSpacing: "0.03em" }}
+              >
+                🎉 BUY 6 BAGS, GET 1 FREE 🎉
+              </h2>
+              <p className="text-xs lg:text-sm font-medium">
+                Stock up and save! Add 6 bags to your cart and get an extra bag on us.
+              </p>
+            </div>
+            <div className="bg-white text-black p-2.5 rounded-lg shadow-sm border-2 border-yellow-500">
+              <p className="text-xs lg:text-sm font-semibold">
+                🚚 FREE SHIPPING on orders $50+ (before tax, anywhere in Canada)
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* PRODUCT GRID */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/** Card 1: Available **/}
-          <div className="border-4 border-my-orange rounded-xl overflow-hidden flex flex-col">
+          <div className="border-4 border-my-orange rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
             <div className="bg-my-orange flex justify-center items-center p-6">
               <Image
                 src="/static/images/Stand-Up Pouch Bag Mockup label.png"
@@ -44,7 +64,7 @@ export default function ShopPage() {
           </div>
 
           {/** Card 2: Lemon flavor coming soon **/}
-          <div className="border-4 border-my-yellow rounded-xl overflow-hidden flex flex-col">
+          <div className="border-4 border-my-yellow rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
             <div className="bg-my-yellow flex justify-center items-center p-6">
               <Image
                 src="/static/images/yellowpouch.png"
@@ -69,7 +89,7 @@ export default function ShopPage() {
           </div>
 
           {/** Card 3: Lime flavor coming soon **/}
-          <div className="border-4 border-my-green rounded-xl overflow-hidden flex flex-col">
+          <div className="border-4 border-my-green rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
             <div className="bg-my-green flex justify-center items-center p-6">
               <Image
                 src="/static/images/greenpouch.png"
@@ -94,7 +114,7 @@ export default function ShopPage() {
           </div>
 
           {/** Card 4: Grapefruit flavor coming soon **/}
-          <div className="border-4 border-my-red rounded-xl overflow-hidden flex flex-col">
+          <div className="border-4 border-my-red rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
             <div className="bg-my-red flex justify-center items-center p-6">
               <Image
                 src="/static/images/redpouch.png"

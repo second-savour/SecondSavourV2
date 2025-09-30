@@ -56,6 +56,9 @@ function Page() {
           <div className="h-full flex flex-col gap-[1rem] py-[0.5rem]">
             <h1 className=""> Orange Treats </h1>
             <h3 className="text-gray-600"> $4.99 Per Package </h3>
+            <div className="bg-green-500 text-white px-3 py-2 rounded-lg w-fit">
+              <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+            </div>
             <p>
               Nutritious, vitamin-filled, citrus delicacies hand-made from
               repurposed juiced oranges. Made to enjoy in class, on a drive,

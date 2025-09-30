@@ -13,6 +13,8 @@ function Navbar() {
   const {
     cart,
     totalPrice,
+    discount,
+    discountedSubtotal,
     tax,
     shipping,
     estTotal,
@@ -219,6 +221,29 @@ function Navbar() {
         )}
 
         <div className="flex flex-col gap-[1rem]">
+          {/* Promotions messaging */}
+          {cart.length > 0 && (
+            <div className="space-y-2">
+              {/* B6G1 progress */}
+              <div className="p-3 rounded-lg bg-green-50 border border-green-200">
+                {(() => {
+                  const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
+                  const toFree = 6 - (qty % 6 || 6);
+                  return (
+                    <p className="text-xs text-green-900">
+                      Buy 6 bags, get 1 free. {qty > 0 ? `Add ${toFree} more for another free bag.` : 'Add 6 bags to get 1 free.'}
+                    </p>
+                  );
+                })()}
+              </div>
+              {/* Free shipping threshold messaging */}
+              <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
+                <p className="text-xs text-blue-900">
+                  Spend $50+ (before tax) to get free shipping anywhere in Canada!
+                </p>
+              </div>
+            </div>
+          )}
           {/* Shipping Location Selector */}
           <div className="border-t-2 border-gray-200 pt-4 bg-gray-50 p-4 rounded-lg">
             <h3 className="mb-3 font-semibold text-gray-800">Shipping Location</h3>
@@ -255,6 +280,40 @@ function Navbar() {
             )}
           </div>
 
+          {/* Free Shipping Qualified Banner */}
+          {discountedSubtotal >= 50 && (
+            <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4">
+              <div className="flex flex-row items-center gap-2">
+                <span className="text-2xl">🎉</span>
+                <div className="flex flex-col">
+                  <h3 className="text-blue-900 font-bold">You have qualified for FREE SHIPPING!</h3>
+                  <p className="text-xs text-blue-800 mt-1">
+                    Your order is over $50 (before tax) - shipping is free anywhere in Canada!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Highlighted discount section BEFORE breakdown */}
+          {discount > 0 && (
+            <div className="bg-green-50 border-2 border-green-500 rounded-lg p-4">
+              <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-col">
+                  <h3 className="text-green-900 font-bold">🎉 Buy 6 Get 1 FREE Applied!</h3>
+                  <p className="text-xs text-green-800 mt-1">
+                    {(() => {
+                      const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
+                      const free = Math.floor(qty / 6);
+                      return `You are getting ${free} free bag${free > 1 ? 's' : ''}!`;
+                    })()}
+                  </p>
+                </div>
+                <p className="text-lg font-bold text-green-700">-${discount.toFixed(2)}</p>
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-row justify-between">
             <div className="flex flex-row items-center gap-2">
               <h3>Subtotal</h3>
@@ -283,6 +342,20 @@ function Navbar() {
           >
             <div className="flex flex-col gap-1">
               <div className="flex flex-row justify-between">
+                <h3>Items Subtotal</h3>
+                <p>${totalPrice.toFixed(2)}</p>
+              </div>
+              {discount > 0 && (
+                <div className="flex flex-row justify-between bg-green-50 p-2 rounded">
+                  <h3 className="text-green-900 font-semibold">Buy 6 Get 1 FREE Discount</h3>
+                  <p className="text-green-700 font-semibold">-${discount.toFixed(2)}</p>
+                </div>
+              )}
+              <div className="flex flex-row justify-between font-semibold">
+                <h3>Subtotal (after promos)</h3>
+                <p>${(discountedSubtotal || Math.max(0, totalPrice - (discount || 0))).toFixed(2)}</p>
+              </div>
+              <div className="flex flex-row justify-between">
                 <h3>Tax (5% GST)</h3>
                 <p>${tax.toFixed(2)}</p>
               </div>
@@ -302,7 +375,7 @@ function Navbar() {
               <div className="border-t border-gray-200 pt-2 mt-2">
                 <div className="flex flex-row justify-between font-semibold">
                   <h3>Subtotal (with tax & shipping)</h3>
-                  <p>${(totalPrice + tax + shipping).toFixed(2)}</p>
+                  <p>${(discountedSubtotal + tax + shipping).toFixed(2)}</p>
                 </div>
               </div>
             </div>
