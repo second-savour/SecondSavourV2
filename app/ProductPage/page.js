@@ -106,6 +106,9 @@ export default function Page() {
               CITRUS TREATS
             </h2>
             <p className="text-base mb-2">$4.99 per Package</p>
+            <div className="bg-green-500 text-white px-3 py-2 rounded-lg mb-3 inline-block">
+              <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+            </div>
             <p className="text-gray-700 text-sm leading-relaxed mb-4">
               Nutritious, vitamin‐filled, citrus delicacies hand‐made from
               repurposed juiced oranges. Made to enjoy in class, on a drive,
@@ -290,6 +293,9 @@ export default function Page() {
                 CITRUS TREATS
               </h2>
               <p className="text-lg mb-4">$4.99 per Package</p>
+              <div className="bg-green-500 text-white px-4 py-3 rounded-lg mb-4">
+                <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+              </div>
               <p className="text-gray-700 leading-relaxed mb-8">
                 Nutritious, vitamin‐filled, citrus delicacies hand‐made from
                 repurposed juiced oranges. Made to enjoy in class, on a drive,
