@@ -53,10 +53,11 @@ export const CartProvider = ({ children }) => {
 
     const netSubtotal = Math.max(0, parseFloat((grossSubtotal - promoDiscount).toFixed(2)));
 
-    // Shipping rules
-    if (shippingLocation === "outside") {
-      // Free shipping threshold at $50+ (based on subtotal after promos, before tax)
-      totalShipping = netSubtotal >= 50 ? 0.0 : 10.0;
+    // Shipping rules - free shipping if subtotal (after promos, before tax) >= $50 anywhere
+    if (netSubtotal >= 50) {
+      totalShipping = 0.0; // Free shipping for orders $50+ (pre-tax)
+    } else if (shippingLocation === "outside") {
+      totalShipping = 10.0; // $10 shipping fee for outside Lower Mainland
     } else {
       totalShipping = 0.0; // Free shipping within Lower Mainland
     }
@@ -84,15 +85,25 @@ export const CartProvider = ({ children }) => {
       if (savedCart) {
         try {
           const parsedCart = JSON.parse(savedCart);
-          // Migrate old product names to new names
+          // Migrate old product names and prices
           const migratedCart = parsedCart.map(item => {
+            let updatedItem = { ...item };
+            
+            // Migrate old product names
             if (item.name === "Citrus Treats" || item.name === "Orange Citrus Treats") {
-              return { ...item, name: "Orange Treats" };
+              updatedItem.name = "Orange Treats";
             }
-            return item;
+            
+            // Migrate old prices - update any item with price 7.99 to 4.99
+            if (Number(item.price) === 7.99) {
+              updatedItem.price = 4.99;
+              updatedItem.totalPrice = updatedItem.quantity * 4.99;
+            }
+            
+            return updatedItem;
           });
           setCart(migratedCart);
-          console.log("Saved Cart Found:", savedCart);
+          console.log("Saved Cart Found and migrated:", savedCart);
         } catch (error) {
           console.error("Failed to parse savedCart:", error);
         }

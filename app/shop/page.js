@@ -15,22 +15,25 @@ export default function ShopPage() {
             Second Savour crafts sustainable, delicious candy by upcycling fruits
           </p>
           
-          {/* Promotions Banner - Commented out for now */}
-          {/* <div className="mt-5 max-w-2xl mx-auto space-y-2">
-            <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-3 lg:p-4 rounded-lg shadow-md border-2 border-black">
-              <h2 className="text-lg lg:text-xl font-bold mb-1">
-                🎉 BUY 6 BAGS, GET 1 FREE! 🎉
+          {/* Promotions Banner */}
+          <div className="mt-5 max-w-2xl mx-auto space-y-2">
+            <div className="bg-white text-black p-3 rounded-lg shadow-sm border-2 border-green-600">
+              <h2 
+                className="text-sm lg:text-base font-black mb-0.5 tracking-wider"
+                style={{ fontFamily: "Tanker, sans-serif", letterSpacing: "0.03em" }}
+              >
+                🎉 BUY 6 BAGS, GET 1 FREE 🎉
               </h2>
-              <p className="text-xs lg:text-sm">
+              <p className="text-xs lg:text-sm font-medium">
                 Stock up and save! Add 6 bags to your cart and get an extra bag on us.
               </p>
             </div>
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-2 lg:p-3 rounded-lg shadow-md border-2 border-black">
-              <p className="text-xs lg:text-base font-semibold">
-                🚚 FREE SHIPPING on orders $50+ (outside Greater Vancouver area)
+            <div className="bg-white text-black p-2.5 rounded-lg shadow-sm border-2 border-yellow-500">
+              <p className="text-xs lg:text-sm font-semibold">
+                🚚 FREE SHIPPING on orders $50+ (before tax, anywhere in Canada)
               </p>
             </div>
-          </div> */}
+          </div>
         </section>
 
         {/* PRODUCT GRID */}

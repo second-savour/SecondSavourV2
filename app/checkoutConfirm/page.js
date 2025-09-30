@@ -1,17 +1,29 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
+import { useCart } from "../../Components/CartContext";
 
 function page() {
+  const { setCart } = useCart();
+
+  // Clear cart on successful checkout
+  useEffect(() => {
+    setCart([]);
+    localStorage.removeItem("savedCart");
+  }, [setCart]);
+
   return (
     <div className=" flex justify-center w-[100vw] px-[1rem]">
       <section className=" flex flex-col lg:mt-[2rem] gap-[1rem] lg:gap-[2rem] bg-white border border-gray-200 py-[3rem] px-[2rem] rounded-[2rem] w-fit lg:max-w-[35%] h-fit box-shadow-lg">
         <div className="w-full h-fit flex justify-center items-center">
           <Image
-            src="/static/images/box.png"
+            src="/static/images/Box.png"
             alt="shopping cart icon"
             width={160}
             height={160}
             className="animate-bounce w-[5rem] lg:w-[10rem] h-fit"
+            unoptimized
           />
         </div>
         <div className="flex flex-col gap-[1rem] lg:gap-[2rem] text-center">

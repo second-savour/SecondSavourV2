@@ -236,14 +236,12 @@ function Navbar() {
                   );
                 })()}
               </div>
-              {/* Free shipping threshold messaging for outside */}
-              {shippingLocation === "outside" && (
-                <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
-                  <p className="text-xs text-blue-900">
-                    Spend $50+ to get free shipping outside the Greater Vancouver area.
-                  </p>
-                </div>
-              )}
+              {/* Free shipping threshold messaging */}
+              <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
+                <p className="text-xs text-blue-900">
+                  Spend $50+ (before tax) to get free shipping anywhere in Canada!
+                </p>
+              </div>
             </div>
           )}
           {/* Shipping Location Selector */}
@@ -281,6 +279,21 @@ function Navbar() {
               </div>
             )}
           </div>
+
+          {/* Free Shipping Qualified Banner */}
+          {discountedSubtotal >= 50 && (
+            <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4">
+              <div className="flex flex-row items-center gap-2">
+                <span className="text-2xl">🎉</span>
+                <div className="flex flex-col">
+                  <h3 className="text-blue-900 font-bold">You've qualified for FREE SHIPPING!</h3>
+                  <p className="text-xs text-blue-800 mt-1">
+                    Your order is over $50 (before tax) - shipping is free anywhere in Canada!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Highlighted discount section BEFORE breakdown */}
           {discount > 0 && (
