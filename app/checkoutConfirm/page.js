@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { useCart } from "../../Components/CartContext";
 
-function page() {
+function Page() {
   const { setCart } = useCart();
 
   // Clear cart on successful checkout
@@ -44,4 +44,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

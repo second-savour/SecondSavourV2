@@ -286,7 +286,7 @@ function Navbar() {
               <div className="flex flex-row items-center gap-2">
                 <span className="text-2xl">🎉</span>
                 <div className="flex flex-col">
-                  <h3 className="text-blue-900 font-bold">You've qualified for FREE SHIPPING!</h3>
+                  <h3 className="text-blue-900 font-bold">You&apos;ve qualified for FREE SHIPPING!</h3>
                   <p className="text-xs text-blue-800 mt-1">
                     Your order is over $50 (before tax) - shipping is free anywhere in Canada!
                   </p>
@@ -305,7 +305,7 @@ function Navbar() {
                     {(() => {
                       const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
                       const free = Math.floor(qty / 6);
-                      return `You're getting ${free} free bag${free > 1 ? 's' : ''}!`;
+                      return `You&apos;re getting ${free} free bag${free > 1 ? 's' : ''}!`;
                     })()}
                   </p>
                 </div>
