@@ -115,6 +115,7 @@ export default function ContactPage() {
                   placeholder="First Name"
                   required
                   className="w-full px-6 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-my-green transition-colors bg-[#FEF7E6]"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
               </div>
               <div>
@@ -126,6 +127,7 @@ export default function ContactPage() {
                   placeholder="Last Name"
                   required
                   className="w-full px-6 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-my-green transition-colors bg-[#FEF7E6]"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
               </div>
             </div>
@@ -140,6 +142,7 @@ export default function ContactPage() {
                 placeholder="Email Address"
                 required
                 className="w-full px-6 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-my-green transition-colors bg-[#FEF7E6]"
+                style={{ fontFamily: "Poppins, sans-serif" }}
               />
             </div>
 
@@ -152,6 +155,7 @@ export default function ContactPage() {
                 required
                 className="w-full px-6 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-my-green transition-colors bg-[#FEF7E6] appearance-none cursor-pointer"
                 style={{
+                  fontFamily: "Poppins, sans-serif",
                   backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
                   backgroundPosition: "right 1rem center",
                   backgroundRepeat: "no-repeat",
@@ -177,6 +181,7 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="If Other, please specify"
                   className="w-full px-6 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-my-green transition-colors bg-[#FEF7E6]"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
                 />
               </div>
             )}
@@ -190,6 +195,7 @@ export default function ContactPage() {
                 placeholder="Message"
                 rows="6"
                 className="w-full px-6 py-4 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-my-green transition-colors bg-[#FEF7E6] resize-none"
+                style={{ fontFamily: "Poppins, sans-serif" }}
               />
             </div>
 
