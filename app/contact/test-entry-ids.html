@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form Entry ID Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        .instruction {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .result {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Google Form Entry ID Finder</h1>
+        
+        <div class="instruction">
+            <h3>Follow these steps to find your entry IDs:</h3>
+            
+            <div class="step">
+                <strong>Step 1:</strong> Open your Google Form in a new tab:<br>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWVOsYOotFYWeeQZH0Ih_Yl1eMPOqeFFDvJA2Zs7Ou_6VIWw/viewform" target="_blank">
+                    Click here to open your form
+                </a>
+            </div>
+            
+            <div class="step">
+                <strong>Step 2:</strong> Right-click anywhere on the form and select <code>Inspect</code> (or press F12)
+            </div>
+            
+            <div class="step">
+                <strong>Step 3:</strong> Press <code>Ctrl+F</code> (or <code>Cmd+F</code> on Mac) in the Developer Tools
+            </div>
+            
+            <div class="step">
+                <strong>Step 4:</strong> Search for: <code>entry.</code>
+            </div>
+            
+            <div class="step">
+                <strong>Step 5:</strong> Look for input fields with names like <code>entry.1234567890</code>
+            </div>
+        </div>
+
+        <div class="result">
+            <h3>What to look for:</h3>
+            <p>Find these fields in the HTML:</p>
+            <ul>
+                <li><strong>Name field:</strong> <code>&lt;input name="entry.XXXXXXXX"&gt;</code></li>
+                <li><strong>Email field:</strong> <code>&lt;input name="entry.YYYYYYYY"&gt;</code></li>
+                <li><strong>Type of Question:</strong> <code>&lt;select name="entry.ZZZZZZZZ"&gt;</code> or radio buttons</li>
+                <li><strong>If Other:</strong> <code>&lt;input name="entry.AAAAAAAA"&gt;</code></li>
+                <li><strong>Questions/Comments:</strong> <code>&lt;textarea name="entry.BBBBBBBB"&gt;</code></li>
+            </ul>
+        </div>
+
+        <div class="instruction">
+            <h3>Alternative Method - Use Pre-fill URL:</h3>
+            
+            <div class="step">
+                <strong>Step 1:</strong> Go to your Google Form (as form owner)
+            </div>
+            
+            <div class="step">
+                <strong>Step 2:</strong> Click the three dots menu (⋮) and select "Get pre-filled link"
+            </div>
+            
+            <div class="step">
+                <strong>Step 3:</strong> Fill in dummy data in each field
+            </div>
+            
+            <div class="step">
+                <strong>Step 4:</strong> Click "Get link" - the URL will show all entry IDs
+            </div>
+            
+            <div class="step">
+                Example URL:<br>
+                <code style="display: block; padding: 10px; margin-top: 5px; overflow-x: auto;">
+                    https://docs.google.com/forms/.../viewform?entry.123=Name&entry.456=email@test.com
+                </code>
+            </div>
+        </div>
+
+        <div class="result">
+            <h3>Once you have the entry IDs:</h3>
+            <p>Update them in <code>/app/contact/page.js</code> in the <code>ENTRY_IDS</code> object:</p>
+            <pre style="background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto;">
+const ENTRY_IDS = {
+  name: "entry.XXXXXXXX",
+  email: "entry.YYYYYYYY",
+  questionType: "entry.ZZZZZZZZ",
+  otherType: "entry.AAAAAAAA",
+  message: "entry.BBBBBBBB",
+};</pre>
+        </div>
+    </div>
+</body>
+</html>
+

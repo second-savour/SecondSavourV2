@@ -30,9 +30,7 @@ function Footer() {
 
               <Hyperlink
                 Text={"Contact Us"}
-                Link={
-                  "https://docs.google.com/forms/d/e/1FAIpQLSfEeZn6Av1vFIMVT2B4yRBemiZWaskyFIAEft18ToZpxbA5bw/viewform?usp=sharing"
-                }
+                Link={"/contact"}
                 Color={"--color-black"}
                 HoverColor={"--purple"}
                 Display={"none"}
