@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { CartProvider } from "../Components/CartContext";
+import { AuthProvider } from "../Components/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,12 +35,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CartProvider>
-          <Navbar></Navbar>
-          {children}
-          <Footer></Footer>
-          <Analytics />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar></Navbar>
+            {children}
+            <Footer></Footer>
+            <Analytics />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

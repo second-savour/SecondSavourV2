@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Hyperlink from "./Hyperlink";
 import { useCart } from "../Components/CartContext";
+import { useAuth } from "../Components/AuthContext";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import CheckoutComponent from "../Components/CheckoutComponent";
 import { FaCartShopping } from "react-icons/fa6";
@@ -32,12 +33,21 @@ function Navbar() {
     setShippingLocation,
   } = useCart();
 
+  const { user, signOut, isAuthenticated } = useAuth();
+
   const [isOpen, setIsOpen] = useState(false);
   const [price, setPrice] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showAuthPrompt, setShowAuthPrompt] = useState(false);
 
   const handleCheckout = async () => {
+    // Check if user is authenticated before proceeding to checkout
+    if (!isAuthenticated()) {
+      setShowAuthPrompt(true);
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await fetch("/api/createPaymentLink", {
@@ -70,6 +80,22 @@ function Navbar() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAuthPromptClose = () => {
+    setShowAuthPrompt(false);
+  };
+
+  const handleSignInRedirect = () => {
+    setIsCartOpen(false);
+    setShowAuthPrompt(false);
+    window.location.href = "/signIn";
+  };
+
+  const handleSignUpRedirect = () => {
+    setIsCartOpen(false);
+    setShowAuthPrompt(false);
+    window.location.href = "/signup";
   };
 
   useEffect(() => {
@@ -155,18 +181,60 @@ function Navbar() {
               HoverColor={"--purple"}
               Display={"none"}
             />
-            <div className="w-fit">
-              <button
-                className="relative w-fit h-full p-0 shadow-none hover:bg-transparent hover:text-my-green text-xl bg-transparent"
-                onClick={() => setIsCartOpen(true)}
-              >
-                <FaCartShopping className="w-[10] h-[10] text-[8vw] lg:text-[1.2vw]" />
-                {cart.length > 0 && (
-                  <div className="absolute top-0 right-0 bg-red-700 text-sm w-fit h-fit px-[0.4rem] rounded-full -mt-[0.6rem] -mr-[0.8rem]">
-                    <p className="text-sm text-white">{cart.length}</p>
-                  </div>
-                )}
-              </button>
+            {/* Show Dashboard link only for authenticated users */}
+            {isAuthenticated() && (
+              <Hyperlink
+                Text={"Dashboard"}
+                Link={"/dashboard"}
+                Color={"--color-black"}
+                HoverColor={"--purple"}
+                Display={"none"}
+              />
+            )}
+            <Hyperlink
+              Text={"Tracking"}
+              Link={"/tracking"}
+              Color={"--color-black"}
+              HoverColor={"--purple"}
+              Display={"none"}
+            />
+
+            {/* Authentication Section */}
+            <div className="flex items-center gap-4">
+              {isAuthenticated() ? (
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-gray-700">
+                    Welcome, {user?.fullName || user?.email?.split('@')[0]}
+                  </span>
+                  <button
+                    onClick={signOut}
+                    className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  href="/signIn"
+                  className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition-colors"
+                >
+                  Sign In
+                </Link>
+              )}
+
+              <div className="w-fit">
+                <button
+                  className="relative w-fit h-full p-0 shadow-none hover:bg-transparent hover:text-my-green text-xl bg-transparent"
+                  onClick={() => setIsCartOpen(true)}
+                >
+                  <FaCartShopping className="w-[10] h-[10] text-[8vw] lg:text-[1.2vw]" />
+                  {cart.length > 0 && (
+                    <div className="absolute top-0 right-0 bg-red-700 text-sm w-fit h-fit px-[0.4rem] rounded-full -mt-[0.6rem] -mr-[0.8rem]">
+                      <p className="text-sm text-white">{cart.length}</p>
+                    </div>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -331,6 +399,42 @@ function Navbar() {
           {loading ? <p>Loading...</p> : <p>Proceed to checkout - ${estTotal.toFixed(2)}</p>}
         </button>
       </div>
+
+      {/* Authentication Prompt Modal */}
+      {showAuthPrompt && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[200] flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Sign in required
+              </h3>
+              <p className="text-gray-600 mb-6">
+                You need to sign in to proceed with checkout. This helps us track your order and provide better service.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={handleSignInRedirect}
+                  className="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors font-medium"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={handleSignUpRedirect}
+                  className="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+                >
+                  Sign Up
+                </button>
+              </div>
+              <button
+                onClick={handleAuthPromptClose}
+                className="mt-4 text-gray-500 hover:text-gray-700 text-sm"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* backdrop */}
       <button
