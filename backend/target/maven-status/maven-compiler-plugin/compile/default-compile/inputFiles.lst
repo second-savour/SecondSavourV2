@@ -1,0 +1,15 @@
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/StoreApplication.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/config/SecurityConfig.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/controller/OrderController.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/controller/UserController.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/dto/LoginRequest.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/dto/RegisterRequest.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/dto/UserResponse.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/model/AuthIdentity.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/model/Order.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/model/User.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/repository/AuthIdentityRepository.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/repository/UserRepository.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/service/OAuth2UserService.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/service/OrderService.java
+/Users/kurtis/Desktop/Second_Savour/SecondSavourV2/backend/src/main/java/com/SecondSavour/store/service/UserService.java

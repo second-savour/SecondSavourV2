@@ -1,0 +1,15 @@
+com/SecondSavour/store/controller/UserController.class
+com/SecondSavour/store/service/OrderService.class
+com/SecondSavour/store/dto/RegisterRequest.class
+com/SecondSavour/store/dto/LoginRequest.class
+com/SecondSavour/store/repository/AuthIdentityRepository.class
+com/SecondSavour/store/model/Order.class
+com/SecondSavour/store/controller/OrderController.class
+com/SecondSavour/store/service/UserService.class
+com/SecondSavour/store/model/AuthIdentity.class
+com/SecondSavour/store/StoreApplication.class
+com/SecondSavour/store/repository/UserRepository.class
+com/SecondSavour/store/config/SecurityConfig.class
+com/SecondSavour/store/dto/UserResponse.class
+com/SecondSavour/store/model/User.class
+com/SecondSavour/store/service/OAuth2UserService.class
