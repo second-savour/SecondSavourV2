@@ -9,7 +9,7 @@ import { useCart } from "../../Components/CartContext.js";
 function Page() {
   const { updateCart } = useCart();
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const addQuantity = (number) => {
     if (quantity + number > 0) {
