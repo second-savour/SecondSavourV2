@@ -2,9 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import ProtectedRoute from "../../Components/ProtectedRoute";
 
-function ShopPage() {
+export default function ShopPage() {
   return (
     <>
       <main className="bg-[#FEF7E6] px-4 lg:px-20 pb-16 space-y-16">
@@ -141,13 +140,5 @@ function ShopPage() {
 
       </main>
     </>
-  );
-}
-
-export default function ShopPageWrapper() {
-  return (
-    <ProtectedRoute>
-      <ShopPage />
-    </ProtectedRoute>
   );
 }

@@ -7,6 +7,7 @@ import { useAuth } from "../Components/AuthContext";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import CheckoutComponent from "../Components/CheckoutComponent";
 import { FaCartShopping } from "react-icons/fa6";
+import { FaUserCircle } from "react-icons/fa";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
 
@@ -181,56 +182,24 @@ function Navbar() {
               HoverColor={"--purple"}
               Display={"none"}
             />
-            {/* Show Dashboard link only for authenticated users */}
-            {isAuthenticated() && (
-              <Hyperlink
-                Text={"Dashboard"}
-                Link={"/dashboard"}
-                Color={"--color-black"}
-                HoverColor={"--purple"}
-                Display={"none"}
-              />
-            )}
-            <Hyperlink
-              Text={"Tracking"}
-              Link={"/tracking"}
-              Color={"--color-black"}
-              HoverColor={"--purple"}
-              Display={"none"}
-            />
-
-            {/* Authentication Section */}
-            <div className="flex items-center gap-4">
-              {isAuthenticated() ? (
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-700">
-                    Welcome, {user?.fullName || user?.email?.split('@')[0]}
-                  </span>
-                  <button
-                    onClick={signOut}
-                    className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
-                  >
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <Link
-                  href="/signIn"
-                  className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition-colors"
-                >
-                  Sign In
-                </Link>
-              )}
+            {/* Profile Icon - Links to Tracking */}
+            <div className="flex items-center gap-3 lg:gap-4">
+              <Link
+                href="/tracking"
+                className="relative w-fit h-full p-0 shadow-none hover:text-my-green transition-colors"
+              >
+                <FaUserCircle className="w-[10] h-[10] text-2xl sm:text-3xl lg:text-[1.5vw]" />
+              </Link>
 
               <div className="w-fit">
                 <button
                   className="relative w-fit h-full p-0 shadow-none hover:bg-transparent hover:text-my-green text-xl bg-transparent"
                   onClick={() => setIsCartOpen(true)}
                 >
-                  <FaCartShopping className="w-[10] h-[10] text-[8vw] lg:text-[1.2vw]" />
+                  <FaCartShopping className="w-[10] h-[10] text-2xl sm:text-3xl lg:text-[1.2vw]" />
                   {cart.length > 0 && (
-                    <div className="absolute top-0 right-0 bg-red-700 text-sm w-fit h-fit px-[0.4rem] rounded-full -mt-[0.6rem] -mr-[0.8rem]">
-                      <p className="text-sm text-white">{cart.length}</p>
+                    <div className="absolute top-0 right-0 bg-red-700 text-xs w-fit h-fit px-[0.35rem] py-[0.05rem] rounded-full -mt-[0.4rem] -mr-[0.6rem]">
+                      <p className="text-xs text-white">{cart.length}</p>
                     </div>
                   )}
                 </button>

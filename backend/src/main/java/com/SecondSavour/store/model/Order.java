@@ -9,15 +9,19 @@ public class Order {
     private int quantity;
     private LocalDate orderDate;
     private LocalDate estimatedDeliveryDate;
+    private LocalDate deliveredDate;
     private String status; // "processing", "shipped", "delivered", "cancelled"
     private double price;
     private String customerEmail;
-    
+    private String customerName;
+    private String destination;
+    private Double shippingCost;
+
     // Constructors
     public Order() {}
-    
-    public Order(String orderId, String productName, String productImage, int quantity, 
-                LocalDate orderDate, LocalDate estimatedDeliveryDate, String status, 
+
+    public Order(String orderId, String productName, String productImage, int quantity,
+                LocalDate orderDate, LocalDate estimatedDeliveryDate, String status,
                 double price, String customerEmail) {
         this.orderId = orderId;
         this.productName = productName;
@@ -28,6 +32,25 @@ public class Order {
         this.status = status;
         this.price = price;
         this.customerEmail = customerEmail;
+    }
+
+    public Order(String orderId, String productName, String productImage, int quantity,
+                LocalDate orderDate, LocalDate estimatedDeliveryDate, LocalDate deliveredDate,
+                String status, double price, String customerEmail, String customerName,
+                String destination, Double shippingCost) {
+        this.orderId = orderId;
+        this.productName = productName;
+        this.productImage = productImage;
+        this.quantity = quantity;
+        this.orderDate = orderDate;
+        this.estimatedDeliveryDate = estimatedDeliveryDate;
+        this.deliveredDate = deliveredDate;
+        this.status = status;
+        this.price = price;
+        this.customerEmail = customerEmail;
+        this.customerName = customerName;
+        this.destination = destination;
+        this.shippingCost = shippingCost;
     }
     
     // Getters and Setters
@@ -102,7 +125,39 @@ public class Order {
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
     }
-    
+
+    public LocalDate getDeliveredDate() {
+        return deliveredDate;
+    }
+
+    public void setDeliveredDate(LocalDate deliveredDate) {
+        this.deliveredDate = deliveredDate;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public Double getShippingCost() {
+        return shippingCost;
+    }
+
+    public void setShippingCost(Double shippingCost) {
+        this.shippingCost = shippingCost;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -111,9 +166,13 @@ public class Order {
                 ", quantity=" + quantity +
                 ", orderDate=" + orderDate +
                 ", estimatedDeliveryDate=" + estimatedDeliveryDate +
+                ", deliveredDate=" + deliveredDate +
                 ", status='" + status + '\'' +
                 ", price=" + price +
                 ", customerEmail='" + customerEmail + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", destination='" + destination + '\'' +
+                ", shippingCost=" + shippingCost +
                 '}';
     }
 }

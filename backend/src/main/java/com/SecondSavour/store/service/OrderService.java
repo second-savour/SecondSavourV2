@@ -20,40 +20,106 @@ public class OrderService {
     }
     
     private void initializeSampleOrders() {
+        // Order 1: Delivered order with complete information
         orders.add(new Order(
-            "ORD-001", 
-            "LEMON CITRUS", 
-            "/static/images/CitrusCandie.png",
-            1,
-            LocalDate.of(2024, 6, 3),
-            LocalDate.of(2024, 6, 8),
-            "shipped",
-            12.99,
-            "customer@example.com"
-        ));
-        
-        orders.add(new Order(
-            "ORD-002", 
-            "ORANGE CITRUS", 
+            "ORD-001",
+            "Orange Citrus Candies",
             "/static/images/CitrusCandie.png",
             2,
-            LocalDate.of(2024, 6, 5),
-            LocalDate.of(2024, 6, 10),
-            "processing",
-            25.98,
-            "customer@example.com"
+            LocalDate.of(2025, 10, 15),
+            LocalDate.of(2025, 10, 22),
+            LocalDate.of(2025, 10, 21), // delivered early
+            "delivered",
+            12.99,
+            "john.smith@example.com",
+            "John Smith",
+            "Toronto, ON",
+            8.50
         ));
-        
+
+        // Order 2: Currently shipped order
         orders.add(new Order(
-            "ORD-003", 
-            "MIXED CITRUS PACK", 
+            "ORD-002",
+            "Lemon Citrus Delights",
             "/static/images/CitrusCandie.png",
             3,
-            LocalDate.of(2024, 6, 1),
-            LocalDate.of(2024, 6, 6),
+            LocalDate.of(2025, 11, 1),
+            LocalDate.of(2025, 11, 8),
+            null, // not delivered yet
+            "shipped",
+            14.99,
+            "sarah.johnson@example.com",
+            "Sarah Johnson",
+            "Montreal, QC",
+            12.00
+        ));
+
+        // Order 3: Processing order
+        orders.add(new Order(
+            "ORD-003",
+            "Mixed Citrus Pack",
+            "/static/images/CitrusCandie.png",
+            1,
+            LocalDate.of(2025, 11, 5),
+            LocalDate.of(2025, 11, 12),
+            null,
+            "processing",
+            18.99,
+            "michael.brown@example.com",
+            "Michael Brown",
+            "Calgary, AB",
+            15.50
+        ));
+
+        // Order 4: Another delivered order
+        orders.add(new Order(
+            "ORD-004",
+            "Grapefruit Citrus Treats",
+            "/static/images/CitrusCandie.png",
+            4,
+            LocalDate.of(2025, 10, 20),
+            LocalDate.of(2025, 10, 27),
+            LocalDate.of(2025, 10, 26),
             "delivered",
-            38.97,
-            "customer@example.com"
+            11.99,
+            "emily.davis@example.com",
+            "Emily Davis",
+            "Ottawa, ON",
+            8.50
+        ));
+
+        // Order 5: Large shipped order
+        orders.add(new Order(
+            "ORD-005",
+            "Citrus Variety Bundle",
+            "/static/images/CitrusCandie.png",
+            5,
+            LocalDate.of(2025, 11, 3),
+            LocalDate.of(2025, 11, 10),
+            null,
+            "shipped",
+            16.99,
+            "david.wilson@example.com",
+            "David Wilson",
+            "Edmonton, AB",
+            15.50
+        ));
+
+        // Order 6: Recent processing order
+        orders.add(new Order(
+            "ORD-006",
+            "Tangerine Citrus Gems",
+            "/static/images/CitrusCandie.png",
+            2,
+            LocalDate.of(2025, 11, 8),
+            LocalDate.of(2025, 11, 15),
+            null,
+            "processing",
+            13.99,
+            "lisa.anderson@example.com",
+            "Lisa Anderson",
+            "Winnipeg, MB",
+            12.00
         ));
     }
     
