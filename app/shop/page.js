@@ -42,10 +42,10 @@ export default function ShopPage() {
           <div className="border-4 border-my-orange rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
             <div className="bg-my-orange flex justify-center items-center p-6">
               <Image
-                src="/static/images/Stand-Up Pouch Bag Mockup label.png"
+                src="/static/images/OrangeBagUpdate.png"
                 alt="Citrus Treats"
-                width={210}
-                height={210}
+                width={238}
+                height={240}
                 className="object-contain"
               />
             </div>
