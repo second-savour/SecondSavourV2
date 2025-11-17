@@ -44,7 +44,7 @@ function Page() {
         <div className="group relative bg-[#0D6A3D] min-w-[40%] lg:max-h-[100%] md:max-h-[100%] max-h-[50vh] lg:h-auto rounded-[1rem] flex justify-center hover:bg-[#17B267] hover:cursor-pointer ease-in-out duration-300 shadow-lg">
           <Image
             className="py-[5vw] px-[8vw] relative lg:object-contain object-scale-down top-3 group-hover:top-0 ease-in-out duration-300"
-            src={"/static/images/Stand-Up Pouch Bag Mockup label.png"}
+            src={"/static/images/OrangeBagUpdate.png"}
             alt="Our Delicious Product Citrus Candies"
             height={1080}
             width={1080}
@@ -74,7 +74,7 @@ function Page() {
                       "Orange Treats",
                       1,
                       quantity,
-                      "/static/images/Stand-Up Pouch Bag Mockup label.png",
+                      "/static/images/OrangeBagUpdate.png",
                       "A bag of orange citrus treats, filled with tangy, refreshing fruit snacks",
                       "ID",
                       4.99,
