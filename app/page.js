@@ -84,7 +84,7 @@ function Page() {
               sustainable and delicious option."
         ButtonText="Purchase Now!"
         altText="A bag of citrus treats, featuring vibrant, fresh fruit snacks with a zesty, tangy flavor"
-        img="/static/images/Citrus Treats Image.png"
+        img="/static/images/ssframe.png"
         clickTo="/shop"
       ></ContainerText>
 

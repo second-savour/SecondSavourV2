@@ -29,13 +29,15 @@ function ContainerText({
             </Link>
           </div>
         </div>
-        <Image
-          src={img}
-          alt={altText}
-          className="h-fit w-full lg:w-[42%]"
-          width={1080}
-          height={1080}
-        />
+        <div className="flex items-center justify-center lg:w-[42%] w-full">
+          <Image
+            src={img}
+            alt={altText}
+            className="h-fit w-full object-contain"
+            width={1080}
+            height={1080}
+          />
+        </div>
       </div>
     </section>
   );
