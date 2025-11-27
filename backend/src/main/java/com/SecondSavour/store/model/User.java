@@ -18,21 +18,21 @@ public class User {
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
     
-    @Column(name = "email", unique = true, nullable = false, columnDefinition = "CITEXT")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
-    
+
     @Column(name = "full_name", nullable = false)
     private String fullName;
-    
+
     @Column(name = "phone")
     private String phone;
-    
+
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMPTZ")
+    @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
-    
+
     @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMPTZ")
+    @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
     
     // Default constructor
