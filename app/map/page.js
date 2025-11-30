@@ -32,7 +32,7 @@ function Page() {
           <div className="bg-white border-2 border-my-green rounded-2xl p-5 lg:p-6 shadow-xl max-w-[800px] w-full mx-auto mb-8 animate-fadeIn">
             <h2 className="text-2xl font-bold text-my-green mb-3">Free Local Shipping Cities</h2>
             <p className="text-base text-gray-700 mb-4">
-              <strong>📦 We ship to Canada only.</strong> Enjoy free local shipping if you're located in any of these cities:
+              <strong>📦 We ship to Canada only.</strong> Enjoy free local shipping if you&apos;re located in any of these Lower Mainland cities:
             </p>
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-left mb-4">

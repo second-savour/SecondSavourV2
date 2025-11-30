@@ -31,6 +31,7 @@ function Navbar() {
     quantity,
     isCartOpen,
     setIsCartOpen,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     shippingLocation,
     setShippingLocation,
     shippingCity,
