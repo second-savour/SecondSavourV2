@@ -290,15 +290,16 @@ function Navbar() {
           {/* Minimal counter for next free bag */}
           {cart.length > 0 && (() => {
             const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
-            const toFree = 6 - (qty % 6 || 6);
-            const progress = ((qty % 6) / 6) * 100;
+            const remainder = qty % 6;
+            const toFree = remainder === 0 ? 6 : 6 - remainder;
+            const progress = (remainder / 6) * 100;
             
             return (
               <div className="pb-3 border-b border-gray-100">
                 <div className="flex items-center justify-between mb-1.5">
                   <p className="text-xs text-gray-600">Next free bag:</p>
                   <p className="text-xs font-semibold text-my-green">
-                    {toFree === 6 ? '6 bags needed' : `${toFree} more`}
+                    {qty === 0 ? '6 bags needed' : `${toFree} more`}
                   </p>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
