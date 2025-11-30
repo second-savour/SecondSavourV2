@@ -8,6 +8,7 @@ import CheckoutComponent from "../Components/CheckoutComponent";
 import { FaCartShopping } from "react-icons/fa6";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
+import { isLowerMainlandCity } from "../utils/shippingValidation";
 
 function Navbar() {
   const {
@@ -30,16 +31,80 @@ function Navbar() {
     quantity,
     isCartOpen,
     setIsCartOpen,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     shippingLocation,
     setShippingLocation,
+    shippingCity,
+    setShippingCity,
   } = useCart();
 
   const [isOpen, setIsOpen] = useState(false);
   const [price, setPrice] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cityValidation, setCityValidation] = useState({ isValid: null, message: "" });
+
+  // Initialize enteredCity from context on mount
+  const [enteredCity, setEnteredCity] = useState("");
+  
+  useEffect(() => {
+    if (shippingCity) {
+      setEnteredCity(shippingCity);
+      // Validate the saved city
+      const isValid = isLowerMainlandCity(shippingCity);
+      if (isValid) {
+        setCityValidation({ 
+          isValid: true, 
+          message: "✓ Eligible for free local shipping!" 
+        });
+      } else {
+        setCityValidation({ 
+          isValid: false, 
+          message: "This location requires a $10 shipping fee (or free shipping on orders $50+)" 
+        });
+      }
+    }
+  }, [shippingCity]);
+
+  const handleCityChange = (e) => {
+    const city = e.target.value;
+    setEnteredCity(city);
+    setShippingCity(city); // Save to context/localStorage
+    
+    if (city.trim() === "") {
+      setCityValidation({ isValid: null, message: "" });
+      setShippingLocation("outside"); // Default to shipping fee
+      return;
+    }
+    
+    const isValid = isLowerMainlandCity(city);
+    
+    if (isValid) {
+      setCityValidation({ 
+        isValid: true, 
+        message: "✓ Eligible for free local shipping!" 
+      });
+      setShippingLocation("lowerMainland");
+    } else {
+      setCityValidation({ 
+        isValid: false, 
+        message: "This location requires a $10 shipping fee (or free shipping on orders $50+)" 
+      });
+      setShippingLocation("outside");
+    }
+  };
 
   const handleCheckout = async () => {
+    // Validate city is entered
+    if (!enteredCity.trim()) {
+      alert("Please enter your city to calculate shipping costs.");
+      return;
+    }
+
+    // Validate that shipping location matches entered city
+    const isLowerMainland = isLowerMainlandCity(enteredCity);
+    const actualShipping = discountedSubtotal >= 50 ? 0 : (isLowerMainland ? 0 : 10);
+
     setLoading(true);
     try {
       const response = await fetch("/api/createPaymentLink", {
@@ -49,8 +114,9 @@ function Navbar() {
           cartItems: cart, // Send individual cart items
           subtotal: totalPrice, // Subtotal before tax and shipping
           tax: tax, // Tax amount
-          shipping: shipping, // Shipping amount
+          shipping: actualShipping, // Validated shipping amount
           total: estTotal, // Final total
+          shippingCity: enteredCity.trim(), // Include city for reference
         }),
       });
 
@@ -180,7 +246,7 @@ function Navbar() {
 
       {/* cart drawer */}
       <div
-        className={`lg:w-[24vw] lg:right-0 w-full h-[100vh] lg:h-[96vh] overflow-auto overscroll-y-auto fixed rounded-[0.5rem] lg:py-[2rem] px-[2rem] bg-white opacity-full z-[100] flex flex-col gap-[5rem] ease-in-out duration-300 transition-all lg:my-[0] lg:top-[2vh] top-0 py-[2rem]
+        className={`lg:w-[24vw] lg:right-0 w-full h-[100vh] lg:h-[96vh] overflow-auto overscroll-y-auto fixed rounded-[0.5rem] lg:py-[2rem] px-[2rem] bg-white opacity-full z-[100] flex flex-col gap-[2rem] ease-in-out duration-300 transition-all lg:my-[0] lg:top-[2vh] top-0 py-[2rem]
           ${isCartOpen && !isMobile ? "mr-[2vh]" : "-mr-[100vw]"} ${
           isCartOpen && isMobile ? "-mt-[0vh]" : "-mt-[100vh]"
         }`}
@@ -220,97 +286,82 @@ function Navbar() {
           ))
         )}
 
-        <div className="flex flex-col gap-[1rem]">
-          {/* Promotions messaging */}
-          {cart.length > 0 && (
-            <div className="space-y-2">
-              {/* B6G1 progress */}
-              <div className="p-3 rounded-lg bg-green-50 border border-green-200">
-                {(() => {
-                  const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
-                  const toFree = 6 - (qty % 6 || 6);
-                  return (
-                    <p className="text-xs text-green-900">
-                      Buy 6 bags, get 1 free. {qty > 0 ? `Add ${toFree} more for another free bag.` : 'Add 6 bags to get 1 free.'}
-                    </p>
-                  );
-                })()}
+        <div className="flex flex-col gap-[1.25rem]">
+          {/* Minimal counter for next free bag */}
+          {cart.length > 0 && (() => {
+            const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
+            const remainder = qty % 6;
+            const toFree = remainder === 0 ? 6 : 6 - remainder;
+            const progress = (remainder / 6) * 100;
+            
+            return (
+              <div className="pb-3 border-b border-gray-100">
+                <div className="flex items-center justify-between mb-1.5">
+                  <p className="text-xs text-gray-600">Next free bag:</p>
+                  <p className="text-xs font-semibold text-my-green">
+                    {qty === 0 ? '6 bags needed' : `${toFree} more`}
+                  </p>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div 
+                    className="bg-my-green h-1.5 rounded-full transition-all duration-300"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
               </div>
-              {/* Free shipping threshold messaging */}
-              <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
-                <p className="text-xs text-blue-900">
-                  Spend $50+ (before tax) to get free shipping anywhere in Canada!
-                </p>
+            );
+          })()}
+          {/* City Input for Shipping Validation */}
+          <div className="pt-1">
+            <h3 className="mb-2 font-semibold text-gray-800 text-sm">Shipping City</h3>
+            <div className="flex flex-col gap-2">
+              <input
+                type="text"
+                placeholder="Enter your city (e.g., Vancouver)"
+                value={enteredCity}
+                onChange={handleCityChange}
+                className={`w-full p-2.5 rounded-lg border-2 transition-colors text-sm ${
+                  cityValidation.isValid === true 
+                    ? "border-green-500 bg-green-50" 
+                    : cityValidation.isValid === false 
+                    ? "border-yellow-500 bg-yellow-50"
+                    : "border-gray-300"
+                }`}
+              />
+              {cityValidation.message && (
+                <div className={`p-2 rounded-md text-xs font-medium ${
+                  cityValidation.isValid 
+                    ? "bg-green-50 text-green-700" 
+                    : "bg-yellow-50 text-yellow-700"
+                }`}>
+                  {cityValidation.message}
+                </div>
+              )}
+              <div className="text-xs text-gray-500 space-y-0.5">
+                <p>Free in Lower Mainland • $10 elsewhere • Free on $50+</p>
+                <Link href="/map" className="text-my-green hover:text-green-700 inline-block mt-1">
+                  View eligible cities →
+                </Link>
               </div>
             </div>
-          )}
-          {/* Shipping Location Selector */}
-          <div className="border-t-2 border-gray-200 pt-4 bg-gray-50 p-4 rounded-lg">
-            <h3 className="mb-3 font-semibold text-gray-800">Shipping Location</h3>
-            <div className="flex flex-col gap-3">
-              <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg hover:bg-white transition-colors border border-gray-200 hover:border-my-green">
-                <input
-                  type="radio"
-                  name="shippingLocation"
-                  value="lowerMainland"
-                  checked={shippingLocation === "lowerMainland"}
-                  onChange={(e) => setShippingLocation(e.target.value)}
-                  className="w-4 h-4 text-my-green focus:ring-my-green"
-                />
-                <span className="text-sm font-medium">Located in the Lower Mainland</span>
-              </label>
-              <label className="flex items-center gap-3 cursor-pointer p-3 rounded-lg hover:bg-white transition-colors border border-gray-200 hover:border-my-green">
-                <input
-                  type="radio"
-                  name="shippingLocation"
-                  value="outside"
-                  checked={shippingLocation === "outside"}
-                  onChange={(e) => setShippingLocation(e.target.value)}
-                  className="w-4 h-4 text-my-green focus:ring-my-green"
-                />
-                <span className="text-sm font-medium">Located outside the Lower Mainland</span>
-              </label>
-            </div>
-            {shippingLocation === "outside" && (
-              <div className="mt-3 p-2 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-800">
-                  💡 Shipping fee of $10.00 will be added to your total
-                </p>
-              </div>
-            )}
           </div>
 
-          {/* Free Shipping Qualified Banner */}
+          {/* Free Shipping Qualified - Minimal */}
           {discountedSubtotal >= 50 && (
-            <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-4">
-              <div className="flex flex-row items-center gap-2">
-                <span className="text-2xl">🎉</span>
-                <div className="flex flex-col">
-                  <h3 className="text-blue-900 font-bold">You have qualified for FREE SHIPPING!</h3>
-                  <p className="text-xs text-blue-800 mt-1">
-                    Your order is over $50 (before tax) - shipping is free anywhere in Canada!
-                  </p>
-                </div>
-              </div>
+            <div className="bg-green-50 rounded-md p-2 border-l-4 border-my-green">
+              <p className="text-xs text-green-800 font-medium">
+                ✓ Free shipping unlocked ($50+ order)
+              </p>
             </div>
           )}
 
-          {/* Highlighted discount section BEFORE breakdown */}
+          {/* Discount applied - Minimal */}
           {discount > 0 && (
-            <div className="bg-green-50 border-2 border-green-500 rounded-lg p-4">
-              <div className="flex flex-row justify-between items-center">
-                <div className="flex flex-col">
-                  <h3 className="text-green-900 font-bold">🎉 Buy 6 Get 1 FREE Applied!</h3>
-                  <p className="text-xs text-green-800 mt-1">
-                    {(() => {
-                      const qty = cart.reduce((s, i) => s + Number(i.quantity || 0), 0);
-                      const free = Math.floor(qty / 6);
-                      return `You are getting ${free} free bag${free > 1 ? 's' : ''}!`;
-                    })()}
-                  </p>
-                </div>
-                <p className="text-lg font-bold text-green-700">-${discount.toFixed(2)}</p>
-              </div>
+            <div className="bg-green-50 rounded-md p-2 border-l-4 border-green-500 flex items-center justify-between">
+              <p className="text-xs text-green-800 font-medium">
+                ✓ Free bag discount applied
+              </p>
+              <p className="text-sm font-bold text-green-700">-${discount.toFixed(2)}</p>
             </div>
           )}
 
@@ -389,10 +440,14 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <p className="-mt-[1rem]">
-            {shippingLocation === "lowerMainland" 
-              ? "Free shipping within Greater Vancouver Area!" 
-              : "Shipping fee applies for locations outside Lower Mainland"
+          <p className="-mt-[1rem] text-sm text-gray-600">
+            {enteredCity.trim() === "" 
+              ? "Enter your city above to calculate shipping" 
+              : cityValidation.isValid 
+              ? "✓ Free local shipping applied!" 
+              : shipping > 0 
+              ? `$${shipping.toFixed(2)} shipping fee applies`
+              : "Free shipping on orders $50+!"
             }
           </p>
         </div>

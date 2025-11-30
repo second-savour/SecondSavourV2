@@ -56,8 +56,13 @@ function Page() {
           <div className="h-full flex flex-col gap-[1rem] py-[0.5rem]">
             <h1 className=""> Lemon Treats </h1>
             <h3 className="text-gray-600"> $4.99 Per Package </h3>
-            <div className="bg-green-500 text-white px-3 py-2 rounded-lg w-fit">
-              <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+            <div className="flex flex-col gap-2 w-full">
+              <div className="bg-green-500 text-white px-3 py-2 rounded-lg w-fit">
+                <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+              </div>
+              <div className="bg-blue-100 text-blue-900 px-3 py-2 rounded-lg w-fit">
+                <p className="text-xs font-semibold">🇨🇦 Ships to Canada only</p>
+              </div>
             </div>
             <p>
               Nutritious, vitamin-filled, lemon delicacies hand-made from

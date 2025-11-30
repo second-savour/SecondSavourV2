@@ -23,6 +23,7 @@ export const CartProvider = ({ children }) => {
   const [img, setImg] = useState("");
   const [quantity, setQuantity] = useState();
   const [shippingLocation, setShippingLocation] = useState("lowerMainland"); // "lowerMainland" or "outside"
+  const [shippingCity, setShippingCity] = useState(""); // Store the entered city
 
   //state to track if cart is open
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -80,6 +81,7 @@ export const CartProvider = ({ children }) => {
     console.log("Preparing to load save");
     const savedCart = localStorage.getItem("savedCart");
     const savedShippingLocation = localStorage.getItem("savedShippingLocation");
+    const savedShippingCity = localStorage.getItem("savedShippingCity");
     
     if (initalLoad.current) {
       if (savedCart) {
@@ -113,6 +115,10 @@ export const CartProvider = ({ children }) => {
         setShippingLocation(savedShippingLocation);
       }
       
+      if (savedShippingCity) {
+        setShippingCity(savedShippingCity);
+      }
+      
       initalLoad.current = false;
     }
   }, []);
@@ -135,6 +141,11 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("savedShippingLocation", shippingLocation);
   }, [shippingLocation]);
+
+  // Save shipping city to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("savedShippingCity", shippingCity);
+  }, [shippingCity]);
 
   const removeItem = (name) => {
     if (cart) {
@@ -266,7 +277,9 @@ export const CartProvider = ({ children }) => {
         isCartOpen,
         setIsCartOpen,
         shippingLocation,
-        setShippingLocation
+        setShippingLocation,
+        shippingCity,
+        setShippingCity
       }}
     >
       {children}
