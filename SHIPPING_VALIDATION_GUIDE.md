@@ -129,3 +129,4 @@ If a customer claims incorrect shipping:
 - City is saved to localStorage for returning customers
 - All pricing in CAD
 
+

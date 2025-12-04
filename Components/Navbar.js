@@ -246,7 +246,7 @@ function Navbar() {
 
       {/* cart drawer */}
       <div
-        className={`lg:w-[24vw] lg:right-0 w-full h-[100vh] lg:h-[96vh] overflow-auto overscroll-y-auto fixed rounded-[0.5rem] lg:py-[2rem] px-[2rem] bg-white opacity-full z-[100] flex flex-col gap-[2rem] ease-in-out duration-300 transition-all lg:my-[0] lg:top-[2vh] top-0 py-[2rem]
+        className={`lg:w-[24vw] lg:right-0 w-full h-[100vh] lg:h-[96vh] overflow-auto overscroll-y-auto fixed rounded-[0.5rem] lg:py-[2rem] px-[2rem] pb-[8rem] bg-white opacity-full z-[100] flex flex-col gap-[2rem] ease-in-out duration-300 transition-all lg:my-[0] lg:top-[2vh] top-0 py-[2rem]
           ${isCartOpen && !isMobile ? "mr-[2vh]" : "-mr-[100vw]"} ${
           isCartOpen && isMobile ? "-mt-[0vh]" : "-mt-[100vh]"
         }`}
@@ -453,7 +453,7 @@ function Navbar() {
         </div>
 
         <button
-          className="w-full h-fit bg-my-green text-white border-b-2 border-black px-[1rem] py-[1rem] rounded-full hover:border-b-0 ease-out duration-[100ms] trasition-all"
+          className="w-full h-fit bg-my-green text-white border-b-2 border-black px-[1rem] py-[1rem] rounded-full hover:border-b-0 ease-out duration-[100ms] trasition-all mb-4"
           onClick={() => {
             if (cart.length > 0) handleCheckout();
           }}
