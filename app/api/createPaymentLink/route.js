@@ -10,8 +10,8 @@ export async function POST(req) {
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
-      environment: "sandbox", // Use 'sandbox' for testing, 'production' for live payments
-      // environment: "production",
+      environment: "production", // Use 'sandbox' for testing, 'production' for live payments
+      // environment: "sandox",
     });
 
     // Create line items from cart
