@@ -10,7 +10,7 @@ export async function POST(req) {
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
-      environment: "productionf", // Use 'production' for live payments
+      environment: "production", // Use 'production' for live payments
       // environment: "sandbox",
     });
 
