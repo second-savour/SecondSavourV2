@@ -10,8 +10,8 @@ export async function POST(req) {
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
-      environment: "productionf", // Use 'production' for live payments
-      // environment: "sandbox",
+      environment: "sandbox", // Use 'sandbox' for testing, 'production' for live payments
+      // environment: "production",
     });
 
     // Create line items from cart
@@ -24,23 +24,12 @@ export async function POST(req) {
       },
     }));
 
-    // Compute Buy 6 Get 1 discount (based on cheapest bag)
-    const totalQuantity = cartItems.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
-    const freeItems = Math.floor(totalQuantity / 6);
-    const minUnitPrice = cartItems.length > 0 ? Math.min(...cartItems.map(i => Number(i.price || 0))) : 0;
-    const discountCents = Math.max(0, Math.round(freeItems * minUnitPrice * 100));
+    // Calculate 15% discount on cart subtotal
+    const cartSubtotal = cartItems.reduce((sum, item) => sum + (Number(item.price || 0) * Number(item.quantity || 0)), 0);
+    const discountCents = Math.round(cartSubtotal * 0.15 * 100); // 15% discount in cents
 
-    // Add shipping as a line item if applicable
-    if (shipping > 0) {
-      lineItems.push({
-        name: "Shipping",
-        quantity: "1",
-        basePriceMoney: {
-          amount: Math.round(shipping * 100),
-          currency: "CAD",
-        },
-      });
-    }
+    // Free shipping - do not add shipping as a line item
+    // Shipping is free for all orders during Christmas promotion
 
     const response = await client.checkoutApi.createPaymentLink({
       idempotencyKey: crypto.randomUUID(), // Ensure idempotency
@@ -51,7 +40,7 @@ export async function POST(req) {
           ? {
               discounts: [
                 {
-                  name: "Buy 6 Get 1 Free",
+                  name: "Christmas Special - 15% Off + Free Shipping",
                   amountMoney: { amount: discountCents, currency: "CAD" },
                   scope: "ORDER",
                 },
