@@ -6,7 +6,7 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { cartItems, shipping } = await req.json();
+    const { cartItems } = await req.json();
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
