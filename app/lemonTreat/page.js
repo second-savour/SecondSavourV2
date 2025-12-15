@@ -88,8 +88,8 @@ function Page() {
                       "/static/images/yellowpouch.png",
                       "A bag of lemon treats, filled with tangy, refreshing fruit snacks",
                       "ID",
-                      4.99,
-                      4.99
+                      4.24,
+                      4.24
                     )
                   : null
               }

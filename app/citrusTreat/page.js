@@ -88,8 +88,8 @@ function Page() {
                       "/static/images/OrangeBagUpdate.png",
                       "A bag of orange citrus treats, filled with tangy, refreshing fruit snacks",
                       "ID",
-                      4.99,
-                      4.99
+                      4.24,
+                      4.24
                     )
                   : null
               }

@@ -90,18 +90,24 @@ export const CartProvider = ({ children }) => {
           // Migrate old product names and prices
           const migratedCart = parsedCart.map(item => {
             let updatedItem = { ...item };
-            
+
             // Migrate old product names
             if (item.name === "Citrus Treats" || item.name === "Orange Citrus Treats") {
               updatedItem.name = "Orange Treats";
             }
-            
+
             // Migrate old prices - update any item with price 7.99 to 4.99
             if (Number(item.price) === 7.99) {
               updatedItem.price = 4.99;
               updatedItem.totalPrice = updatedItem.quantity * 4.99;
             }
-            
+
+            // Migrate 4.99 to 4.24 (15% off Christmas discount)
+            if (Number(item.price) === 4.99) {
+              updatedItem.price = 4.24;
+              updatedItem.totalPrice = updatedItem.quantity * 4.24;
+            }
+
             return updatedItem;
           });
           setCart(migratedCart);

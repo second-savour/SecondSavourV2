@@ -16,8 +16,8 @@ export default function Page() {
       "/static/images/Stand-Up Pouch Bag Mockup label.png",
       "A bag of orange citrus treats, tangy & refreshing",
       "CT-1",
-      4.99,
-      4.99
+      4.24,
+      4.24
     );
   };
 
