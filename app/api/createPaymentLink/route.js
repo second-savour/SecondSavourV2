@@ -6,12 +6,12 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { cartItems } = await req.json();
+    const { cartItems, discount } = await req.json();
 
     const client = new Client({
-      accessToken: process.env.SQUARE_ACCESS_TOKEN,
+      accessToken: process.env.SANDBOX_ACCESS_TOKEN,
       environment: "production", // Use 'sandbox' for testing, 'production' for live payments
-      // environment: "sandox"
+      // environment: "sandbox",
     });
 
     // Create line items from cart
@@ -24,12 +24,8 @@ export async function POST(req) {
       },
     }));
 
-    // Calculate 15% discount on cart subtotal
-    const cartSubtotal = cartItems.reduce((sum, item) => sum + (Number(item.price || 0) * Number(item.quantity || 0)), 0);
-    const discountCents = Math.round(cartSubtotal * 0.15 * 100); // 15% discount in cents
-
-    // Free shipping - do not add shipping as a line item
-    // Shipping is free for all orders during Christmas promotion
+    // Use discount amount from cart (already calculated by CartContext)
+    const discountCents = discount ? Math.round(discount * 100) : 0; // Convert to cents
 
     const response = await client.checkoutApi.createPaymentLink({
       idempotencyKey: crypto.randomUUID(), // Ensure idempotency
