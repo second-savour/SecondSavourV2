@@ -1,0 +1,58 @@
+{
+  "merchant_id": "ML6K8T0VGT9KZ",
+  "type": "order.created",
+  "event_id": "kurtis-order-001",
+  "created_at": "2025-12-10T14:30:00Z",
+  "data": {
+    "type": "order",
+    "id": "kurtis-event-001",
+    "object": {
+      "order": {
+        "id": "KURTIS-ORDER-001",
+        "location_id": "L1234567890",
+        "state": "OPEN",
+        "version": 1,
+        "created_at": "2025-12-10T14:30:00Z",
+        "updated_at": "2025-12-10T14:30:00Z",
+        "line_items": [
+          {
+            "uid": "line-001",
+            "name": "Citrus Candies Variety Pack",
+            "quantity": "3",
+            "base_price_money": {
+              "amount": 2999,
+              "currency": "USD"
+            },
+            "total_money": {
+              "amount": 8997,
+              "currency": "USD"
+            }
+          }
+        ],
+        "fulfillments": [
+          {
+            "uid": "fulfillment-001",
+            "type": "SHIPMENT",
+            "state": "PROPOSED",
+            "display_name": "Kurtis Johnson",
+            "email_address": "Kurtis123@gmail.com",
+            "shipment_details": {
+              "recipient": {
+                "display_name": "Kurtis Johnson",
+                "email_address": "Kurtis123@gmail.com",
+                "address": {
+                  "address_line_1": "456 Oak Avenue",
+                  "address_line_2": "Suite 200",
+                  "locality": "Portland",
+                  "administrative_district_level_1": "OR",
+                  "postal_code": "97201",
+                  "country": "US"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

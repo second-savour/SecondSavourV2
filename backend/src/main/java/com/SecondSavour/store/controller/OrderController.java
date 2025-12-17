@@ -2,121 +2,95 @@ package com.SecondSavour.store.controller;
 
 import com.SecondSavour.store.model.Order;
 import com.SecondSavour.store.service.OrderService;
+import com.SecondSavour.store.service.ShipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/orders")
-@CrossOrigin(origins = "*") // Allow CORS for frontend
+@CrossOrigin(origins = "*")
 public class OrderController {
-    
+
     @Autowired
     private OrderService orderService;
-    
-    // Get all orders
+
+    @Autowired
+    private ShipmentService shipmentService;
+
+    @GetMapping("/customer/{email}")
+    public ResponseEntity<List<Order>> getOrdersByCustomerEmail(@PathVariable String email) {
+        System.out.println("Fetching orders for customer email: " + email);
+
+        try {
+            List<Order> orders = orderService.getOrdersByEmail(email.toLowerCase());
+            System.out.println("Found " + orders.size() + " orders for " + email);
+            return ResponseEntity.ok(orders);
+        } catch (Exception e) {
+            System.err.println("Error fetching orders: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<Order>> getAllOrders() {
-        List<Order> orders = orderService.getAllOrders();
-        return ResponseEntity.ok(orders);
+        try {
+            List<Order> orders = orderService.getAllOrders();
+            return ResponseEntity.ok(orders);
+        } catch (Exception e) {
+            System.err.println("Error fetching all orders: " + e.getMessage());
+            return ResponseEntity.internalServerError().build();
+        }
     }
-    
-    // Get orders by customer email
-    @GetMapping("/customer/{customerEmail}")
-    public ResponseEntity<List<Order>> getOrdersByCustomer(@PathVariable String customerEmail) {
-        List<Order> orders = orderService.getOrdersByCustomerEmail(customerEmail);
-        return ResponseEntity.ok(orders);
-    }
-    
-    // Get specific order by ID
+
     @GetMapping("/{orderId}")
     public ResponseEntity<Order> getOrderById(@PathVariable String orderId) {
-        Optional<Order> order = orderService.getOrderById(orderId);
-        if (order.isPresent()) {
-            return ResponseEntity.ok(order.get());
-        }
-        return ResponseEntity.notFound().build();
-    }
-    
-    // Track order status
-    @GetMapping("/{orderId}/track")
-    public ResponseEntity<Map<String, Object>> trackOrder(@PathVariable String orderId) {
-        Optional<Order> orderOpt = orderService.getOrderById(orderId);
-        if (orderOpt.isPresent()) {
-            Order order = orderOpt.get();
-            Map<String, Object> trackingInfo = Map.of(
-                "orderId", order.getOrderId(),
-                "productName", order.getProductName(),
-                "status", order.getStatus(),
-                "orderDate", order.getOrderDate().toString(),
-                "estimatedDeliveryDate", order.getEstimatedDeliveryDate().toString(),
-                "quantity", order.getQuantity()
-            );
-            return ResponseEntity.ok(trackingInfo);
-        }
-        return ResponseEntity.notFound().build();
-    }
-    
-    // Create new order
-    @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         try {
-            Order createdOrder = orderService.createOrder(order);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+            return orderService.getOrderById(orderId)
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            System.err.println("Error fetching order: " + e.getMessage());
+            return ResponseEntity.internalServerError().build();
         }
     }
-    
-    // Update order status
-    @PutMapping("/{orderId}/status")
-    public ResponseEntity<Order> updateOrderStatus(@PathVariable String orderId, 
-                                                   @RequestBody Map<String, String> statusUpdate) {
-        String newStatus = statusUpdate.get("status");
-        if (newStatus == null || newStatus.isEmpty()) {
-            return ResponseEntity.badRequest().build();
+
+    @PostMapping("/sync-shipments")
+    public ResponseEntity<Map<String, Object>> syncShipmentsFromOrders() {
+        System.out.println("Starting shipment sync from orders...");
+        try {
+            List<Order> allOrders = orderService.getAllOrders();
+            int syncedCount = 0;
+            int errorCount = 0;
+
+            for (Order order : allOrders) {
+                try {
+                    shipmentService.syncShipmentFromOrder(order);
+                    syncedCount++;
+                    System.out.println("Synced shipment for order: " + order.getOrderId());
+                } catch (Exception e) {
+                    errorCount++;
+                    System.err.println("Failed to sync shipment for order " + order.getOrderId() + ": " + e.getMessage());
+                }
+            }
+
+            System.out.println("Shipment sync completed. Synced: " + syncedCount + ", Errors: " + errorCount);
+
+            return ResponseEntity.ok(Map.of(
+                "success", true,
+                "synced", syncedCount,
+                "errors", errorCount,
+                "message", "Synced " + syncedCount + " shipments from orders"
+            ));
+        } catch (Exception e) {
+            System.err.println("Error during shipment sync: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.internalServerError()
+                .body(Map.of("success", false, "error", e.getMessage()));
         }
-        
-        Optional<Order> updatedOrder = orderService.updateOrderStatus(orderId, newStatus);
-        if (updatedOrder.isPresent()) {
-            return ResponseEntity.ok(updatedOrder.get());
-        }
-        return ResponseEntity.notFound().build();
-    }
-    
-    // Delete order
-    @DeleteMapping("/{orderId}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable String orderId) {
-        boolean deleted = orderService.deleteOrder(orderId);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
-    
-    // Get available order statuses
-    @GetMapping("/statuses")
-    public ResponseEntity<List<String>> getAvailableStatuses() {
-        List<String> statuses = orderService.getAvailableStatuses();
-        return ResponseEntity.ok(statuses);
-    }
-    
-    // Health check for orders service
-    @GetMapping("/health")
-    public ResponseEntity<Map<String, Object>> healthCheck() {
-        Map<String, Object> health = Map.of(
-            "service", "Orders Service",
-            "status", "healthy",
-            "totalOrders", orderService.getAllOrders().size(),
-            "timestamp", System.currentTimeMillis()
-        );
-        return ResponseEntity.ok(health);
     }
 }
-
-

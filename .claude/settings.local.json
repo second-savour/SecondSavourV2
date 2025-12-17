@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pkill:*)",
+      "Bash(./test-webhook.sh:*)",
+      "Bash(cat:*)",
+      "Bash(chmod:*)",
+      "Bash(./test-simple.sh:*)",
+      "Bash(PGPASSWORD='hW6YOa2tJ9Xp7xtt' psql:*)",
+      "Bash(PGPASSWORD='hW6YOa2tJ9Xp7xtt' psql -h db.jrmgouykfgubpiqrynbh.supabase.co -p 6543 -U postgres -d postgres -c \"\\dt\")",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(PGPASSWORD='hW6YOa2tJ9Xp7xtt' psql -h db.jrmgouykfgubpiqrynbh.supabase.co -p 6543 -U postgres -d postgres -c \"SELECT id, square_order_id, product_name, status, customer_name FROM orders WHERE square_order_id = ''AUTO-SYNC-TEST-001'';\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

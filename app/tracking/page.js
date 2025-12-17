@@ -19,7 +19,18 @@ function OrderTrackingPage() {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:8080/api/orders");
+
+      // Get user email from auth context
+      const userEmail = user?.email;
+      if (!userEmail) {
+        setError("Please log in to view your orders");
+        setLoading(false);
+        return;
+      }
+
+      // Fetch orders from Spring Boot backend, filtered by customer email
+      const response = await fetch(`http://localhost:8080/api/orders/customer/${encodeURIComponent(userEmail)}`);
+
       if (response.ok) {
         const data = await response.json();
         // Sort by most recent and take only the first 3 orders
@@ -29,7 +40,8 @@ function OrderTrackingPage() {
         setError("Failed to load orders");
       }
     } catch (err) {
-      setError("Unable to connect to server");
+      setError("Unable to connect to server. Make sure backend is running on port 8080.");
+      console.error("Error fetching orders:", err);
     } finally {
       setLoading(false);
     }

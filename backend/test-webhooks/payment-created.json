@@ -1,0 +1,24 @@
+{
+  "merchant_id": "ML6K8T0VGT9KZ",
+  "type": "payment.created",
+  "event_id": "test-payment-created-001",
+  "created_at": "2025-12-15T18:01:00Z",
+  "data": {
+    "type": "payment",
+    "id": "test-event-payment-created",
+    "object": {
+      "payment": {
+        "id": "TEST-PAYMENT-67890",
+        "order_id": "TEST-ORDER-12345",
+        "status": "APPROVED",
+        "source_type": "CARD",
+        "customer_id": "CUSTOMER-ABC123",
+        "created_at": "2025-12-15T18:01:00Z",
+        "total_money": {
+          "amount": 4998,
+          "currency": "USD"
+        }
+      }
+    }
+  }
+}
