@@ -6,43 +6,41 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { cartItems, discount } = await req.json();
+    const { cartItems, discount, subtotal, tax, shipping, total } = await req.json();
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
-      environment: "production", // Use 'sandbox' for testing, 'production' for live payments
+      // environment: "production", // Use 'sandbox' for testing, 'production' for live payments
       // environment: "sandbox",
     });
 
-    // Create line items from cart
+    // Calculate total items before discount
+    const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const totalBeforeDiscount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    // Apply discount proportionally to each item's price
+    // This way the discount is baked into the prices shown in Square
+    const discountRatio = discount > 0 ? (totalBeforeDiscount - discount) / totalBeforeDiscount : 1;
+
     const lineItems = cartItems.map(item => ({
       name: item.name,
       quantity: item.quantity.toString(),
       basePriceMoney: {
-        amount: Math.round(item.price * 100), // Convert to cents
+        // Apply the discount ratio to each item's price
+        amount: Math.round(item.price * discountRatio * 100), // Convert to cents with discount applied
         currency: "CAD",
       },
+      ...(discount > 0 ? {
+        note: `Original: $${item.price.toFixed(2)} (Buy 6 Get 1 FREE applied)`
+      } : {})
     }));
-
-    // Use discount amount from cart (already calculated by CartContext)
-    const discountCents = discount ? Math.round(discount * 100) : 0; // Convert to cents
 
     const response = await client.checkoutApi.createPaymentLink({
       idempotencyKey: crypto.randomUUID(), // Ensure idempotency
       order: {
         locationId: process.env.SQUARE_LOCATION_ID,
         lineItems: lineItems,
-        ...(discountCents > 0
-          ? {
-              discounts: [
-                {
-                  name: "Christmas Special - 15% Off + Free Shipping",
-                  amountMoney: { amount: discountCents, currency: "CAD" },
-                  scope: "ORDER",
-                },
-              ],
-            }
-          : {}),
+        // No discount field - prices already include discount
         taxes: [
           {
             name: 'GST (5%)',
