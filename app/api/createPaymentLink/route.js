@@ -6,58 +6,40 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { cartItems, shipping } = await req.json();
+    const { cartItems, discount } = await req.json();
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
-      environment: "production", // Use 'production' for live payments
+      // environment: "production", // Use 'sandbox' for testing, 'production' for live payments
       // environment: "sandbox",
     });
 
-    // Create line items from cart
+    // Calculate total items before discount
+    const totalBeforeDiscount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    // Apply discount proportionally to each item's price
+    // This way the discount is baked into the prices shown in Square
+    const discountRatio = discount > 0 ? (totalBeforeDiscount - discount) / totalBeforeDiscount : 1;
+
     const lineItems = cartItems.map(item => ({
       name: item.name,
       quantity: item.quantity.toString(),
       basePriceMoney: {
-        amount: Math.round(item.price * 100), // Convert to cents
+        // Apply the discount ratio to each item's price
+        amount: Math.round(item.price * discountRatio * 100), // Convert to cents with discount applied
         currency: "CAD",
       },
+      ...(discount > 0 ? {
+        note: `Original: $${item.price.toFixed(2)} (Buy 6 Get 1 FREE applied)`
+      } : {})
     }));
-
-    // Compute Buy 6 Get 1 discount (based on cheapest bag)
-    const totalQuantity = cartItems.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
-    const freeItems = Math.floor(totalQuantity / 6);
-    const minUnitPrice = cartItems.length > 0 ? Math.min(...cartItems.map(i => Number(i.price || 0))) : 0;
-    const discountCents = Math.max(0, Math.round(freeItems * minUnitPrice * 100));
-
-    // Add shipping as a line item if applicable
-    if (shipping > 0) {
-      lineItems.push({
-        name: "Shipping",
-        quantity: "1",
-        basePriceMoney: {
-          amount: Math.round(shipping * 100),
-          currency: "CAD",
-        },
-      });
-    }
 
     const response = await client.checkoutApi.createPaymentLink({
       idempotencyKey: crypto.randomUUID(), // Ensure idempotency
       order: {
         locationId: process.env.SQUARE_LOCATION_ID,
         lineItems: lineItems,
-        ...(discountCents > 0
-          ? {
-              discounts: [
-                {
-                  name: "Buy 6 Get 1 Free",
-                  amountMoney: { amount: discountCents, currency: "CAD" },
-                  scope: "ORDER",
-                },
-              ],
-            }
-          : {}),
+        // No discount field - prices already include discount
         taxes: [
           {
             name: 'GST (5%)',

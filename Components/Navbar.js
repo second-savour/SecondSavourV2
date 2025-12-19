@@ -113,6 +113,7 @@ function Navbar() {
         body: JSON.stringify({
           cartItems: cart, // Send individual cart items
           subtotal: totalPrice, // Subtotal before tax and shipping
+          discount: discount, // Discount amount from cart
           tax: tax, // Tax amount
           shipping: actualShipping, // Validated shipping amount
           total: estTotal, // Final total

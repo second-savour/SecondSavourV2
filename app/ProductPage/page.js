@@ -16,8 +16,8 @@ export default function Page() {
       "/static/images/Stand-Up Pouch Bag Mockup label.png",
       "A bag of orange citrus treats, tangy & refreshing",
       "CT-1",
-      4.99,
-      4.99
+      4.24,
+      4.24
     );
   };
 
@@ -106,8 +106,14 @@ export default function Page() {
               CITRUS TREATS
             </h2>
             <p className="text-base mb-2">$4.99 per Package</p>
-            <div className="bg-green-500 text-white px-3 py-2 rounded-lg mb-3 inline-block">
-              <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+            <div className="rounded-lg overflow-hidden mb-3 max-w-sm">
+              <Image
+                src="/static/images/Christmas-Web.png"
+                alt="Save 15% off and get free shipping"
+                width={600}
+                height={200}
+                className="object-contain w-full"
+              />
             </div>
             <p className="text-gray-700 text-sm leading-relaxed mb-4">
               Nutritious, vitamin‐filled, citrus delicacies hand‐made from
@@ -293,8 +299,14 @@ export default function Page() {
                 CITRUS TREATS
               </h2>
               <p className="text-lg mb-4">$4.99 per Package</p>
-              <div className="bg-green-500 text-white px-4 py-3 rounded-lg mb-4">
-                <p className="text-sm font-bold">🎉 Buy 6 Bags, Get 1 FREE!</p>
+              <div className="rounded-lg overflow-hidden mb-4">
+                <Image
+                  src="/static/images/Christmas-Web.png"
+                  alt="Save 15% off and get free shipping"
+                  width={600}
+                  height={200}
+                  className="object-contain w-full"
+                />
               </div>
               <p className="text-gray-700 leading-relaxed mb-8">
                 Nutritious, vitamin‐filled, citrus delicacies hand‐made from

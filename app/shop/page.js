@@ -16,22 +16,15 @@ export default function ShopPage() {
           </p>
           
           {/* Promotions Banner */}
-          <div className="mt-5 max-w-2xl mx-auto space-y-2">
-            <div className="bg-white text-black p-3 rounded-lg shadow-sm border-2 border-green-600">
-              <h2 
-                className="text-sm lg:text-base font-black mb-0.5 tracking-wider"
-                style={{ fontFamily: "Tanker, sans-serif", letterSpacing: "0.03em" }}
-              >
-                🎉 BUY 6 BAGS, GET 1 FREE 🎉
-              </h2>
-              <p className="text-xs lg:text-sm font-medium">
-                Stock up and save! Add 6 bags to your cart and get an extra bag on us.
-              </p>
-            </div>
-            <div className="bg-white text-black p-2.5 rounded-lg shadow-sm border-2 border-yellow-500">
-              <p className="text-xs lg:text-sm font-semibold">
-                🚚 FREE SHIPPING on orders $50+ (before tax, anywhere in Canada)
-              </p>
+          <div className="mt-5 max-w-4xl mx-auto space-y-2">
+            <div className="rounded-lg overflow-hidden">
+              <Image
+                src="/static/images/Christmas-Web.png"
+                alt="Save 15% off and get free shipping"
+                width={1200}
+                height={400}
+                className="object-contain w-full"
+              />
             </div>
           </div>
         </section>

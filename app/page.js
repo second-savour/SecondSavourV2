@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ContainerText from "../Components/ContainerText.js";
 import ReviewCard from "../Components/ReviewCard.js";
+import PromoPopup from "../Components/PromoPopup.js";
 import { NextSeo } from "next-seo";
 
 function Page() {
@@ -48,7 +49,9 @@ function Page() {
   }, []);
 
   return (
-    <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
+    <>
+      <PromoPopup />
+      <div className="flex flex-col lg:gap-[10rem] gap-[5rem] ">
       <section className="lg:h-[110vh] h-[50vh] max-h-[110vh] lg:mt-[-19vh] object-cover relative overflow-hidden ">
         <Image
           src="/static/images/heroImage.png"
@@ -326,6 +329,7 @@ function Page() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 
