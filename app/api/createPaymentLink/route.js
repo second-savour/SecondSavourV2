@@ -6,7 +6,7 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { cartItems, discount, subtotal, tax, shipping, total } = await req.json();
+    const { cartItems, discount } = await req.json();
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
@@ -15,7 +15,6 @@ export async function POST(req) {
     });
 
     // Calculate total items before discount
-    const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     const totalBeforeDiscount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
     // Apply discount proportionally to each item's price
