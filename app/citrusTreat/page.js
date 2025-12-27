@@ -41,24 +41,15 @@ function Page() {
   return (
     <div className=" w-[95%] md:w-[95%] lg:w-[80%] m-auto  mt-[12vh] lg:mt-[0%]">
       <div className="flex flex-col md:flex-row lg:flex-row gap-[3vh] lg:gap-[1%]">
-        <div className="group relative bg-[#0D6A3D] min-w-[40%] lg:max-h-[100%] md:max-h-[100%] max-h-[50vh] lg:h-auto rounded-[1rem] flex flex-col justify-between items-center hover:bg-[#17B267] hover:cursor-pointer ease-in-out duration-300 shadow-lg p-[1.5rem] lg:p-[2.5rem]">
-          <div className="mb-3 lg:mb-4 w-full max-w-[90%]">
-            <div className="bg-gradient-to-r from-red-600 via-green-600 to-red-600 text-white px-3 py-2 lg:px-4 lg:py-3 rounded-lg relative overflow-hidden shadow-lg">
-              <p className="text-xs lg:text-sm font-bold text-center leading-tight">
-                SAVE 15% OFF AND GET FREE SHIPPING
-              </p>
-            </div>
-          </div>
-          <div className="flex-1 flex items-center justify-center w-full">
-            <Image
-              className="relative lg:object-contain object-scale-down group-hover:scale-105 ease-in-out duration-300 max-h-[40vh] lg:max-h-[50vh] max-w-[70%] lg:max-w-[80%]"
-              src={"/static/images/OrangeBagUpdate.png"}
-              alt="Our Delicious Product Citrus Candies"
-              height={1080}
-              width={1080}
-              priority={true}
-            />
-          </div>
+        <div className="group relative bg-[#0D6A3D] min-w-[40%] lg:max-h-[100%] md:max-h-[100%] max-h-[50vh] lg:h-auto rounded-[1rem] flex flex-col justify-center items-center hover:bg-[#17B267] hover:cursor-pointer ease-in-out duration-300 shadow-lg p-[1.5rem] lg:p-[2.5rem]">
+          <Image
+            className="relative lg:object-contain object-scale-down group-hover:scale-105 ease-in-out duration-300 max-h-[40vh] lg:max-h-[50vh] max-w-[70%] lg:max-w-[80%]"
+            src={"/static/images/OrangeBagUpdate.png"}
+            alt="Our Delicious Product Citrus Candies"
+            height={1080}
+            width={1080}
+            priority={true}
+          />
         </div>
 
         <div className=" bg-[#E7D9BF] rounded-[1rem] p-[2rem] md:p-[3rem] lg:p-[3rem] flex flex-col md:min-w-[60%] lg:min-w-[60%] shadow-lg">
@@ -88,8 +79,8 @@ function Page() {
                       "/static/images/OrangeBagUpdate.png",
                       "A bag of orange citrus treats, filled with tangy, refreshing fruit snacks",
                       "ID",
-                      4.24,
-                      4.24
+                      4.99,
+                      4.99
                     )
                   : null
               }
