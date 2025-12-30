@@ -96,16 +96,10 @@ export const CartProvider = ({ children }) => {
               updatedItem.name = "Orange Treats";
             }
 
-            // Migrate old prices - update any item with price 7.99 to 4.99
-            if (Number(item.price) === 7.99) {
+            // Migrate old prices - update any item with price 7.99 or 4.24 to 4.99
+            if (Number(item.price) === 7.99 || Number(item.price) === 4.24) {
               updatedItem.price = 4.99;
               updatedItem.totalPrice = updatedItem.quantity * 4.99;
-            }
-
-            // Migrate 4.99 to 4.24 (15% off Christmas discount)
-            if (Number(item.price) === 4.99) {
-              updatedItem.price = 4.24;
-              updatedItem.totalPrice = updatedItem.quantity * 4.24;
             }
 
             return updatedItem;

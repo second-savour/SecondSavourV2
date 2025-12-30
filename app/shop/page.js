@@ -14,19 +14,6 @@ export default function ShopPage() {
           <p className="mt-3 text-base lg:text-lg text-gray-800">
             Second Savour crafts sustainable, delicious candy by upcycling fruits
           </p>
-          
-          {/* Promotions Banner */}
-          <div className="mt-5 max-w-4xl mx-auto space-y-2">
-            <div className="rounded-lg overflow-hidden">
-              <Image
-                src="/static/images/Christmas-Web.png"
-                alt="Save 15% off and get free shipping"
-                width={1200}
-                height={400}
-                className="object-contain w-full"
-              />
-            </div>
-          </div>
         </section>
 
         {/* PRODUCT GRID */}
