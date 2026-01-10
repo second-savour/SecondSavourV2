@@ -135,7 +135,7 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("savedCart", JSON.stringify(cart));
     calculateCartSummary();
-  }, [cart, calculateCartSummary]);
+  }, [cart, shippingLocation, calculateCartSummary]);
 
   // Save shipping location to localStorage whenever it changes
   useEffect(() => {
