@@ -6,7 +6,7 @@ BigInt.prototype.toJSON = function () {
 
 export async function POST(req) {
   try {
-    const { cartItems, discount } = await req.json();
+    const { cartItems, discount, shipping } = await req.json();
 
     const client = new Client({
       accessToken: process.env.SQUARE_ACCESS_TOKEN,
@@ -33,6 +33,18 @@ export async function POST(req) {
         note: `Original: $${item.price.toFixed(2)} (Buy 6 Get 1 FREE applied)`
       } : {})
     }));
+
+    // Add shipping as a line item if applicable
+    if (shipping > 0) {
+      lineItems.push({
+        name: "Shipping",
+        quantity: "1",
+        basePriceMoney: {
+          amount: Math.round(shipping * 100), // Convert to cents
+          currency: "CAD",
+        },
+      });
+    }
 
     const response = await client.checkoutApi.createPaymentLink({
       idempotencyKey: crypto.randomUUID(), // Ensure idempotency
