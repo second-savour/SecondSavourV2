@@ -53,11 +53,11 @@ function Page() {
                 </li>
                 <li className="flex items-start gap-1">
                   <span className="text-green-600 text-base">✓</span>
-                  <span className="text-base"><strong>Free</strong> on orders $15+ (before tax) anywhere in Canada</span>
+                  <span className="text-base"><strong>Free</strong> on orders $20+ (before tax) anywhere in Canada</span>
                 </li>
                 <li className="flex items-start gap-1">
                   <span className="text-yellow-600 text-base">$</span>
-                  <span className="text-base"><strong>$10.00</strong> flat rate for other Canadian cities (orders under $15)</span>
+                  <span className="text-base"><strong>$10.00</strong> flat rate for other Canadian cities (orders under $20)</span>
                 </li>
               </ul>
             </div>

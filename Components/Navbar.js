@@ -60,7 +60,7 @@ function Navbar() {
       } else {
         setCityValidation({ 
           isValid: false, 
-          message: "This location requires a $10 shipping fee (or free shipping on orders $15+)" 
+          message: "This location requires a $10 shipping fee (or free shipping on orders $20+)" 
         });
       }
     }
@@ -88,7 +88,7 @@ function Navbar() {
     } else {
       setCityValidation({ 
         isValid: false, 
-        message: "This location requires a $10 shipping fee (or free shipping on orders $15+)" 
+        message: "This location requires a $10 shipping fee (or free shipping on orders $20+)" 
       });
       setShippingLocation("outside");
     }
@@ -96,14 +96,14 @@ function Navbar() {
 
   const handleCheckout = async () => {
     // Only require city if below free shipping threshold
-    if (discountedSubtotal < 15 && !enteredCity.trim()) {
+    if (discountedSubtotal < 20 && !enteredCity.trim()) {
       alert("Please enter your city to calculate shipping costs.");
       return;
     }
 
     // Validate that shipping location matches entered city
     const isLowerMainland = isLowerMainlandCity(enteredCity);
-    const actualShipping = discountedSubtotal >= 15 ? 0 : (isLowerMainland ? 0 : 10);
+    const actualShipping = discountedSubtotal >= 20 ? 0 : (isLowerMainland ? 0 : 10);
 
     setLoading(true);
     try {
@@ -313,7 +313,7 @@ function Navbar() {
             );
           })()}
           {/* City Input for Shipping Validation - hidden when free shipping threshold is met */}
-          {discountedSubtotal < 15 && (
+          {discountedSubtotal < 20 && (
             <div className="pt-1">
               <h3 className="mb-2 font-semibold text-gray-800 text-sm">Shipping City</h3>
               <div className="flex flex-col gap-2">
@@ -340,7 +340,7 @@ function Navbar() {
                   </div>
                 )}
                 <div className="text-xs text-gray-500 space-y-0.5">
-                  <p>Free in Lower Mainland • $10 elsewhere • Free on $15+</p>
+                  <p>Free in Lower Mainland • $10 elsewhere • Free on $20+</p>
                   <Link href="/map" className="text-my-green hover:text-green-700 inline-block mt-1">
                     View eligible cities →
                   </Link>
@@ -350,10 +350,10 @@ function Navbar() {
           )}
 
           {/* Free Shipping Qualified - Minimal */}
-          {discountedSubtotal >= 15 && (
+          {discountedSubtotal >= 20 && (
             <div className="bg-green-50 rounded-md p-2 border-l-4 border-my-green">
               <p className="text-xs text-green-800 font-medium">
-                ✓ Free shipping unlocked ($15+ order)
+                ✓ Free shipping unlocked ($20+ order)
               </p>
             </div>
           )}
@@ -450,7 +450,7 @@ function Navbar() {
               ? "✓ Free local shipping applied!" 
               : shipping > 0 
               ? `$${shipping.toFixed(2)} shipping fee applies`
-              : "Free shipping on orders $15+!"
+              : "Free shipping on orders $20+!"
             }
           </p>
         </div>

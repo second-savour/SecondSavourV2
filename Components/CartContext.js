@@ -54,9 +54,9 @@ export const CartProvider = ({ children }) => {
 
     const netSubtotal = Math.max(0, parseFloat((grossSubtotal - promoDiscount).toFixed(2)));
 
-    // Shipping rules - free shipping if subtotal (after promos, before tax) >= $15 anywhere in Canada
-    if (netSubtotal >= 15) {
-      totalShipping = 0.0; // Free shipping for orders $15+ (pre-tax)
+    // Shipping rules - free shipping if subtotal (after promos, before tax) >= $20 anywhere in Canada
+    if (netSubtotal >= 20) {
+      totalShipping = 0.0; // Free shipping for orders $20+ (pre-tax)
     } else if (shippingLocation === "outside") {
       totalShipping = 10.0; // $10 shipping fee for outside Lower Mainland
     } else {
