@@ -60,7 +60,7 @@ function Navbar() {
       } else {
         setCityValidation({ 
           isValid: false, 
-          message: "This location requires a $10 shipping fee (or free shipping on orders $50+)" 
+          message: "This location requires a $10 shipping fee (or free shipping on orders $15+)" 
         });
       }
     }
@@ -88,22 +88,22 @@ function Navbar() {
     } else {
       setCityValidation({ 
         isValid: false, 
-        message: "This location requires a $10 shipping fee (or free shipping on orders $50+)" 
+        message: "This location requires a $10 shipping fee (or free shipping on orders $15+)" 
       });
       setShippingLocation("outside");
     }
   };
 
   const handleCheckout = async () => {
-    // Validate city is entered
-    if (!enteredCity.trim()) {
+    // Only require city if below free shipping threshold
+    if (discountedSubtotal < 15 && !enteredCity.trim()) {
       alert("Please enter your city to calculate shipping costs.");
       return;
     }
 
     // Validate that shipping location matches entered city
     const isLowerMainland = isLowerMainlandCity(enteredCity);
-    const actualShipping = discountedSubtotal >= 50 ? 0 : (isLowerMainland ? 0 : 10);
+    const actualShipping = discountedSubtotal >= 15 ? 0 : (isLowerMainland ? 0 : 10);
 
     setLoading(true);
     try {
@@ -312,46 +312,48 @@ function Navbar() {
               </div>
             );
           })()}
-          {/* City Input for Shipping Validation */}
-          <div className="pt-1">
-            <h3 className="mb-2 font-semibold text-gray-800 text-sm">Shipping City</h3>
-            <div className="flex flex-col gap-2">
-              <input
-                type="text"
-                placeholder="Enter your city (e.g., Vancouver)"
-                value={enteredCity}
-                onChange={handleCityChange}
-                className={`w-full p-2.5 rounded-lg border-2 transition-colors text-sm ${
-                  cityValidation.isValid === true 
-                    ? "border-green-500 bg-green-50" 
-                    : cityValidation.isValid === false 
-                    ? "border-yellow-500 bg-yellow-50"
-                    : "border-gray-300"
-                }`}
-              />
-              {cityValidation.message && (
-                <div className={`p-2 rounded-md text-xs font-medium ${
-                  cityValidation.isValid 
-                    ? "bg-green-50 text-green-700" 
-                    : "bg-yellow-50 text-yellow-700"
-                }`}>
-                  {cityValidation.message}
+          {/* City Input for Shipping Validation - hidden when free shipping threshold is met */}
+          {discountedSubtotal < 15 && (
+            <div className="pt-1">
+              <h3 className="mb-2 font-semibold text-gray-800 text-sm">Shipping City</h3>
+              <div className="flex flex-col gap-2">
+                <input
+                  type="text"
+                  placeholder="Enter your city (e.g., Vancouver)"
+                  value={enteredCity}
+                  onChange={handleCityChange}
+                  className={`w-full p-2.5 rounded-lg border-2 transition-colors text-sm ${
+                    cityValidation.isValid === true 
+                      ? "border-green-500 bg-green-50" 
+                      : cityValidation.isValid === false 
+                      ? "border-yellow-500 bg-yellow-50"
+                      : "border-gray-300"
+                  }`}
+                />
+                {cityValidation.message && (
+                  <div className={`p-2 rounded-md text-xs font-medium ${
+                    cityValidation.isValid 
+                      ? "bg-green-50 text-green-700" 
+                      : "bg-yellow-50 text-yellow-700"
+                  }`}>
+                    {cityValidation.message}
+                  </div>
+                )}
+                <div className="text-xs text-gray-500 space-y-0.5">
+                  <p>Free in Lower Mainland • $10 elsewhere • Free on $15+</p>
+                  <Link href="/map" className="text-my-green hover:text-green-700 inline-block mt-1">
+                    View eligible cities →
+                  </Link>
                 </div>
-              )}
-              <div className="text-xs text-gray-500 space-y-0.5">
-                <p>Free in Lower Mainland • $10 elsewhere • Free on $50+</p>
-                <Link href="/map" className="text-my-green hover:text-green-700 inline-block mt-1">
-                  View eligible cities →
-                </Link>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Free Shipping Qualified - Minimal */}
-          {discountedSubtotal >= 50 && (
+          {discountedSubtotal >= 15 && (
             <div className="bg-green-50 rounded-md p-2 border-l-4 border-my-green">
               <p className="text-xs text-green-800 font-medium">
-                ✓ Free shipping unlocked ($50+ order)
+                ✓ Free shipping unlocked ($15+ order)
               </p>
             </div>
           )}
@@ -448,7 +450,7 @@ function Navbar() {
               ? "✓ Free local shipping applied!" 
               : shipping > 0 
               ? `$${shipping.toFixed(2)} shipping fee applies`
-              : "Free shipping on orders $50+!"
+              : "Free shipping on orders $15+!"
             }
           </p>
         </div>
