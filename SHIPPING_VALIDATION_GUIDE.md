@@ -10,8 +10,8 @@ This system prevents shipping fraud by validating customer cities against a whit
 - The system validates the city against a list of 19 eligible Lower Mainland cities
 - Shipping fees are automatically calculated based on validation:
   - **Free**: Lower Mainland cities
-  - **Free**: Any Canadian city with orders $50+ (before tax)
-  - **$10**: Other Canadian cities (orders under $50)
+  - **Free**: Any Canadian city with orders $20+ (before tax)
+  - **$10**: Other Canadian cities (orders under $20)
 
 ### 2. **Eligible Lower Mainland Cities**
 The following cities qualify for free local shipping:
@@ -96,11 +96,11 @@ getAllLowerMainlandCities() // returns formatted array
 1. **Lower Mainland City**
    - Enter "Vancouver" → Should show green validation, free shipping
    
-2. **Non-Lower Mainland (under $50)**
+2. **Non-Lower Mainland (under $20)**
    - Enter "Toronto" → Should show yellow validation, $10 shipping
    
-3. **Non-Lower Mainland ($50+)**
-   - Enter "Toronto" with $50+ cart → Should show free shipping message
+3. **Non-Lower Mainland ($20+)**
+   - Enter "Toronto" with $20+ cart → Should show free shipping message
    
 4. **Empty City**
    - Try to checkout without entering city → Should show alert
@@ -121,7 +121,7 @@ getAllLowerMainlandCities() // returns formatted array
 If a customer claims incorrect shipping:
 1. Check their entered city in Square order details
 2. Verify against eligible cities list
-3. Confirm order total meets $50+ threshold for free shipping
+3. Confirm order total meets $20+ threshold for free shipping
 
 ## Notes
 - Only Canada shipping is supported
