@@ -73,7 +73,7 @@ function Page() {
         <div className="border-2 border-black w-[100%] h-auto flex flex-cols justify-center mb-12">
           <iframe 
             className="w-[100%]"
-            src="https://www.google.com/maps/d/embed?mid=1YzlyxYbxnGYx4AuzSkG07qeSrERkqi4&ehbc=2E312F"
+            src="https://www.google.com/maps/d/u/0/embed?mid=1m7igr-l7agteVpDkz_xcdeTAP2Z3Yq0&ehbc=2E312F"
             width="640" 
             height="480"
           ></iframe>
